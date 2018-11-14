@@ -1,0 +1,1617 @@
+<div class="formAssessment">
+    <section ng-hide="hideScoreQ" style="margin-top:50px;">
+        <div style="text-align:center;">
+            <button class="button-leon-assessment" style="width: 280px;" ng-click="goradioScoreQ(0)">Assessment</button>
+        </div>
+        <div style="text-align:center;">
+            <button class="button-leon-assessment" style="width: 280px;" ng-click="goradioScoreQ(1)">Score</button>
+        </div>
+        <div style="text-align:center;" ng-hide="assessmentdeleted">
+            <button class="button-leon-assessment" style="width: 280px;" ng-click="modalDelete()">Delete</button>
+        </div>
+        <div style="text-align:center;" ng-hide="assessmentecover">
+            <button class="button-leon-assessment" style="width: 280px;" ng-click="modalRecover()">Recover</button>
+        </div>
+    </section>
+
+    <div class="status-bar-bottom">
+        <span class="fa-stack fa-lg" ng-hide="scoreBack" style="width:33%;display:inline-block !important;padding-left:3%">
+            <i class="fa fa-angle-left status-bar-bottom-fonts " aria-hidden="true" ng-click="goradioScoreQ(1)" ng-hide="scoreBack"></i>
+        </span>
+        <span class="fa-stack fa-lg  button-statusbar-center" ng-hide="scoreFooter" style="">
+            <i class="fa fa-check-circle-o status-bar-bottom-fonts" aria-hidden="true" ng-click="back()" ng-hide="!userRole"></i>
+        </span>
+        <span class="fa-stack fa-lg" ng-hide="scoreNext" style="width:66%;display:inline-block !important;padding-left:3%;text-align:right">
+            <i class="fa fa-angle-right status-bar-bottom-fonts " aria-hidden="true" ng-click="goradioScoreQ(2)" ng-hide="scoreNext"></i>
+        </span>
+    </div>
+
+    <div ng-hide="hideAll" class="cb_progress_bar_divider" >
+        <div class="cb_progress_bar" >
+            <hr class="cb_border">
+            <hr class="cb_all_steps">
+            <hr class="cb_current_steps">
+            <div class="cb_step cb_current" id="step1" data-step="1"><span>Start</span></div>
+            <div class="cb_step" id="step2" data-step="2"></div>
+            <div class="cb_step" id="step3" data-step="3"></div>
+            <div class="cb_step" id="step4" data-step="4"></div>
+            <div class="cb_step" id="step5" data-step="5"></div>
+            <div class="cb_step" id="step6" data-step="6"><span>Finish</span></div>
+        </div>
+    </div>
+  
+    <section ng-hide="hidepoints">
+
+        <div class="score-assessment-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p id="score-header-label">fitness </p>
+                </div>
+            </div>
+        </div>
+
+        <div style="position:relative;margin-top:0.5vh" ng-hide="scoreAssessmentChart">
+            <div ng-hide="scoreBeforeDay" class="beforeAssessment" ng-click="goGetScoreQ()">
+                <span class="chart chart-score-main-beforeday rotate score-chart-main historicCircle" data-percent="0" >
+                    <span class="percent rotateScore score-percent-beforeDay historicCircleMainFont" >
+                    </span>
+                </span>
+            </div>
+
+            <div class="score_div_mixed" style="position:initial;">
+                <div id="idProgressAssessmentback" class="bubbleScore bubbleScoreBack" style="position:relative;"></div>
+                <div id="idProgressAssessment" class="bubbleScore bubbleScoreFront" style="position:relative;"></div>
+            </div>
+            <div class="exile_percent">
+                <span ng-hide="scoreChart" class="percent score_today_avarage bubbleScoreColorFont leonCircleMainFont"></span>
+                <span ng-hide="scoreChart" class="score_today_percentil  bubbleTextColorFont leonCircleSecondaryFont">{{avaragePercentile}} Percentile</span>
+            </div>
+        </div>
+
+
+        <div class="row score-animated" ng-hide="scoreAnimated">
+            <div class="score-size-container">
+                <div class="row" ng-hide="score1">
+                    <div class="col-lg-12 score-fitness-content" ng-click="goRadioScoreFitness()">
+                        <div class="myProgress progress categoriesBack">
+                            <div id="percentile-label1" class="label-name">Fitness</div>
+                            <div id="percentile-label-description1" class="label-name-description" ng-hide="mainScoreAnimated">Side Bridge</div>
+                            <div id="percentile1" class="percentile">10th</div>
+                            <div id="bar1" class="fillAssessmentbar categoriesFront" style="width:0%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-hide="score2">
+                    <div class="col-lg-12 score-fitness-content" ng-click="goRadioScoreBiometrics()">
+                        <div class="myProgress progress categoriesBack">
+                            <div id="percentile-label2" class="label-name">Biometrics</div>
+                            <div id="percentile-label-description2" class="label-name-description" ng-hide="mainScoreAnimated">Mb Trhow</div>
+                            <div id="percentile2" class="percentile">10th</div>
+                            <div id="bar2" class="fillAssessmentbar categoriesFront" tyle="width:0%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-hide="score3">
+                    <div class="col-lg-12 score-fitness-content" ng-click="goRadioScoreMobility()">
+                        <div class="myProgress progress categoriesBack">
+                            <div id="percentile-label3" class="label-name">Mobility</div>
+                            <div id="percentile-label-description3" class="label-name-description" ng-hide="mainScoreAnimated">Push ups</div>
+                            <div id="percentile3" class="percentile">10th</div>
+                            <div id="bar3" class="fillAssessmentbar categoriesFront" style="width:0%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-hide="score4">
+                    <div class="col-lg-12 score-fitness-content" ng-click="goRadioScoreLifestyle()">
+                        <div class="myProgress progress categoriesBack">
+                            <div id="percentile-label4" class="label-name">Lifestyle</div>
+                            <div id="percentile-label-description4" class="label-name-description" ng-hide="mainScoreAnimated">12 minutes cooper</div>
+                            <div id="percentile4" class="percentile">10th</div>
+                            <div id="bar4" class="fillAssessmentbar categoriesFront" style="width:0%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-hide="score5">
+                    <div class="col-lg-12 score-fitness-content">
+                        <div class="myProgress progress">
+                            <div id="percentile-label5" class="label-name">Lifestyle</div>
+                            <div id="percentile-label-description5" class="label-name-description" ng-hide="mainScoreAnimated">Drinks per day</div>
+                            <div id="percentile5" class="percentile">10th</div>
+                            <div id="bar5" class="fillAssessmentbar" style="width:0%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div style="position:relative;" ng-hide="alternativeScore">
+            <div class="score_div_mixed">
+                <div id="idProgressSecondaryMainBack" class="bubbleScore bubbleScoreBack fitnessCircleMain" data-percent="0">
+                </div>
+                <div id="idProgressSecondaryMainFront" class="bubbleScore bubbleScoreFront fitnessCircleMain fitnessCircleMainFront" data-percent="0" ng-click="fitnessScore(0)">
+                </div>
+            </div>
+            <div class="score_div_mixed">
+                <p class="score-avarage-main bubbleScoreColorFont fitnessScoreMain" ng-click="fitnessScore(0)"></p>
+            </div>
+            <div class="score_div_mixed">
+                <p class="bubbleTextColorFont fitnessTextMain" ng-click="fitnessScore(0)">Fitness</p>
+            </div>
+                
+            <div class="row scoreItems scroe_divitems" ng-hide="alternativeScoreItems">
+                <div ng-hide="scoreChartItem1" class="chart-score-items" ng-click="fitnessScore(1)" >
+                    <div id="idProgressItem1Back" class="bubbleScore bubbleScoreBack fitnessSecondaryCircles fitnessSecondaryCircleBack" data-percent="0">
+                    </div>
+                    <div id="idProgressItem1Front" class="bubbleScore bubbleScoreFront fitnessSecondaryCircles fitnessSecondaryCircleFront" data-percent="0" >
+                    </div>
+                    <div class="fitnessBubbleDivText" >
+                        <span class="bubbleTextColorFont fitnessNameItem">
+                            Sidebridge
+                        </span>
+                        <span id="scoreitem1" class="bubbleScoreColorFont fitnessScoreItem"></span>
+                    </div>
+                </div>
+
+                
+
+                <div ng-hide="scoreChartItem2" class="chart-score-items" ng-click="fitnessScore(2)">
+                    <div id="idProgressItem2Back" class="bubbleScore bubbleScoreBack fitnessSecondaryCircles fitnessSecondaryCircleBack" data-percent="0">
+                    </div>
+                    <div id="idProgressItem2Front" class="bubbleScore bubbleScoreFront fitnessSecondaryCircles fitnessSecondaryCircleFront" data-percent="0" >
+                    </div>
+                    <div class="fitnessBubbleDivText">
+                        <span class="bubbleTextColorFont fitnessNameItem">
+                            MB Throw
+                        </span>
+                        <span id="scoreitem2" class="bubbleScoreColorFont fitnessScoreItem"></span>
+                    </div>
+                </div>
+                <div ng-hide="scoreChartItem3" class="chart-score-items" ng-click="fitnessScore(3)">
+                    <div id="idProgressItem3Back" class="bubbleScore bubbleScoreBack fitnessSecondaryCircles fitnessSecondaryCircleBack" data-percent="0">
+                    </div>
+                    <div id="idProgressItem3Front" class="bubbleScore bubbleScoreFront fitnessSecondaryCircles fitnessSecondaryCircleFront" data-percent="0" >
+                    </div>
+                    <div class="fitnessBubbleDivText">
+                        <span class="bubbleTextColorFont fitnessNameItem">
+                            Push Up
+                        </span>
+                        <span id="scoreitem3" class="bubbleScoreColorFont fitnessScoreItem"></span>
+                    </div>
+                </div>
+                <div ng-hide="scoreChartItem4" class="chart-score-items" ng-click="fitnessScore(4)">
+                    <div id="idProgressItem4Back" class="bubbleScore bubbleScoreBack fitnessSecondaryCircles fitnessSecondaryCircleBack" data-percent="0">
+                    </div>
+                    <div id="idProgressItem4Front" class="bubbleScore bubbleScoreFront fitnessSecondaryCircles fitnessSecondaryCircleFront" data-percent="0" >
+                    </div>
+                    <div class="fitnessBubbleDivText">
+                        <span class="bubbleTextColorFont fitnessNameItem">
+                            Cooper
+                        </span>
+                        <span id="scoreitem4" class="bubbleScoreColorFont fitnessScoreItem"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--
+        <div ng-hide="scoreFooter" style="display: flex; justify-content: center;">
+            <div class="score-size-container">
+                <div class="row score-user-date">
+                    <div class="col-lg-12 score-user-col" style="padding:0;">
+                        <p>{{firstname + " " + lastName}}, this is your score! Your last assessment was performed on {{datedone}}.</p>
+                    </div>
+                </div>
+                <div class="row score-assesments-total">
+                    <div class="col-sm-12" style="padding:0;">
+                        <p>{{totalUsers}} Assessments and counting...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->       
+
+        <div id ="idfitnessBarChart"class="fitnessBarChart" ng-hide="alternativeScoreFitness">
+            <canvas id="bar" class="chart chart-bar scoreBarFitnees" chart-data="data" chart-labels="labels" chart-options="optionsbar" chart-dataset-override="datasetOverride"></canvas>
+        </div>
+
+        <div ng-hide="alternativeScoreFitnessButtons" class="fitnessButtonsBarChart">
+            <button class="scoreBarFitneesAge" ng-click="goFitnessAlternative(1)">Age</button>
+            <div style="display: inline-block;width: 17vh;"> </div>
+            <button class="scoreBarFitneesGender" ng-click="goFitnessAlternative(2)">Gender</button>
+        </div>
+
+
+        <div ng-hide="hideLifeStyleScore">
+            <div class="row" style="display: flex;justify-content: center;">
+                <div class="lifestyleHeader ">
+                    Health
+                </div>
+                <div style="width: 28vh;"></div>
+                <div class="lifestyleHeader">
+                    Health
+                </div>
+
+            </div>
+            <div class="row" style="display: flex;justify-content: center;">
+
+                <div class="lifestyleHeader" style="width: 6.8vh;">
+                    Risk
+                </div>
+                <div style="width: 28vh;"></div>
+
+                <div class="lifestyleHeader">
+                    Benefit
+                </div>
+
+            </div>
+        </div>
+
+        <div ng-hide="hideLifeStyleScore" style="display: flex;justify-content: center;">
+            <div class="row" style="width: 51vh;position: relative;">
+                <div ng-hide="hideLifeStyleScore" class="lifestyLeftPanelLine">
+
+                </div>
+                <div class="lifestyle_dividers">
+                    <div class="lifestyleLeftText">
+                        Daily
+                        <br />
+                        Activity
+                    </div>
+                    <div class="row" style="text-align: -webkit-center;">
+                        <div class="progressBox imgHeader imgSevenChoice">
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="idlifedailycircle" class="progressCircle progressCircleMultiple">
+                            <p class="progressCircleTextMultiple">{{imgaADaily}}</p>
+                        </div>
+                    </div>
+                    <div class="lifestyleRightText">
+                        Days
+                    </div>
+                </div>
+                <div class="lifestyle_dividers">
+                    <div class="lifestyleLeftText">
+                        Weekly
+                        <br />
+                        Exercise
+                    </div>
+                    <div class="row" style="text-align: -webkit-center;">
+                        <div class="progressBox imgHeader imgSevenChoice" style="margin-left: -4vh;">
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sevenpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="idlifeweeklycircle" class="progressCircle progressCircleMultiple">
+                            <p class="progressCircleTextMultiple">{{imgWeekly}}</p>
+                        </div>
+                    </div>
+                    <div class="lifestyleRightText">
+                        Days
+                    </div>
+                </div>
+                <div class="lifestyle_dividers">
+                    <div class="lifestyleLeftText" style="margin-top: 1vh;">
+                        Sitting
+                    </div>
+                    <div class="row" style="text-align: -webkit-center;">
+                        <div class="progressBox imgHeader imgFourChoice">
+                            <div class="fourpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="fourpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="fourpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="fourpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="idlifesittingcircle" class="progressCircle progressCircleMultiple">
+                            <p class="progressCircleTextMultiple">{{imgsitting}}</p>
+                        </div>
+                    </div>
+                    <div class="lifestyleRightSittingText">
+                        <div>
+                            Daily
+                        </div>
+                        <div class="lifestyleRightSittingSecondLine">
+                            Hours
+                        </div>
+                    </div>
+                </div>
+                <div class="lifestyle_dividers">
+                    <div class="lifestyleLeftText" style="margin-top: .8vh;">
+                        Smoking
+                    </div>
+                    <div class="row" style="text-align: -webkit-center;">
+                        <div class="progressBox imgHeader imgSixChoice">
+                            <div class="sixpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sixpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sixpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sixpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="sixpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="idlifesmokingcircle" class="progressCircle progressCircleMultiple">
+                            <p id="idlifesmokingtextcircle" class="progressCircleTextMultiple">{{smoking}}</p>
+                        </div>
+                        <div id="idlifeNosmokingcircle" class="progressCircle progressCircleMultiple" style="margin-left: 0vh;position: absolute;">
+                            <p  class="progressCircleTextMultiple" >{{smoking}}</p>
+                        </div>
+                    </div>
+                    <div class="lifestyleRightSittingText" style="margin-left: 19.5vh;">
+                        <div>
+                            Daily
+                        </div>
+                        <div class="lifestyleRightSmokingSecondLine">
+                            Cigarretes
+                        </div>
+                    </div>
+                </div>
+                <div class="lifestyle_dividers">
+                    <div class="lifestyleLeftText">
+                        Second hand
+                        <br />
+                        Smoke
+                    </div>
+                    <div class="row" style="text-align: -webkit-center;">
+                        <div class="progressBox imgHeader imgTwoChoice" style="margin-left: -18vh;margin-top:0vh">
+                            <div class="twopointsdivider">
+                                <div class="twopointsbox">
+                                </div>
+                            </div>
+                            <div class="twopointsdivider">
+                                <div class="twopointsbox">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="idlifeexposedSmokecircle" class="progressCircle progressCircleMultiple" style="margin-left: -14vh;">
+                            <p class="progressCircleTextMultiple">{{imgsecond}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lifestyle_dividers">
+                    <div class="lifestyleLeftText" style="margin-top: 1.2vh;">
+                        Drinks
+                    </div>
+                    <div class="row" style="text-align: -webkit-center;">
+                        <div class="progressBox imgHeader imgFourChoice" style="margin-left: -9vh;">
+                            <div class="fourpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="fourpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="fourpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="fourpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="idlifedrikingcircle" class="progressCircle progressCircleMultiple">
+                            <p class="progressCircleTextMultiple">{{imgdrinking}}</p>
+                        </div>
+                    </div>
+                    <div class="lifestyleRightSittingText" style="margin-left:17.4vh;">
+                        <div class="lifestyleRightDrinksFirstLine">
+                            Drink
+                        </div>
+                        <div class="lifestyleRightDrinksSecondLine">
+                            per day
+                        </div>
+                    </div>
+                </div>
+                <div class="lifestyle_dividers" style="margin-bottom: 4vh;">
+                    <div class="lifestyleLeftText" style="margin-top: 1vh;">
+                        Antibiotics
+                    </div>
+                    <div class="row" style="text-align: -webkit-center;">
+                        <div class="progressBox imgHeader imgFourChoice" style="margin-left: -19vh;">
+                            <div class="fourpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="fourpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="fourpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                            <div class="fourpointsdivider">
+                                <div class="threepointsbox">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="idlifeantibioticscircle" class="progressCircle progressCircleMultiple">
+                            <p class="progressCircleTextMultiple">{{imgantibiotics}}</p>
+                        </div>
+                    </div>
+                    <div class="lifestyleRightSittingText lifestyleRightAntibioticsText">
+                        <div>
+                            Weeks/year
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-hide="hideMobilityScore">
+            <div class="row">
+                <div class="MobilityLeftPanel ">
+                    <img src="styles/mztimgs/HumanFigure.png" class="imghuman" />
+                </div>
+
+                <div class="MobilityRightPanel">
+                    <div style="width: 25vh;margin-top: -1.5vh;">
+                        <div class="row MobilityHeaderLeft headerText">
+                            <div>
+                                <img src="styles/mztimgs/Mobility - Arrow Left.png" class="imgRisk" />
+                            </div>
+                            <div>
+                                Risk of
+                            </div>
+                            <div>
+                                injury
+                            </div>
+                        </div>
+                        <div class="row MobilityHeaderRight headerText">
+                            <div>
+                                <img src="styles/mztimgs/Mobility - Arrow Right.png" class="imgRisk" />
+                            </div>
+                            <div>
+                                Optimal
+                            </div>
+                        </div>
+
+                        <div class="MobilityleftpPanelData">
+                            <div class="row imgTextBelow">
+                                Shoulder Mobility
+                            </div>
+                            <div class="row" style="text-align: -webkit-center;">
+                                <div class="progressBox imgHeader imgThreeChoice">
+                                    <div class="threepointsdivider">
+                                        <div class="threepointsbox">
+                                        </div>
+                                    </div>
+                                    <div class="threepointsdivider">
+                                        <div class="threepointsbox">
+                                        </div>
+                                    </div>
+                                    <div class="threepointsdivider">
+                                        <div class="threepointsbox">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="idmobilityshouldercircle" class="progressCircle progressCircleMultiple">
+                                    <p class="progressCircleTextMultiple">{{imgShoulder}}</p>
+                                </div>
+                            </div>
+                            <div class="row imgTextBelow">
+                                Shoulder pain
+                            </div>
+                            <div class="row" style="text-align: -webkit-center;">
+                                <div class="progressBox imgHeader imgTwoChoice">
+                                    <div class="twopointsdivider">
+                                        <div class="twopointsbox">
+                                        </div>
+                                    </div>
+                                    <div class="twopointsdivider">
+                                        <div class="twopointsbox">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div id="idmobilityshoulderpaincircle" class="progressCircle progressCircleMultiple">
+                                    <p class="progressCircleTextMultiple">{{imgPain}}</p>
+                                </div>
+                            </div>
+                            <div class="row imgTextBelow">
+                                Spinal Extension Pain
+                            </div>
+                            <div class="row" style="text-align: -webkit-center;">
+                                <div class="progressBox imgHeader imgTwoChoice">
+                                    <div class="twopointsdivider">
+                                        <div class="twopointsbox">
+                                        </div>
+                                    </div>
+                                    <div class="twopointsdivider">
+                                        <div class="twopointsbox">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="idmobilitySpinalExtensioncircle" class="progressCircle progressCircleMultiple">
+                                    <p class="progressCircleTextMultiple">{{imgSpinalExtension}}</p>
+                                </div>
+                            </div>
+                            <div class="row imgTextBelow">
+                                Spinal Flexion Pain
+                            </div>
+                            <div class="row" style="text-align: -webkit-center;">
+                                <div class="progressBox imgHeader imgTwoChoice">
+                                    <div class="twopointsdivider">
+                                        <div class="twopointsbox">
+                                        </div>
+                                    </div>
+                                    <div class="twopointsdivider">
+                                        <div class="twopointsbox">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="idmobilitySpinalFlexioncircle" class="progressCircle progressCircleMultiple">
+                                    <p class="progressCircleTextMultiple">{{imgSpinalFlexion}}</p>
+                                </div>
+                            </div>
+                            <div class="row imgTextBelow">
+                                Squat Mobility
+                            </div>
+                            <div class="row" style="text-align: -webkit-center;">
+                                <div class="progressBox imgHeader imgThreeChoice">
+                                    <div class="threepointsdivider">
+                                        <div class="threepointsbox">
+                                        </div>
+                                    </div>
+                                    <div class="threepointsdivider">
+                                        <div class="threepointsbox">
+                                        </div>
+                                    </div>
+                                    <div class="threepointsdivider">
+                                        <div class="threepointsbox">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="idmobilitysquatcircle" class="progressCircle progressCircleMultiple">
+                                    <p class="progressCircleTextMultiple">{{imgSquat}}</p>
+                                </div>
+                            </div>
+                            <div class="row imgTextBelow">
+                                Straight Leg Mobility
+                            </div>
+                            <div class="row" style="text-align: -webkit-center;margin-bottom:2vh">
+                                <div class="progressBox imgHeader imgThreeChoice">
+                                    <div class="threepointsdivider">
+                                        <div class="threepointsbox">
+                                        </div>
+                                    </div>
+                                    <div class="threepointsdivider">
+                                        <div class="threepointsbox">
+                                        </div>
+                                    </div>
+                                    <div class="threepointsdivider">
+                                        <div class="threepointsbox">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="idmobilitylegcircle" class="progressCircle progressCircleMultiple">
+                                    <p class="progressCircleTextMultiple">{{imgStraight}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div ng-hide="hideBiometricsScore">
+            <div class="row" style="display:flex;">
+                <div class="BioLeftPanel ">
+                    <img src="styles/mztimgs/HumanFigure.png" class="bioimghuman" />
+                </div>
+
+                <div class="BioRightPanel">
+                    <div class="row">
+                        <div class="row bloodPresureHeaderText">
+                            Blood Pressure
+                        </div>
+                        <div class="row imgText">
+                            Systolic
+                        </div>
+                        <div class="row">
+                            <div class="progressBox imgHeader">
+                            </div>
+                            <div id="syscA" class="progressCircle">
+                            </div>
+                            <div id="sysTA" class="imgCicleText">
+                                {{countsys}}
+                            </div>
+                            <div class="imginnerText">
+                                BPM
+                            </div>
+                        </div>
+
+                        <div class="row imgText">
+                            Diastolic
+                        </div>
+                        <div class="row">
+                            <div class="progressBox imgHeader">
+                            </div>
+                            <div id="diacA" class="progressCircle">
+                            </div>
+                            <div id="diaTA" class="imgCicleText">
+                                {{countdia}}
+                            </div>
+                            <div class="imginnerText">
+                                BPM
+                            </div>
+                        </div>
+
+                        <div class="row twoColumns">
+
+                            <div class="row twoColumnsLeft">
+                                <div class="row smalltexttwoColumns">
+                                    Waist
+                                </div>
+                                <div class="row bigtexttwoColumns">
+                                    {{howwaist}}
+                                </div>
+                                <div class="row smalltexttwoColumns">
+                                    Hip
+                                </div>
+                                <div class="row bigtexttwoColumns">
+                                    {{howhip}}
+                                </div>
+                            </div>
+                            <div class="row twoColumnsRight">
+                                <div class="row texttwoColumnsRight">
+                                    Ratio
+                                </div>
+                                <div class="row">
+                                    <div class="progressBox imgTwogHeader">
+                                    </div>
+                                    <div id="waisthipcA" class="progressCircle">
+                                    </div>
+                                    <div id="waisthipTA" class="imgCicleText">
+                                        {{countwh}}
+                                    </div>
+                                </div>
+                                <div class="imginnerTextRight">
+                                    %
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row twoColumns">
+                            <div class="row twoColumnsLeft">
+                                <div class="row smalltexttwoColumns">
+                                    Height
+                                </div>
+                                <div class="row bigtexttwoColumns">
+                                    {{howHeight}}
+                                </div>
+                                <div class="row smalltexttwoColumns">
+                                    Weight
+                                </div>
+                                <div class="row bigtexttwoColumns">
+                                    {{howWeight}}
+                                </div>
+                            </div>
+                            <div class="row twoColumnsRight">
+                                <div class="row texttwoColumnsRight">
+                                    BMI
+                                </div>
+                                <div class="row">
+                                    <div class="progressBox imgTwogHeader">
+                                    </div>
+                                    <div id="bmicA" class="progressCircle">
+                                    </div>
+                                    <div id="bmiTA" class="imgCicleText">
+                                        {{countbmi}}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div id="ContainerId" class="container" style="padding:0;" ng-hide="hideAll">
+
+
+        <!-- Modals -->
+        <div id="cb_modalc"></div>
+        <div id="cb_dialogc">
+            <p> {{Message}}</p>
+            <a ng-click="cbj_dialog()">Ok</a>
+        </div>
+
+        <div id="Tooltip-Id" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                    </div>
+                    <div class="modal-body">
+                        <p style="text-align:center;"> {{Message}} </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div id="email-id" ng-hide="hideEmail" class="cb_container">
+                        <div>
+                            <div class="mzt_text_final" ng-disabled="emailDisable">
+                                <p> First Name </p>
+                            </div>
+                            <div>
+                                <input type="text" class="mzt_textbox_final" name="firstname" ng-model="firstname" ng-change="submitAllValues()">
+                            </div>
+                            <div class="mzt_text_final" ng-disabled="emailDisable">
+                                <p>Last Name</p>
+                            </div>
+
+                            <div>
+                                <input type="text" class="mzt_textbox_final" name="lastname" ng-model="lastName" ng-change="submitAllValues()">
+                            </div>
+                            <div class="mzt_text_final" ng-disabled="emailDisable">
+                                <p>Email</p>
+                            </div>
+                            <div>
+                                <input id="idemail" type="email" class="mzt_textbox_final" name="email" data-ng-model="email" ng-change="validateEmail()">
+                            </div>
+
+                            <div class="mzt_text_final" ng-disabled="emailDisable">
+                                <p>Locations</p>
+                            </div>
+                            <div>
+                                <select id="select-location" class="mzt_textbox_final" ng-model="selectedLocation" ng-options="location.name for location in locationList" ng-change="submitAllValues()"></select>
+                            </div>
+                            <!--
+                            <div class="mzt_btn_submit">
+                                <button id="idbtnsubmit" class="cb_btn cb_btn button-deactivated cb_btn_mzt_lf5" ng-click="doSave()"> submit data </button>
+                            </div>
+                                -->
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="Gender-Id" ng-hide="hideGender" class="cb_container">
+                        <div class="cb_mzt_age_header ">
+                            <div class="cb_text cb_text_angina" style="height: 15vh;">
+                                <p class="mzt_p_angina assessmentFont assessmentColor" style="margin-bottom: 7.5vh;">Gender and age are used to define specific norms for the physical tests of the LeON Assesment.</p>
+                            </div>
+                            <div class="cb_row cb_flex cb_flex_hcenter" style="margin-top:5vh;">
+                                <img id="male" ng-src="{{imgmale}}" class="cb_img cb_img2" ng-click="setGender(1); slidePageForward(); " />
+                                <div class="cb_mzt_age_content"></div>
+                                <img id="female" ng-src="{{imgfemale}}" class="cb_img cb_img1" ng-click="setGender(0); slidePageForward();  " />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <section id="Old-Id" ng-hide="hideOld" class="cb_container">
+                        <div>
+                            <div class="cb_flex"></div>
+                            <div class="cb_text cb_text_angina" style="height: 40.5vh;">
+                                <p class="mzt_p_angina assessmentFont assessmentColor" style="margin-bottom: 15vh;">Gender and Age are used to define norms for the physical test of the LeON Assesment.</p>
+                            </div>
+                            <div class="cb_flex"></div>
+                            <div class="cb_text_medium">
+                                <p>Date of Birth</p>
+                            </div>
+                            <div class="cb_row cb_c cb_flex_hcenter cb_mzt_birthday" style="width:100%">
+                                <div>
+                                    <button class="cb_btn cb_btn_angina  cb_btn_input cb_btn_mzt_birthday" style="width: 24vh;border-radius: 10px 0 0 10px !important;">{{bmonth}}</button>
+                                    <button class="cb_btn cb_btn_angina  cb_btn_input cb_btn_mzt_birthday" style="width: 10vh;">{{bday}}</button>
+                                    <button class="cb_btn cb_btn_angina  cb_btn_input cb_btn_mzt_birthday" style="width:13vh;border-radius: 0 10px 10px 0 !important;">{{byear}}</button>
+                                    <!--<div class="cb_btn cb_btn_mzt_birthday cb_btn_mzt_birthday_btns cb_btn_mzt_birthday_btns_fisrt  cb_flex">{{bmonth}}</div>
+                                    <div class="cb_btn cb_btn_mzt_birthday cb_btn_mzt_birthday_btns cb_btn_mzt_birthday_btns2 cb_flex ">{{bday}}</div>
+                                    <div class="cb_btn cb_btn_mzt_birthday cb_btn_mzt_birthday_btns cb_btn_mzt_birthday_btns2 cb_btn_mzt_birthday_btns_last cb_flex">{{byear}}</div>-->
+                                </div>
+                            </div>
+                            <input id="inputAgeDate" ng-model="howold" class="cb_mzt_birthday_input" />
+                        </div>
+                    </section>
+                </div>
+                <div class="swiper-slide">
+                    <div id="Car-Id" ng-hide="hideCar" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina">
+                                <p class="mzt_p_angina assessmentFont assessmentColor" >Has your doctor ever diagnosed you with a heart condition that requires medication management (ex. Hypertension, cardiac arrhythmia, congestive heart failure)</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <button id="doctor-color1" class="cb_btn button-deactivated cb_btn_angina" ng-click="setCardio($event, 0); slidePageForward();">No</button>
+                                <div class="cb_mzt_divider"></div>
+                                <button id="doctor-color2" class="cb_btn button-deactivated cb_btn_angina" ng-click="setCardio($event, 1); slidePageForward();">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="Che-Id" ng-hide="hideChe" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina">
+                                <p class="mzt_p_angina assessmentFont assessmentColor">Have you experienced Pain in your chest (angina) during physical activity or at rest?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <button id="pain-color1" class="cb_btn button-deactivated cb_btn_angina" ng-click="setChest($event, 0); slidePageForward();">No</button>
+                                <div class="cb_mzt_divider"></div>
+                                <button id="pain-color2" class="cb_btn button-deactivated cb_btn_angina" ng-click="setChest($event, 1); slidePageForward();">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="Fat-Id" ng-hide="hideFat" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina ">
+                                <div class="mzt_p_angina assessmentFont assessmentColor" ng-click="mostrarToolTip('Family history will be used to assess genetic risk factors that are meant to build awareness of an individual\'s own health lineage. It is important for individuals that are high risk to make notable attmepts to improve all facets of health through lifestyle and physical fitness.')" >
+                                    <p>
+                                        Has your father been diagnosed with a cardiovascular disease under the age of 55 (stroke, heart attack, high blood pressure, angina, atherosclerosis)?
+                                        <i class="fa fa-info-circle i-information-assassment" aria-hidden="true"></i>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <button id="father-color1" class="cb_btn button-deactivated cb_btn_angina" ng-click="setFather($event, 0); slidePageForward();">No</button>
+                                <div class="cb_mzt_divider"></div>
+                                <button id="father-color2" class="cb_btn button-deactivated cb_btn_angina" ng-click="setFather($event, 1); slidePageForward();">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="Mot-Id" ng-hide="hideMot" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina">
+                                <p class="mzt_p_angina assessmentFont assessmentColor">Has your mother been diagnosed with cardiovascular disease under the age of 65 (stroke, heart attack, high blood pressure, angina, artherosclerosis)?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <button id="mother-color1" class="cb_btn button-deactivated cb_btn_angina" ng-click="setMother($event, 0); slidePageForward();">No</button>
+                                <div class="cb_mzt_divider"></div>
+                                <button id="mother-color2" class="cb_btn button-deactivated cb_btn_angina" ng-click="setMother($event, 1); slidePageForward();">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="Dia-Id" ng-hide="hideDia" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina">
+                                <p class="mzt_p_angina assessmentFont assessmentColor">Has either parent been diagnosed with Type II diabetes?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <button id="either-color1" class="cb_btn button-deactivated cb_btn_angina" ng-click="setDiabetes($event, 0); slidePageForward();">No</button>
+                                <div class="cb_mzt_divider"></div>
+                                <button id="either-color2" class="cb_btn button-deactivated cb_btn_angina" ng-click="setDiabetes($event, 1); slidePageForward();">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="Mod-Id" ng-hide="hideMod" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina">
+                                <p class="mzt_p_angina assessmentFont assessmentColor">
+                                    During the week, how many days are you active including walking/cycling to work, grocery store,
+                                    etc for more than 30 minutes or actively on your feet and moving for most of the day
+                                    (waiter, construction worker, taking care of a toddler, etc)?
+                                </p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <input id="inputMod" ng-model="howmod" class="cb_btn cb_btn_angina cb_btn_input" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="workout-id" ng-hide="hideMod" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina">
+                                <p class="mzt_p_angina assessmentFont assessmentColor">How many days a week do you workout, run or exercise at a moderate to high intensity (including playing sports)?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <input id="inputVig" ng-model="howvig" class="cb_btn cb_btn_angina cb_btn_input" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="sit-id" ng-hide="hideSit" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina" style="height:28vh;">
+                                <p class="mzt_p_angina assessmentFont assessmentColor" style="margin-bottom: 7vh;">How much time do you spend sitting throughout the day on average?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons" style="display:block;">
+                                <div>
+                                    <button id="time-color1" ng-click="setSitting($event, 0); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns">0-3 Hrs</button>
+                                </div>
+                                <div>
+                                    <button id="time-color2" ng-click="setSitting($event, 1); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns">4-7 Hrs</button>
+                                </div>
+                                <div>
+                                    <button id="time-color3" ng-click="setSitting($event, 2); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns">8-11 Hrs</button>
+                                </div>
+                                <div>
+                                    <button id="time-color4" ng-click="setSitting($event, 3); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns">12 or more Hours</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="smo-id" ng-hide="hideSmo" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina" style="height:7.5vh;">
+                                <p class="mzt_p_angina assessmentFont assessmentColor">Do you smoke?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons" style="display:block;">
+                                <div>
+                                    <button id="smoke-color1" ng-click="setSmokeAverage($event, 0); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns">Never</button>
+                                </div>
+                                <div>
+                                    <button id="smoke-color2" ng-click="setSmokeAverage($event, 1); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns">Ex-smoker (last 5 years)</button>
+                                </div>
+                                <div>
+                                    <button id="smoke-color3" ng-click="setSmokeAverage($event, 2); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns">1-4 cigarettes per day</button>
+                                </div>
+                                <div>
+                                    <button id="smoke-color4" ng-click="setSmokeAverage($event, 3); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns">5-9 cigarettes per day</button>
+                                </div>
+                                <div>
+                                    <button id="smoke-color5" ng-click="setSmokeAverage($event, 4); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns">10-14 cigarettes per day</button>
+                                </div>
+                                <div>
+                                    <button id="smoke-color6" ng-click="setSmokeAverage($event, 5); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns">15 or more per day</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="smokes-id" ng-hide="hideSmokes" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina">
+                                <p class="mzt_p_angina assessmentFont assessmentColor">Are you exposed to second hand smoke frequently at home or work?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <button id="second-color1" class="cb_btn button-deactivated cb_btn_angina" ng-click="setHandSmoke($event, 0); slidePageForward();">No</button>
+                                <div class="cb_mzt_divider"></div>
+                                <button id="second-color2" class="cb_btn button-deactivated cb_btn_angina" ng-click="setHandSmoke($event, 1); slidePageForward();">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="alc-id" ng-hide="hideAlc" class="cb_container">
+                        <div class="cb_mzt_div_lf3">
+                            <div class="cb_text cb_text_angina assessmentFont assessmentColor" style="height:7.5vh;">
+                                <p>How often do you consume alcohol?</p>
+                            </div>
+                            <div class="cb_text_small">
+                                <p>Drinks x day/Drinks x week</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons" style="display:block;">
+                                <div>
+                                    <button id="alcohol-color1" ng-click="setAlcohol($event, 0); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns" style="font-size: 3vh;">Less That 1</button>
+                                </div>
+                                <div>
+                                    <button id="alcohol-color2" ng-click="setAlcohol($event, 1); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns" style="font-size: 3vh;">1 x day / 7 x week</button>
+                                </div>
+                                <div>
+                                    <button id="alcohol-color3" ng-click="setAlcohol($event, 2); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns" style="font-size: 3vh;">2 x day / 14 x week</button>
+                                </div>
+                                <div>
+                                    <button id="alcohol-color4" ng-click="setAlcohol($event, 3); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns" style="font-size: 3vh;">3 or more / 21 < x week</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="ant-id" ng-hide="hideAnt" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina" style="height:22vh;">
+                                <p class="mzt_p_angina assessmentFont assessmentColor" style="margin-bottom:4vh;">For what length of time have you been on antibiotics in the last year?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons" style="display:block;">
+                                <div>
+                                    <button id="length-color1" ng-click="setAntibiotics($event, 0); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns cb_few_btns_2">Less than 2 weeks</button>
+                                </div>
+                                <div>
+                                    <button id="length-color2" ng-click="setAntibiotics($event, 1); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns cb_few_btns_2">2-6 weeks</button>
+                                </div>
+                                <div>
+                                    <button id="length-color3" ng-click="setAntibiotics($event, 2); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns cb_few_btns_2">6-11 weeks</button>
+                                </div>
+                                <div>
+                                    <button id="length-color4" ng-click="setAntibiotics($event, 3); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns cb_few_btns_2">12 weeks or more</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="rated-id" ng-hide="hideRated" class="cb_container">
+                        <div class="cb_text cb_text_angina" style="height:11.5vh;">
+                            <p class="mzt_p_angina assessmentFont assessmentColor">How would you rate your fitness?</p>
+                        </div>
+                        <div class="cb_btn_stact cb_flex_center cb_mzt_buttons" style="display:block;">
+                            <div>
+                                <button id="fitness-color1" ng-click="setFitness($event, 0); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns cb_few_btns_2">Unfit</button>
+                            </div>
+                            <div>
+                                <button id="fitness-color2" ng-click="setFitness($event, 1); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns cb_few_btns_2">Average</button>
+                            </div>
+                            <div>
+                                <button id="fitness-color3" ng-click="setFitness($event, 2); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns cb_few_btns_2">Fit</button>
+                            </div>
+                            <div>
+                                <button id="fitness-color4" ng-click="setFitness($event, 3); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns cb_few_btns_2">Weekend Warrior</button>
+                            </div>
+                            <div>
+                                <button id="fitness-color5" ng-click="setFitness($event, 4); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina cb_few_btns cb_few_btns_2">Elite</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="life-id" ng-hide="hideLife" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina">
+                                <p class="mzt_p_angina assessmentFont assessmentColor">Are you at or near your lifetime peak fitness level?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <button id="lifetime-color1" ng-click="setLifeTime($event, 0); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina">No</button>
+                                <div class="cb_mzt_divider"></div>
+                                <button id="lifetime-color2" ng-click="setLifeTime($event, 1); slidePageForward();" class="cb_btn button-deactivated cb_btn_angina">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="org-id" ng-hide="hideOrg" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina">
+                                <p class="mzt_p_angina assessmentFont assessmentColor">Have you participated in an organized competitive event in the past 12 months? (marathon, triathlon, tough mudder, etc)</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <button id="organized-color1" class="cb_btn button-deactivated cb_btn_angina" ng-click="setCompetitiveEvent($event, 0); slidePageForward();">No</button>
+                                <div class="cb_mzt_divider"></div>
+                                <button id="organized-color2" class="cb_btn button-deactivated cb_btn_angina" ng-click="setCompetitiveEvent($event, 1); slidePageForward();">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="planing-id" ng-hide="hidePlaning" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina">
+                                <p class="mzt_p_angina assessmentFont assessmentColor">Are you planning to participate in an organised event in the next 12 months?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <button id="planing-color1" class="cb_btn button-deactivated cb_btn_angina" ng-click="setOrganisedEvent($event, 0); slidePageForward();">No</button>
+                                <div class="cb_mzt_shoulder_pain_div_btns"></div>
+                                <button id="planing-color2" class="cb_btn button-deactivated cb_btn_angina" ng-click="setOrganisedEvent($event, 1); slidePageForward();">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="blood-id" ng-hide="hideSys" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina">
+                                <p class="mzt_p_angina assessmentFont assessmentColor">
+                                    Blood pressure will evaluate for potential cardiovascular risk before performing the physical assessment. 
+                                    It will also be graded on the norms set by the American Heart Association
+                                </p>
+                            </div>
+                            <div style="margin-top:7vh">
+                                <div class="cb_btn_stact cb_flex">
+                                    <div class="cb_text cb_btn_stact_name">Systolic</div>
+                                    <input id="inputSys" ng-model="howsys" class="cb_btn cb_btn_angina cb_btn_input" style="margin-top:0vh;margin-bottom: 3vh;margin-right:3.5vh;" />
+                                </div>
+                                <div class="cb_btn_stact cb_flex">
+                                    <div class="cb_text cb_btn_stact_name">Diastolic</div>
+                                    <input id="inputDia" ng-model="howdia" class="cb_btn cb_btn_angina cb_btn_input" style="margin-top:0vh;margin-right:3.5vh;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="Height-Id" class="cb_container" ng-hide="hideHeight">
+                        <div style="height: 39vh;">
+                            <div class="cb_text cb_flex" style="margin-top: 12vh;">
+                                <p style="font-size: 2.8vh;">Height?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex cb_flex_center">
+                                <input id="inputHeight" ng-model="howHeight" class="cb_btn cb_btn_angina cb_btn_input" style="margin-top:2.5vh;" ng-change="gohowHeight(howHeight)" />
+                            </div>
+                        </div>
+                        <div>
+                            <div class="cb_text cb_flex">
+                                <p style="font-size: 2.8vh;">Weight?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex cb_flex_center">
+                                <input id="inputWeight" ng-model="howWeight" class="cb_btn cb_btn_angina cb_btn_input" style="margin-top:2.5vh;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="waist-id" ng-hide="disablegendermenWai" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina">
+                                <p class="mzt_p_angina" style="font-size:2.7vh">
+                                    Waist to hip will graded on gender specific norms and used to assess cardiovascular and metabolic health. 
+                                    WHR is shown to be significantly associated with the rirk of incident of cardiovascular disease even a 0.01 
+                                    increase of WHR is associated with a 5% incease risk
+                                </p>
+                            </div>
+                            <div style="margin-top:7vh;">
+                                <div class="cb_btn_stact cb_flex">
+                                    <div class="cb_btn_stact_name cb_mzt_waist_text_btns">Waist</div>
+                                    <input id="inputWaist" ng-model="howwaist" class="cb_btn  cb_btn_angina cb_btn_input" style="margin-top:0vh;margin-right: 3vh;font-size: 3.5vh;" ng-change="gohowwaist(howwaist)" />
+                                </div>
+                                <div class="cb_btn_stact cb_flex">
+                                    <div class="cb_btn_stact_name cb_mzt_waist_text_btns" style="margin-top: 3vh !important;">Hip</div>
+                                    <input id="inputHip" ng-model="howhip" class="cb_btn  cb_btn_angina cb_btn_input" style="margin-top:1.5vh;margin-right: 3vh;font-size: 3.5vh;" ng-change="gohowhip(howhip)" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="dee-id" ng-hide="hideDee" class="cb_container" style="text-align:center">
+                        <div>
+                            <div class="cb_row cb_flex cb_flex_vcenter cb_adjust cb_mzt_adjust cb_mzt_buttons">
+                                <div class=" cb_flex">
+                                    <div class="cb_img_m">
+                                        <img ng-src="{{DeepSquat3L}}" alt="less" height="100%">
+                                    </div>
+                                </div>
+                                <div class=" cb_flex">
+                                    <div class="cb_img_m cb_img_mzt_upper ">
+                                        <img ng-src="{{DeepSquat3R}}" alt="less" height="100%">
+                                    </div>
+                                </div>
+                                <button id="ilumination1" ng-click="setDeepSquat($event, 2); slidePageForward();" class="cb_btn2 cb_mzt_btn2 button-deactivated">3</button>
+                            </div>
+                            <div class="cb_mzt_text_small">
+                                <p>Upper torso is parallel with tibia or toward vertical | Femur below horizontal | Knees are aligned over feet | Dowel aligned over feet</p>
+                            </div>
+                            <div class="cb_row cb_flex cb_flex_vcenter cb_adjust cb_mzt_adjust cb_mzt_buttons">
+                                <div class=" cb_flex">
+                                    <div class="cb_img_m">
+                                        <img ng-src="{{DeepSquat2L}}" alt="less" height="100%">
+                                    </div>
+                                </div>
+                                <div class=" cb_flex">
+                                    <div class="cb_img_m cb_img_mzt_upper ">
+                                        <img ng-src="{{DeepSquat2R}}" alt="less" height="100%">
+                                    </div>
+                                </div>
+                                <button id="ilumination2" ng-click="setDeepSquat($event, 1); slidePageForward();" class="cb_btn2 cb_mzt_btn2 button-deactivated">2</button>
+                            </div>
+                            <div class="cb_mzt_text_small">
+                                <p>Upper torso is parallel with tibia or toward vertical | Femur below horizontal | Knees are aligned over feet| Heels are elevated</p>
+                            </div>
+                            <div class="cb_row cb_flex cb_flex_vcenter cb_adjust cb_mzt_adjust cb_mzt_buttons">
+                                <div class=" cb_flex">
+                                    <div class="cb_img_m">
+                                        <img ng-src="{{DeepSquat1L}}" alt="less" height="100%">
+                                    </div>
+                                </div>
+                                <div class=" cb_flex">
+                                    <div class="cb_img_m cb_img_mzt_upper ">
+                                        <img ng-src="{{DeepSquat1R}}" alt="less" height="100%">
+                                    </div>
+                                </div>
+                                <button id="ilumination3" ng-click="setDeepSquat($event, 0); slidePageForward();" class="cb_btn2 cb_mzt_btn2 button-deactivated">1</button>
+                            </div>
+                            <div class="cb_mzt_text_small" ">
+                                <p> Tibia and upper torso are not parallel | Femur is not below horizontal | Kness are not aligned over feet | Lumbar flexion is noted</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="mob-id" ng-hide="hideMob" class="cb_container" style="text-align:center">
+                        <div>
+                            <div class="cb_mzt_shoulder">
+                                <div class="cb_row cb_adjust cb_flex_vcenter cb_mzt_buttons">
+                                    <div class=" cb_flex">
+                                        <div class="cb_img_m cb_img_m_mzt">
+                                            <img src="styles/mztimgs/3.png" alt="less" height="100%">
+                                        </div>
+                                    </div>
+                                    <button id="ishomob1" ng-click="setShoulderMobility($event, 2); slidePageForward();" class="cb_btn2 cb_mzt_btn2 button-deactivated">3</button>
+                                </div>
+                                <div class="cb_mzt_text_small cb_mzt_text_small_shoulder ">
+                                    <p>Fists are within one hand length</p>
+                                </div>
+                            </div>
+                            <div class="cb_mzt_shoulder">
+                                <div class="cb_row cb_adjust cb_flex_vcenter cb_mzt_buttons">
+                                    <div class=" cb_flex">
+                                        <div class="cb_img_m cb_img_m_mzt">
+                                            <img src="styles/mztimgs/2.png" alt="less" height="100%">
+                                        </div>
+                                    </div>
+                                    <button id="ishomob2" ng-click="setShoulderMobility($event, 1); slidePageForward();" class="cb_btn2 cb_mzt_btn2 button-deactivated">2</button>
+                                </div>
+                                <div class="cb_mzt_text_small cb_mzt_text_small_shoulder ">
+                                    <p>Fists are within one and a half hand lengths</p>
+                                </div>
+                            </div>
+                            <div class="cb_mzt_shoulder cb_mzt_text_small_shoulder ">
+                                <div class="cb_row cb_adjust cb_flex_vcenter cb_mzt_buttons">
+                                    <div class=" cb_flex">
+                                        <div class="cb_img_m cb_img_m_mzt">
+                                            <img src="styles/mztimgs/1.png" alt="less" height="100%">
+                                        </div>
+                                    </div>
+                                    <button id="ishomob3" ng-click="setShoulderMobility($event, 0); slidePageForward();" class="cb_btn2 cb_mzt_btn2 button-deactivated">1</button>
+                                </div>
+                                <div class="cb_mzt_text_small">
+                                    <p>Distance between fists is greater than one and half hand lengths</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="sho-id" ng-hide="hideSho" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina questionImageYesNo1" >
+                                <p class="mzt_p_angina assessmentFont assessmentColor questionImageYesNo2" >Shoulder Clearing Test</p>
+                                <div class="cb_mzt_shoulder_pain_text_inside questionImageYesNo3" >
+                                    <img ng-src="{{imgShouldeClearing1}}" class="imgShouldeClearing"/>
+                                    <img ng-src="{{imgShouldeClearing2}}" class="imgShouldeClearing"/>
+                                </div>
+                                <p class="mzt_p_angina assessmentFont assessmentColor questionImageYesNo4" >Do you feel pain?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <button id="shoclear-color1" class="cb_btn button-deactivated cb_btn_angina questionImageYesNo5"  ng-click="setShoulder($event, 0); slidePageForward();">No</button>
+                                <div class="cb_mzt_shoulder_pain_div_btns"></div>
+                                <button id="shoclear-color2" class="cb_btn button-activated cb_btn_angina questionImageYesNo5"  ng-click="setShoulder($event, 1); slidePageForward();">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="act-id" ng-hide="hideAct" class="cb_container" style="text-align:center">
+                        <div>
+                            <div>
+                                <div class="cb_row cb_flex cb_flex_vcenter cb_adjust cb_mzt_buttons">
+                                    <div class=" cb_flex">
+                                        <div class="cb_img_m cb_img_m_mzt">
+                                            <img ng-src="{{imgActive3}}" alt="less" height="100%">
+                                        </div>
+                                    </div>
+                                    <button id="idactlegs1" ng-click="setStraightLeg($event, 2); slidePageForward();" class="cb_btn2 cb_mzt_btn2 button-deactivated">3</button>
+                                </div>
+                                <div class="cb_mzt_text_small">
+                                    <p>Vertical line of the maleollus resides between mid-thigh and ASIS. The non-moving limb remains in neutral position</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="cb_row cb_flex cb_flex_vcenter cb_adjust cb_mzt_buttons">
+                                    <div class=" cb_flex">
+                                        <div class="cb_img_m cb_img_m_mzt">
+                                            <img ng-src="{{imgActive2}}" alt="less" height="100%">
+                                        </div>
+                                    </div>
+                                    <button id="idactlegs2" ng-click="setStraightLeg($event, 1); slidePageForward();" class="cb_btn2 cb_mzt_btn2 button-deactivated">2</button>
+                                </div>
+                                <div class="cb_mzt_text_small">
+                                    <p>Vertical line of the maleollus resides between mid-thigh and joint line. The non-moving limb remains in neutral position</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="cb_row cb_flex cb_flex_vcenter cb_adjust cb_mzt_buttons">
+                                    <div class=" cb_flex">
+                                        <div class="cb_img_m cb_img_m_mzt">
+                                            <img ng-src="{{imgActive1}}" alt="less" height="100%">
+                                        </div>
+                                    </div>
+                                    <button id="idactlegs3" ng-click="setStraightLeg($event, 0); slidePageForward();" class="cb_btn2 cb_mzt_btn2 button-deactivated">1</button>
+                                </div>
+                                <div class="cb_mzt_text_small">
+                                    <p>Vertical line of the maleollus resides below joint line. The non-moving limb remains in neutral position</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <section id="spi-ext-id" ng-hide="hideSpiExt" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina questionImageYesNo1">
+                                <p class="mzt_p_angina assessmentFont assessmentColor questionImageYesNo2">Spinal Flexion Clearing Test</p>
+                                <div class="cb_mzt_shoulder_pain_text_inside questionImageYesNo3">
+                                    <img ng-src="{{imgSpinalExtensionClearing}}" class="imgSpinalExtension" />
+                                </div>
+                                <p class="mzt_p_angina assessmentFont assessmentColor questionImageYesNo4" >Do you feel pain?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <button id="spiext-color1" class="cb_btn button-deactivated cb_btn_angina questionImageYesNo5" ng-click="setSpinalExtension($event, 0); slidePageForward();">No</button>
+                                <div class="cb_mzt_shoulder_pain_div_btns"></div>
+                                <button id="spiext-color2" class="cb_btn button-activated cb_btn_angina questionImageYesNo5" ng-click="setSpinalExtension($event, 1); slidePageForward();">Yes</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="swiper-slide">
+                    <div id="spi-id" ng-hide="hideSpi" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina questionImageYesNo1">
+                                <p class="mzt_p_angina assessmentFont assessmentColor questionImageYesNo2">Spinal Extension Clearing Test</p>
+                                <div class="cb_mzt_shoulder_pain_text_inside questionImageYesNo3">
+                                    <img ng-src="{{imgSpinalExtension}}" class="imgSpinalExtension" />
+                                </div>
+                                <p class="mzt_p_angina assessmentFont assessmentColor questionImageYesNo4">Do you feel pain?</p>
+                            </div>
+                            <div class="cb_btn_stact cb_flex_center cb_mzt_buttons">
+                                <button id="spi-color1" class="cb_btn button-deactivated cb_btn_angina questionImageYesNo5" ng-click="setSpinalFlexion($event, 0); slidePageForward();">No</button>
+                                <div class="cb_mzt_shoulder_pain_div_btns"></div>
+                                <button id="spi-color2" class="cb_btn button-activated cb_btn_angina questionImageYesNo5" ng-click="setSpinalFlexion($event, 1); slidePageForward();">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="core-id" ng-hide="disablegendermenSid" class="cb_container">
+                        <div>
+                            <div class="cb_text cb_text_angina" style="height:35vh;">
+                                <div class="mzt_p_angina assessmentFont assessmentColor" ng-click="mostrarToolTip('Core stability is seen as pivotal for efficient biomechanical function to maximize force generation and minimize joint loads in all types of activities. The side bridge test will be used and graded by gender specific norms to assess core stability.')">
+                                    <p class="assessmentColor assessmentFont" style="margin-bottom: 28vh;">
+                                        Side Bridge
+                                        <i class="fa fa-info-circle i-information-assassment" aria-hidden="true"></i>
+                                    </p>
+                                </div>
+                                <img ng-src="{{imgsidebridge}}" class="imgsidebridge"/>
+                            </div> 
+                            <div class="cb_row cb_flex_hcenter" style="margin-top:0.5vh;">
+                                <div>
+                                    <span class="cb_text_small assessmentFont" style="font-size:3vh;">Left</span>
+                                    <div id="idsidebridge" class="cb_btn cb_btn_angina cb_btn_input  mzt_sidebridge_btns " style="font-size:3.5vh;margin-top:0.5vh" ng-click="setBridge(0);">
+                                        <p style="margin-top:.8vh;">{{howSide}}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="cb_text_small assessmentFont" style="font-size:3vh;margin-left: 7vh;">Right</span>
+                                    <div id="idsidebridgeleft" class="cb_btn cb_btn_angina cb_btn_input  mzt_sidebridge_btns" style="font-size:3.5vh;margin-top:0.5vh;margin-left: 7vh;" ng-click="setBridge(1);">
+                                        <p style="margin-top:.8vh;">{{howSideLeft}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="position:relative">
+                            <div class="mzt_sidebridge_back_counter">
+                                <span class="chart mzt_sidebridge_front_counter" ng-click="clickSideBridge()">
+                                </span>
+                            </div>
+                            <span class="mzt_sidebridge_counter_center" ng-click="clickSideBridge()">{{contersidebridge}}</span>
+                            <input id="inputSide" ng-model="howSideBridge" class="mzt_sidebridge_counter_text" ng-change="gohowSideBridge()" />
+                            <span id="idstartCircle" class="chart mzt_sidebridge_start_counter" ng-click="startCountersideBridge()">
+                            </span>
+                            <span id="idstarttext" class="mzt_sidebridge_start_text" ng-click="startCountersideBridge()">{{StopStart}}</span>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="mbcm-id" ng-hide="disableMBCM1" class="cb_container">
+                        <div style="height:57vh;">
+                            <div class="cb_text">
+                                <p class="assessmentColor assessmentFont1" >Medicine Ball Throw</p>
+                            </div>
+                            <div class="cb_text_medium">
+                                <p class="assessmentColor assessmentFont2"  style="font-size:2.7vh;">
+                                    The benefits of assessing muscular power is that it is the most sensitive marker of 
+                                    muscular function and quality as we advance in age, even compared to maximal strength. 
+                                    the kneeling MB chest throw will be our test of choice for this parameter, 
+                                    with the consideration that it also tests the ability to coordinate thehips, torso, shoudler, and arms to produce the farthest throw.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="cb_row cb_flex_hcenter">
+                            <input id="inputChest" ng-model="numMBCM" class="cb_btn  cb_mzt_mb_btn" style="margin-top:0vh;" ng-change="gonumMBCM(numMBCM)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="push-test-id" ng-hide="disablegendermen1" class="cb_container">
+                        <div style="height:57vh;">
+                            <div class="cb_text_medium" style="margin-top:0vh;">
+                                <p class="assessmentColor assessmentFont1">Max Push Up Test</p>
+                            </div>
+                            <div class="cb_text_medium cb_margin_contener_performance_push cb_mzt_push_text ">
+                                <p class="assessmentColor assessmentFont2" >
+                                   To assess muscular endurance we chose the Max Rep Push Up Test. Not only will the test assess an indicator's 
+                                   upper body muscular endurance, but it will also be an indicator of anterior core strength, as well as a proxy for upper body strength.                                </p>
+                            </div>
+                            <div class="cb_row cb_flex cb_flex_vcenter" ng-hide="disablegenderwomenMod" style="margin-top:5vh;">
+                                <div class="cb_text_medium cb_flex cb_mzt_push_modified_text">"Modified"</div>
+                                <div class="cb_flex">
+                                    <div class="cb_toggleWrapper">
+                                        <input class="cb_dn" type="checkbox" id="dn" ng-model="modified">
+                                        <label id="idPushWomenToggle" class="cb_toggle" for="dn"><span id="idPushWomenToggleHandler" class="cb_toggle__handler"></span></label>
+                                    </div>
+                                </div>
+                                <div class="cb_flex"></div>
+                            </div>
+                        </div>
+                        <div class="cb_row cb_flex cb_flex_hcenter">
+                            <input id="inputPush" ng-model="numPush" class="cb_btn cb_title_button_performance_coope cb_mzt_push_btn" ng-change="gonumPush(numPush)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="cooper-id" ng-hide="disablegendercoomen1" class="cb_container">
+                        <div>
+                            <div style="height:57vh;">
+                                <div class="cb_text_medium" style="margin-top:0vh;">
+                                    <p class="cb_title_text_performance_cooper assessmentColor assessmentFont1">12 min Cooper Endurance Test</p>
+                                </div>
+                                <div class="cb_text_medium cb_margin_contener_performance_cooper" sstyle="margin-top:0vh;">
+                                    <p class="assessmentColor assessmentFont2" >
+                                        The 12 min Run/Walk tet will assess aerobic capacity which based one normative data levels, 
+                                        average and above average have shown to increase an individual's resiliency to stress, 
+                                        decreased the risk of cardiovascular and metabolic diseases.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="cb_flex"></div>
+                            <div class="cb_row cb_flex cb_flex_hcenter">
+                                <input id="inputCooper" ng-model="numCOO" class="cb_btn cb_title_button_performance_cooper" style="margin-top:0;" ng-change="gonumCOO(numCOO)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="cb_container">
+                        <div style="height:52vh;">
+                            <div style="margin-top:0vh;">
+                                <div class="cb_text_medium">
+                                    <p class="cb_title_text_performance_cooper mzt_complete_header assessmentColor assessmentFont1">The end</p>
+                                </div>
+                                <div class="cb_text_medium">
+                                    <p class="cb_title_text_performance_cooper mzt_complate_body assessmentColor assessmentFont2" style="margin-top:9vh;">
+                                        This concludes the LeON assessment and results will be shown in the next page. 
+                                        We recommend the assessment be repeated at least every 6 months to be able to track significant changes.
+                                    </p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="mzt_btn_submit">
+                            <button id="idbtnsubmit" class="cb_btn cb_btn button-deactivated cb_btn_mzt_lf5 mzt_complete_btn" style="margin-top:0vh;" ng-click="doSave()"> Complete </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<section ng-hide="ocultarMessage">
+            <h2>Qualitative </h2>
+        </section>-->
+
+
+    </div>
+
+    <div>
+        <a id="idErrorMessage" href="#" data-toggle="modal" data-target="#dialogQueryTipoAgencia" style="visibility:hidden; width:0px; height:0px"></a>
+    </div>
+    <div class="modal fade" id="dialogQueryTipoAgencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <button id="botonCerrarCliente" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class='widget-header'><h4><i class='fa fa-warning'></i> Error</h4></div>
+                    </div>
+                    <p>
+                        <h4>{{errorMessage}}</h4>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

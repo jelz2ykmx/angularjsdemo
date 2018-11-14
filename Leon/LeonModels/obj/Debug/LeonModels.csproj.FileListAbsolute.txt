@@ -1,0 +1,4 @@
+C:\proyectos\mios\Leon\LeonModels\bin\Debug\LeonModels.dll
+C:\proyectos\mios\Leon\LeonModels\bin\Debug\LeonModels.pdb
+C:\proyectos\mios\Leon\LeonModels\obj\Debug\LeonModels.dll
+C:\proyectos\mios\Leon\LeonModels\obj\Debug\LeonModels.pdb

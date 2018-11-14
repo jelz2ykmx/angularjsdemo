@@ -1,0 +1,228 @@
+<div id="content">
+
+    <!--
+    <div class="row">
+        <big-breadcrumbs items="['Forms', 'Bootstrap Form Validation']" icon="table"
+                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+        <div smart-include="app/layout/partials/sub-header.tpl.html"></div>
+    </div>
+            -->
+    <!--
+        The ID "widget-grid" will start to initialize all widgets below
+        You do not need to use widgets if you dont want to. Simply remove
+        the <section></section> and you can use wells or panels instead
+        -->
+    <!---->
+    <!-- widget grid -->
+    <section id="widget-grid" widget-grid style="margin-top:50px;">
+
+        <div class="row" ng-hide="adminRole">
+
+            <article class="col-sm-12">
+
+                <div data-jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+
+                    <header>
+                        <h2>Last 20 assessments done</h2>
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+                        <div class="widget-body no-padding">
+                            <!-- content goes here -->
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table id="idTableLastAssements" datatable="ng" dt-options="datatables.standardOptions" dt-columns="datatables.standardColumns" class="table table-striped table-bordered table-hover" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th data-hide="phone">Date</th>
+                                                <th data-hide="phone">Name</th>
+                                                <th data-hide="phone">Age</th>
+                                                <th data-hide="phone">Score</th>
+                                                <th data-hide="phone">Percentile</th>
+                                                <th data-hide="phone">Health/History</th>
+                                                <th data-hide="phone">Lifestyle</th>
+                                                <th data-hide="phone">Biodata</th>
+                                                <th data-hide="phone">Mobility </th>
+                                                <th data-hide="phone">Fitness/Performance</th>
+                                                <th data-hide="phone">Assessor</th>
+                                                <th data-hide="phone">Location</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="assessment in assessments" ng-click="goLastAssessments(assessment)">
+                                                <td>{{assessment.dateLocal}}</td>
+                                                <td>{{assessment.Name}}</td>
+                                                <td>{{assessment.Age}}</td>
+                                                <td>{{assessment.Score}}</td>
+                                                <td>{{assessment.Percentile}}</td>
+                                                <td>{{assessment.Health}}</td>
+                                                <td>{{assessment.Lifestyle}}</td>
+                                                <td>{{assessment.Biodata}}</td>
+                                                <td>{{assessment.Mobility}}</td>
+                                                <td>{{assessment.Fitness}}</td>
+                                                <td>{{assessment.Assessor}}</td>
+                                                <td>{{assessment.Location}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+
+            </article>
+
+        </div>
+
+        <!-- end row -->
+
+        <div class="row" ng-hide="adminRole">
+
+            <article class="col-sm-12">
+
+                <div data-jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <h2>Total Assessments</h2>
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+                        <div class="widget-body no-padding">
+                            <!-- content goes here -->
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table id="idTableTotalAssements" datatable="ng" dt-options="datatables.standardOptionsTotal" dt-columns="datatables.standardColumnsTotal" class="table table-striped table-bordered table-hover" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th data-hide="phone">Assessments</th>
+                                                <th data-hide="phone">Average Score</th>
+                                                <th data-hide="phone">Locations</th>
+                                                <th data-hide="phone">Average Age</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="tassessment in tassessments" ng-click="goTotalAssessments(tassessment)">
+                                                <td>{{tassessment.Total}}</td>
+                                                <td>{{tassessment.Score}}</td>
+                                                <td>{{tassessment.Locations}}</td>
+                                                <td>{{tassessment.Age}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+
+        <div class="row" ng-hide="adminRole">
+
+            <article class="col-sm-12">
+
+                <div data-jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <h2>Top 10</h2>
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+                        <div class="widget-body no-padding">
+                            <!-- content goes here -->
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table id="idTableTop10Assements" datatable="ng" dt-options="datatables.standardOptionsTop10" dt-columns="datatables.standardColumnsTop10" class="table table-striped table-bordered table-hover" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th data-hide="phone">Score</th>
+                                                <th data-hide="phone">Age</th>
+                                                <th data-hide="phone">Health/History</th>
+                                                <th data-hide="phone">Lifestyle</th>
+                                                <th data-hide="phone">Biodata</th>
+                                                <th data-hide="phone">Mobility </th>
+                                                <th data-hide="phone">Fitness/Performance</th>
+                                                <th data-hide="phone">Assessor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="topassessment in topassessments" ng-click="goTopAssessments(topassessment)">
+                                                <td>{{topassessment.Score}}</td>
+                                                <td>{{topassessment.Age}}</td>
+                                                <td>{{topassessment.Health}}</td>
+                                                <td>{{topassessment.Lifestyle}}</td>
+                                                <td>{{topassessment.Biodata}}</td>
+                                                <td>{{topassessment.Mobility}}</td>
+                                                <td>{{topassessment.Fitness}}</td>
+                                                <td>{{topassessment.Assessor}}</td>
+                                            </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="row" ng-hide="adminRole">
+
+            <article class="col-sm-12">
+
+                <div data-jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <h2>Bottom 10</h2>
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+                        <div class="widget-body no-padding">
+                            <!-- content goes here -->
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table id="idTableBottom10Assements" datatable="ng" dt-options="datatables.standardOptionsBottom10" dt-columns="datatables.standardColumnsBottom10" class="table table-striped table-bordered table-hover" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th data-hide="phone">Score</th>
+                                                <th data-hide="phone">Age</th>
+                                                <th data-hide="phone">Health/History</th>
+                                                <th data-hide="phone">Lifestyle</th>
+                                                <th data-hide="phone">Biodata</th>
+                                                <th data-hide="phone">Mobility </th>
+                                                <th data-hide="phone">Fitness/Performance</th>
+                                                <th data-hide="phone">Assessor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="bopassessment in bopassessments" ng-click="goBottomAssessments(bopassessment)">
+                                                <td>{{bopassessment.Score}}</td>
+                                                <td>{{bopassessment.Age}}</td>
+                                                <td>{{bopassessment.Health}}</td>
+                                                <td>{{bopassessment.Lifestyle}}</td>
+                                                <td>{{bopassessment.Biodata}}</td>
+                                                <td>{{bopassessment.Mobility}}</td>
+                                                <td>{{bopassessment.Fitness}}</td>
+                                                <td>{{bopassessment.Assessor}}</td>
+                                            </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- end row -->
+
+    </section>
+    <!-- end widget grid -->
+
+</div>
+<!-- END MAIN CONTENT -->

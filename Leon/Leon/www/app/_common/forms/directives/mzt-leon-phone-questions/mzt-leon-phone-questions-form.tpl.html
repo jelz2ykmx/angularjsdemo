@@ -1,0 +1,897 @@
+<form id="formQuestions" class="smart-form client-form">
+    <div ng-hide="hideSection1">
+        <header ng-hide="hideHeader">
+            <h4>{{totalQuestions}}</h4>
+        </header>
+        <fieldset>
+
+            <!--Pon aqui el diseno del circulo anaranjado-->
+          
+            <section ng-hide="hideEmail">
+                <label class="label">Email</label>
+                <input type="email" class="form-control-bootstrap" name="email" data-ng-model="email">
+            </section>
+
+            <section ng-hide="hideGender">
+                <label class="label">Gender2?</label>
+                <div class="inline-group">
+                    <label class="radio">
+                        <input type="radio" name="radioGender" ng-model="radioGender" ng-value="true">
+                        <i></i>Men
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="radioGender" ng-model="radioGender" ng-value="false">
+                        <i></i>Women
+                    </label>
+                </div>
+            </section>
+
+            <section ng-hide="hideOld">
+                <label class="label">How old are you?</label>
+                <input id="inputAge" ng-model="howold" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowold(howold)" />
+
+                <!--<input type="text" name="howold" ng-model="howold" ui-number-mask="0" class="form-control" ng-blur="gohowold(howold)">
+                <br />
+                <!--
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedAge"
+                        ng-options="selectedAge.name for selectedAge in Ages track by selectedAge.name"
+                        ng-change="goModified()" />
+                <label ng-hide="ocultar">{{selectedAge.value}}</label>
+                -->
+            </section>
+
+            <section ng-hide="hideHeight">
+                <label class="label">Height?</label>
+                <input id="inputHeight" ng-model="howHeight" class="form-control-bootstrap" placeholder="Please Select ..." />
+            </section>
+
+            <section ng-hide="hideWeight">
+                <label class="label">Weight?</label>
+                <input id="inputWeight" ng-model="howWeight" class="form-control-bootstrap" placeholder="Please Select ..." />
+            </section>
+
+            <section ng-hide="hideCar">
+                <label class="label">Has a doctor ever diagnosed you with a heart condition?</label>
+                <div class="inline-group">
+                    <label class="radio">
+                        <input type="radio" name="radioCar" ng-model="radioCar" ng-value="true">
+                        <i></i>No
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="radioCar" ng-model="radioCar" ng-value="false">
+                        <i></i>Yes
+                    </label>
+                </div>
+                <label ng-hide="ocultar">{{selectedCar.value}}</label>
+            </section>
+
+            <section ng-hide="hideChe">
+                <label class="label">Have you experienced pain in your chest (angina) during physical activity or at rest?</label>
+                <div class="inline-group">
+                    <label class="radio">
+                        <input type="radio" name="radioChe" ng-model="radioChe" ng-value="true">
+                        <i></i>No
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="radioChe" ng-model="radioChe" ng-value="false">
+                        <i></i>Yes
+                    </label>
+                </div>
+                <label ng-hide="ocultar">{{selectedChe.value}}</label>
+            </section>
+
+            <section ng-hide="hideFat">
+                <label class="label">Has your father been diagnosed with a cardiovascular disease under the age of 55 (stroke, heart attack, high blood pressure, angina, atherosclerosis)?</label>
+                <div class="inline-group">
+                    <label class="radio">
+                        <input type="radio" name="radioFat" ng-model="radioFat" ng-value="true">
+                        <i></i>No
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="radioFat" ng-model="radioFat" ng-value="false">
+                        <i></i>Yes
+                    </label>
+                </div>
+                <label ng-hide="ocultar">{{selectedFat.value}}</label>
+            </section>
+
+            <section ng-hide="hideMot">
+                <label class="label">Has your mother been diagnosed with cardiovascular disease under the age of 65 (stroke, heart attack, high blood pressure, angina, atherosclerosis)?</label>
+                <div class="inline-group">
+                    <label class="radio">
+                        <input type="radio" name="radioMot" ng-model="radioMot" ng-value="true">
+                        <i></i>No
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="radioMot" ng-model="radioMot" ng-value="false">
+                        <i></i>Yes
+                    </label>
+                </div>
+                <label ng-hide="ocultar">{{selectedMot.value}}</label>
+            </section>
+
+            <section ng-hide="hideDia">
+                <label class="label">Has either parent been diagnosed with Type II diabetes?</label>
+                <div class="inline-group">
+                    <label class="radio">
+                        <input type="radio" name="radioDia" ng-model="radioDia" ng-value="true">
+                        <i></i>No
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="radioDia" ng-model="radioDia" ng-value="false">
+                        <i></i>Yes
+                    </label>
+                </div>
+                <label ng-hide="ocultar">{{selectedDiabetes.value}}</label>
+            </section>
+
+            <section ng-hide="hideMod">
+                <label class="label">Moderate exercise or work which may include (yoga, walking, jogging, cycling, playing sports or any work that moderately increases breathing and heart rate continuously for at least 20 minutes.)?</label>
+                <select class="form-control-bootstrap" ng-model="selectedMod" ng-options="selectedMod.name for selectedMod in Mods track by selectedMod.name"
+                        ng-change="goTotal()" />
+                <label ng-hide="ocultar">{{selectedMod.value}}</label>
+            </section>
+
+            <section ng-hide="hideVig">
+                <label class="label">Vigorous exercise or work which may include (lifting, carrying, high intensity exercise, or work that significantly increases breathing and heart rate continuously for at least 10 mins.)?</label>
+                <select class="form-control-bootstrap" ng-model="selectedVig" ng-options="selectedVig.name for selectedVig in Vigs track by selectedVig.name"
+                        ng-change="goTotal()" />
+                <label ng-hide="ocultar">{{selectedVig.value}}</label>
+            </section>
+
+            <section ng-hide="hideSit">
+                <label class="label">How much time do you spend sitting throughout the day on average?</label>
+                <select class="form-control-bootstrap" ng-model="selectedSit" ng-options="selectedSit.name for selectedSit in Sits track by selectedSit.name"
+                        ng-change="goTotal()" />
+                <label ng-hide="ocultar">{{selectedSit.value}}</label>
+            </section>
+
+            <section ng-hide="hideSmo">
+                <label class="label">Do you smoke?</label>
+                <select class="form-control-bootstrap" ng-model="selectSmo" ng-options="selectSmo.name for selectSmo in Smos track by selectSmo.name"
+                        ng-change="goTotal()" />
+                <label ng-hide="ocultar">{{selectSmo.value}}</label>
+            </section>
+
+            <section ng-hide="hideSmokes">
+                <label class="label">Are you exposed to second hand smoke (frequently at home or work)?</label>
+                <div class="inline-group">
+                    <label class="radio">
+                        <input type="radio" name="radioSmo" ng-model="radioSmo" ng-value="true">
+                        <i></i>No
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="radioSmo" ng-model="radioSmo" ng-value="false">
+                        <i></i>Yes
+                    </label>
+                </div>
+                <label ng-hide="ocultar">{{selectedSmokes.value}}</label>
+            </section>
+
+            <section ng-hide="hideAlc">
+                <label class="label">Alcohol consumption? </label>
+                <select class="form-control-bootstrap" ng-model="selectAlc" ng-options="selectAlc.name for selectAlc in Alcs track by selectAlc.name"
+                        ng-change="goTotal()" />
+                <label ng-hide="ocultar">{{selectAlc.value}}</label>
+            </section>
+
+            <section ng-hide="hideOra">
+                <label class="label">Have you taken an oral contraceptive for longer than 6 months in the last year?</label>
+                <div class="inline-group">
+                    <label class="radio">
+                        <input type="radio" name="radioOra" ng-model="radioOra" ng-value="true">
+                        <i></i>No
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="radioOra" ng-model="radioOra" ng-value="false">
+                        <i></i>Yes
+                    </label>
+                </div>
+                <label ng-hide="ocultar">{{selectedOra.value}}</label>
+            </section>
+
+            <section ng-hide="hideAnt">
+                <label class="label">For what length of time have you been on antibiotics in the last year?</label>
+                <select class="form-control-bootstrap" ng-model="selectedAnt" ng-options="selectedAnt.name for selectedAnt in Ants track by selectedAnt.name"
+                        ng-change="goTotal()" />
+                <label ng-hide="ocultar">{{selectedAnt.value}}</label>
+            </section>
+
+            <section ng-hide="ocultar">
+                <label class="label">Total</label>
+                <input type="text" style="width:100px;" data-ng-model="total1" ng-readonly />
+            </section>
+
+            <section ng-hide="ocultarMessage">
+                <h2>Assessments</h2>
+            </section>
+
+            <section ng-hide="hideSys">
+                <label class="label">Blood Pressure Systolic</label>
+                <input id="inputSys" ng-model="howsys" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowsys(howsys)" />
+                <!--
+                <input type="text" name="howsys" ng-model="howsys" ui-number-mask="0" class="form-control" ng-blur="gohowsys(howsys)">
+                -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedSys" ng-options="selectedSys.name for selectedSys in Syss track by selectedSys.name"
+                        ng-change="goTotal()" />
+                <label ng-hide="ocultar">{{selectedSys.value}}</label>
+            </section>
+
+            <section ng-hide="hideDialostic">
+                <label class="label">Blood Pressure Diastolic</label>
+                <input id="inputDia" ng-model="howdia" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowdia(howdia)" />
+                <!--
+                <input type="text" name="howdia" ng-model="howdia" ui-number-mask="0" class="form-control" ng-blur="gohowdia(howdia)">
+                -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedDiastolic" ng-options="selectedDiastolic.name for selectedDiastolic in Dias track by selectedDiastolic.name"
+                        ng-change="goTotal()" />
+                <label ng-hide="ocultar">{{selectedDiastolic.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendermenWai">
+                <label class="label">Waist</label>
+                <input id="inputWaist" ng-model="howwaist" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowwaisttohip()" />
+                <!---
+                <input type="text" name="howwaist" ng-model="howwaist" ui-number-mask="2" class="form-control" ng-blur="gohowwaisttohip()">
+                -->
+            </section>
+
+            <section ng-hide="disablegendermenWai2">
+                <label class="label">Hip</label>
+                <input id="inputHip" ng-model="howhip" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowwaisttohip()" />
+                <!--
+                <input type="text" name="howhip" ng-model="howhip" ui-number-mask="2" class="form-control" ng-blur="gohowwaisttohip()">
+                -->
+            </section>
+
+            <section ng-hide="ocultarMen">
+                <select ng-hide="ocultarMen" class="form-control-bootstrap" ng-model="selectedWaiMen" ng-options="selectedWaiMen.name for selectedWaiMen in WaiMens track by selectedWaiMen.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermenWai" />
+                <label ng-hide="ocultarMen">{{selectedWaiMen.value}}</label>
+            </section>
+
+            <section ng-hide="disablegenderwomenWai">
+                <label class="label">Waist</label>
+                <input id="inputwaistw" ng-model="howwaistw" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowwaisttohipw()" />
+                <!--
+                <input type="text" name="howwaistw" ng-model="howwaistw" ui-number-mask="2" class="form-control" ng-blur="gohowwaisttohipw()">
+                    -->
+            </section>
+
+            <section ng-hide="disablegenderwomenWai2">
+                <label class="label">Hip</label>
+                <input id="inputhipw" ng-model="howhipw" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowwaisttohipw()" />
+                <!--
+                <input type="text" name="howhipw" ng-model="howhipw" ui-number-mask="2" class="form-control" ng-blur="gohowwaisttohipw()">
+                -->
+            </section>
+
+            <section ng-hide="ocultarWomen">
+                <select ng-hide="ocultarWomen" class="form-control-bootstrap" ng-model="selectedWaiWomen" ng-options="selectedWaiWomen.name for selectedWaiWomen in WaiWomens track by selectedWaiWomen.name"
+                        ng-change="goTotal()" ng-disabled="disablegenderwomenWai" />
+                <label ng-hide="ocultarWomen">{{selectedWaiWomen.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendermenSid">
+                <label class="label">Side Bridge</label>
+                <input id="inputSideMen" ng-model="howSidMen" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowSidMen(howSidMen)" />
+                <!--
+                <input type="text" name="howSidMen" ng-model="howSidMen" ui-number-mask="0" class="form-control" ng-blur="gohowSidMen(howSidMen)">
+                -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedSidMen" ng-options="selectedSidMen.name for selectedSidMen in SidMens track by selectedSidMen.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermenSid" />
+                <label ng-hide="ocultar">{{selectedSidMen.value}}</label>
+            </section>
+
+            <section ng-hide="disablegenderwomenSid">
+                <label class="label">Side Bridge</label>
+                <input id="howSidWomen" ng-model="howSidMen" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowSidWomen(howSidWomen)" />
+                <!--
+                <input type="text" name="howSidWomen" ng-model="howSidWomen" ui-number-mask="0" class="form-control" ng-blur="gohowSidWomen(howSidWomen)">
+                -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedSidWomen" ng-options="selectedSidWomen.name for selectedSidWomen in SidWomens track by selectedSidWomen.name"
+                        ng-change="goTotal()" ng-disabled="disablegenderwomenSid" />
+                <label ng-hide="ocultar">{{selectedSidWomen.value}}</label>
+            </section>
+
+            <section ng-hide="hideDee">
+                <label class="label">Deep Squat</label>
+                <select class="form-control-bootstrap" ng-model="selectedDee" ng-options="selectedDee.name for selectedDee in Dees track by selectedDee.name"
+                        ng-change="goTotal()" />
+                <label ng-hide="ocultar">{{selectedDee.value}}</label>
+            </section>
+
+            <section ng-hide="hideAct">
+                <label class="label">Active Straight Leg Raise</label>
+                <select class="form-control-bootstrap" ng-model="selectedAct" ng-options="selectedAct.name for selectedAct in Acts track by selectedAct.name"
+                        ng-change="goTotal()" />
+                <label ng-hide="ocultar">{{selectedAct.value}}</label>
+            </section>
+
+            <section ng-hide="hideMob">
+                <label class="label">Shoulder Mobility</label>
+                <select class="form-control-bootstrap" ng-model="selectedMob" ng-options="selectedMob.name for selectedMob in Mobs track by selectedMob.name"
+                        ng-change="goTotal()" />
+                <label ng-hide="ocultar">{{selectedMob.value}}</label>
+            </section>
+
+            <section ng-hide="hideSho">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="checkShoClear" class="checkbox style-0" ng-click="chkShoClear()">
+                        <span>Shoulder Clearing Test</span>
+                    </label>
+                </div>
+                <label ng-hide="ocultar">{{selectedSho.value}}</label>
+            </section>
+
+            <section ng-hide="hideSpi">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="checkSpi" class="checkbox style-0" ng-click="chkSpi()">
+                        <span>Spinal Felxion Clearing Test</span>
+                    </label>
+                </div>
+                <label ng-hide="ocultar">{{selectedSpi.value}}</label>
+            </section>
+
+            <section ng-hide="hideSpiExt">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="checkSpiExt" class="checkbox style-0" ng-click="chkSpiExt()">
+                        <span>Spinal Extension Clearing Test</span>
+                    </label>
+                </div>
+                <label ng-hide="ocultar">{{selectedSpiExt.value}}</label>
+            </section>
+
+            <!-- Men push group-->
+
+            <section ng-hide="true">
+                <label class="label">1 min Push Up Test</label>
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedPusMen" ng-options="selectedPusMen.name for selectedPusMen in PusMens track by selectedPusMen.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermen" />
+                <label ng-hide="ocultar">{{selectedPusMen.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendermen1">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushMen1" ng-model="numnpmen1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpmen1(numnpmen1)" />
+                <!--
+                <input type="text" name="numnpmen1" ng-model="numnpmen1" ui-number-mask="0" class="form-control" ng-disabled="disablegendermen1" ng-blur="gonumnpmen1(numnpmen1)">
+                -->
+                <br />
+                <select class="form-control-bootstrap" ng-hide="ocultar" ng-model="selectedPusMen1" ng-options="selectedPusMen1.name for selectedPusMen1 in PusMens1 track by selectedPusMen1.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermen1" />
+                <label ng-hide="ocultar">Age 20-29  {{selectedPusMen1.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendermen2">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushMen2" ng-model="numnpmen2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpmen2(numnpmen2)" />
+                <!--
+                <input type="text" name="numnpmen2" ng-model="numnpmen2" ui-number-mask="0" class="form-control" ng-disabled="disablegendermen2" ng-blur="gonumnpmen2(numnpmen2)">
+                -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" style="width:200px;" ng-model="selectedPusMen2"
+                        ng-options="selectedPusMen2.name for selectedPusMen2 in PusMens2 track by selectedPusMen2.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermen2" />
+                <label ng-hide="ocultar">Age 30-39 {{selectedPusMen2.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendermen3">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushMen3" ng-model="numnpmen3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpmen3(numnpmen3)" />
+                <!--
+                <input type="text" name="numnpmen3" ng-model="numnpmen3" ui-number-mask="0" class="form-control" ng-disabled="disablegendermen3" ng-blur="gonumnpmen3(numnpmen3)">
+                -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" style="width:200px;" ng-model="selectedPusMen3"
+                        ng-options="selectedPusMen3.name for selectedPusMen3 in PusMens3 track by selectedPusMen3.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermen3" />
+                <label ng-hide="ocultar">Age 40-49 {{selectedPusMen3.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendermen4">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushMen4" ng-model="numnpmen4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpmen4(numnpmen4)" />
+                <!--
+                <input type="text" name="numnpmen4" ng-model="numnpmen4" ui-number-mask="0" class="form-control" ng-disabled="disablegendermen4" ng-blur="gonumnpmen4(numnpmen4)">
+                -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" style="width:200px;" ng-model="selectedPusMen4" ng-options="selectedPusMen4.name for selectedPusMen4 in PusMens4 track by selectedPusMen4.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermen4" />
+                <label ng-hide="ocultar">Age 50- 59 {{selectedPusMen4.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendermen5">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushMen5" ng-model="numnpmen5" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpmen5(numnpmen5)" />
+                <!--
+                <input type="text" name="numnpmen5" ng-model="numnpmen5" ui-number-mask="0" class="form-control" ng-disabled="disablegendermen5" ng-blur="gonumnpmen5(numnpmen5)">
+                -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" style="width:200px;" ng-model="selectedPusMen5" ng-options="selectedPusMen5.name for selectedPusMen5 in PushNWomengpo5 track by selectedPusMen5.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermen5" />
+                <label ng-hide="ocultar">Age 60+ {{selectedNPWM5.value}}</label>
+            </section>
+
+            <!--end -->
+            <!-- Women push group-->
+
+            <section ng-hide="true">
+                <label class="label">1 min Push Up Test</label>
+                <select class="form-control-bootstrap" ng-model="selectedPusWomen" ng-options="selectedPusWomen.name for selectedPusWomen in PusWomens track by selectedPusWomen.name"
+                        ng-change="goTotal()" ng-disabled="disablegenderwomen" />
+                <label>{{selectedPusWomen.value}}</label>
+            </section>
+
+            <section ng-hide="disablegenderwomenMod">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="checkWModOpt" class="checkbox style-0" ng-click="checkWMod()">
+                        <span>"Modified" Max Push ups</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Women push group Normal-->
+
+            <section ng-hide="disablegender1women">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushWomen1" ng-model="numnpwm1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpwm1(numnpwm1)" />
+                <!--
+                <input type="text" name="numnpwm1" ng-model="numnpwm1" ui-number-mask="0" class="form-control" ng-disabled="disablegender1women" ng-blur="gonumnpwm1(numnpwm1)">
+                -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedNPWM1" ng-options="selectedNPWM1.name for selectedNPWM1 in PushNWomengpo1 track by selectedNPWM1.name"
+                        ng-change="goTotal()" ng-disabled="disablegender1women" />
+                <label ng-hide="ocultar">Age 20-29  {{selectedNPWM1.value}}</label>
+            </section>
+
+            <section ng-hide="disablegender2women">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushWomen2" ng-model="numnpwm2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpwm2(numnpwm2)" />
+                <!--
+                <input type="text" name="numnpwm2" ng-model="numnpwm2" ui-number-mask="0" class="form-control" ng-disabled="disablegender2women" ng-blur="gonumnpwm2(numnpwm2)">
+                -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedNPWM2" ng-options="selectedNPWM2.name for selectedNPWM2 in PushNWomengpo2 track by selectedNPWM2.name"
+                        ng-change="goTotal()" ng-disabled="disablegender2women" />
+                <label ng-hide="ocultar">Age 30-39 {{selectedNPWM2.value}}</label>
+            </section>
+
+            <section ng-hide="disablegender3women">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushWomen3" ng-model="numnpwm3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpwm3(numnpwm3)" />
+                <!---
+                <input type="text" name="numnpwm3" ng-model="numnpwm3" ui-number-mask="0" class="form-control" ng-disabled="disablegender3women" ng-blur="gonumnpwm3(numnpwm3)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedNPWM3" ng-options="selectedNPWM3.name for selectedNPWM3 in PushNWomengpo3 track by selectedNPWM3.name"
+                        ng-change="goTotal()" ng-disabled="disablegender3women" />
+                <label ng-hide="ocultar">Age 40-49 {{selectedNPWM3.value}}</label>
+            </section>
+
+            <section ng-hide="disablegender4women">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushWomen4" ng-model="numnpwm4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpwm4(numnpwm4)" />
+                <!--
+                <input type="text" name="numnpwm4" ng-model="numnpwm4" ui-number-mask="0" class="form-control" ng-disabled="disablegender4women" ng-blur="gonumnpwm4(numnpwm4)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedNPWM4" ng-options="selectedNPWM4.name for selectedNPWM4 in PushNWomengpo4 track by selectedNPWM4.name"
+                        ng-change="goTotal()" ng-disabled="disablegender4women" />
+                <label ng-hide="ocultar">Age 50- 59 {{selectedNPWM4.value}}</label>
+            </section>
+
+            <section ng-hide="disablegender5women">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushWomen5" ng-model="numnpwm5" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpwm5(numnpwm5)" />
+                <!---
+                <input type="text" name="numnpwm5" ng-model="numnpwm5" ui-number-mask="0" class="form-control" ng-disabled="disablegender5women" ng-blur="gonumnpwm5(numnpwm5)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedNPWM5" ng-options="selectedNPWM5.name for selectedNPWM5 in PushNWomengpo5 track by selectedNPWM5.name"
+                        ng-change="goTotal()" ng-disabled="disablegender5women" />
+                <label ng-hide="ocultar">Age 60+ {{selectedNPWM5.value}}</label>
+            </section>
+
+            <!-- end -->
+            <!-- Modified wowen push group-->
+
+            <section ng-hide="disablegendermod1women">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushWomenM1" ng-model="numpwm1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumpwm1(numpwm1)" />
+                <!---
+                <input type="text" name="numpwm1" ng-model="numpwm1" ui-number-mask="0" class="form-control" ng-disabled="disablegendermod1women" ng-blur="gonumpwm1(numpwm1)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedPWM1" ng-options="selectedPWM1.name for selectedPWM1 in PushWomengpo1 track by selectedPWM1.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermod1women" />
+                <label ng-hide="ocultar">Modified Age 20-29  {{selectedPWM1.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendermod2women">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushWomenM2" ng-model="numpwm2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumpwm2(numpwm2)" />
+                <!---
+                <input type="text" name="numpwm2" ng-model="numpwm2" ui-number-mask="0" class="form-control" ng-disabled="disablegendermod2women" ng-blur="gonumpwm2(numpwm2)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedPWM2" ng-options="selectedPWM2.name for selectedPWM2 in PushWomengpo2 track by selectedPWM2.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermod2women" />
+                <label ng-hide="ocultar">Modified Age 30-39 {{selectedPWM2.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendermod3women">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushWomenM3" ng-model="numpwm3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumpwm3(numpwm3)" />
+
+                <!--
+                <input stype="text" name="numpwm3" ng-model="numpwm3" ui-number-mask="0" class="form-control" ng-disabled="disablegendermod3women" ng-blur="gonumpwm3(numpwm3)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedPWM3" ng-options="selectedPWM3.name for selectedPWM3 in PushWomengpo3 track by selectedPWM3.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermod3women" />
+                <label ng-hide="ocultar">Modified Age 40-49 {{selectedPWM3.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendermod4women">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushWomenM4" ng-model="numpwm4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumpwm4(numpwm4)" />
+                <!--
+                <input type="text" name="numpwm4" ng-model="numpwm4" ui-number-mask="0" class="form-control" ng-disabled="disablegendermod4women" ng-blur="gonumpwm4(numpwm4)">
+                    -->
+
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedPWM4" ng-options="selectedPWM4.name for selectedPWM4 in PushWomengpo4 track by selectedPWM4.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermod4women" />
+                <label ng-hide="ocultar">Modified Age 50- 59 {{selectedPWM4.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendermod5women">
+                <label class="label">1 min Push Up Test</label>
+                <input id="inputPushWomenM5" ng-model="numpwm5" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumpwm5(numpwm5)" />
+
+                <!--
+                <input type="text" name="numpwm5" ng-model="numpwm5" ui-number-mask="0" class="form-control" ng-disabled="disablegendermod5women" ng-blur="gonumpwm5(numpwm5)">
+                    -->
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedPWM5" ng-options="selectedPWM5.name for selectedPWM5 in PushWomengpo5 track by selectedPWM5.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermod5women" />
+                <label ng-hide="ocultar">Modified Age 60+ {{selectedPWM5.value}}</label>
+            </section>
+
+            <!-- end -->
+            <!-- MB CHEST MEN-->
+
+            <section ng-hide="true">
+                <label class="label">Kneeling MB Chest Throw 8lbs</label>
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedMBMen" ng-options="selectedMBMen.name for selectedMBMen in MBMens track by selectedMBMen.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermen" />
+                <label ng-hide="ocultar">{{selectedMBMen.value}}</label>
+            </section>
+
+            <section ng-hide="disableMBCM1">
+                <label class="label">Kneeling MB Chest Throw 8lbs</label>
+                <input id="inputChestMen1" ng-model="numMBCMpwm1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCMpwm1(numMBCMpwm1)" />
+
+                <!--
+                <input type="text" name="numMBCMpwm1" ng-model="numMBCMpwm1" ui-number-mask="0" class="form-control" ng-disabled="disableMBCM1" ng-blur="gonumMBCMpwm1(numMBCMpwm1)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedMBMen1" ng-options="selectedMBMen1.name for selectedMBMen1 in PushMBCMgpo1 track by selectedMBMen1.name"
+                        ng-change="goTotal()" ng-disabled="disableMBCM1" />
+                <label ng-hide="ocultar">Age 20-29  {{selectedMBMen1.value}}</label>
+            </section>
+
+            <section ng-hide="disableMBCM2">
+                <label class="label">Kneeling MB Chest Throw 8lbs</label>
+                <input id="inputChestMen2" ng-model="numMBCMpwm2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCMpwm2(numMBCMpwm2)" />
+
+                <!---
+                <input type="text" name="numMBCMpwm2" ng-model="numMBCMpwm2" ui-number-mask="0" class="form-control" ng-disabled="disableMBCM2" ng-blur="gonumMBCMpwm2(numMBCMpwm2)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedMBMen2" ng-options="selectedMBMen2.name for selectedMBMen2 in PushMBCMgpo2 track by selectedMBMen2.name"
+                        ng-change="goTotal()" ng-disabled="disableMBCM2" />
+                <label ng-hide="ocultar">Age 30-39 {{selectedMBMen2.value}}</label>
+            </section>
+
+            <section ng-hide="disableMBCM3">
+                <label class="label">Kneeling MB Chest Throw 8lbs</label>
+                <input id="inputChestMen3" ng-model="numMBCMpwm3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCMpwm3(numMBCMpwm3)" />
+
+                <!--
+                <input type="text" name="numMBCMpwm3" ng-model="numMBCMpwm3" ui-number-mask="0" class="form-control" ng-disabled="disableMBCM3" ng-blur="gonumMBCMpwm3(numMBCMpwm3)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedMBMen3" ng-options="selectedMBMen3.name for selectedMBMen3 in PushMBCMgpo3 track by selectedMBMen3.name"
+                        ng-change="goTotal()" ng-disabled="disableMBCM3" />
+                <label ng-hide="ocultar">Age 40-49 {{selectedMBMen3.value}}</label>
+            </section>
+
+            <section ng-hide="disableMBCM4">
+                <label class="label">Kneeling MB Chest Throw 8lbs</label>
+                <input id="inputChestMen4" ng-model="numMBCMpwm4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCMpwm4(numMBCMpwm4)" />
+
+                <!--
+                <input type="text" name="numMBCMpwm4" ng-model="numMBCMpwm4" ui-number-mask="0" class="form-control" ng-disabled="disableMBCM4" ng-blur="gonumMBCMpwm4(numMBCMpwm4)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedMBMen4" ng-options="selectedMBMen4.name for selectedMBMen4 in PushMBCMgpo4 track by selectedMBMen4.name"
+                        ng-change="goTotal()" ng-disabled="disableMBCM4" />
+                <label ng-hide="ocultar">Age 50+ {{selectedMBMen4.value}}</label>
+            </section>
+
+            <!-- end -->
+            <!-- MB CHEST WOMEN-->
+
+            <section ng-hide="true">
+                <label class="label">Kneeling MB Chest Throw 6lbs</label>
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedMBWomen" ng-options="selectedMBWomen.name for selectedMBWomen in MBWomens track by selectedMBWomen.name"
+                        ng-change="goTotal()" ng-disabled="disablegenderwomen" />
+                <label ng-hide="ocultar">{{selectedMBWomen.value}}</label>
+            </section>
+
+            <section ng-hide="disableMBCW1">
+                <label class="label">Kneeling MB Chest Throw 6lbs</label>
+                <input id="inputChestWoMen1" ng-model="numMBCWpwm1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCWpwm1(numMBCWpwm1)" />
+                <!--
+                <input type="text" name="numMBCWpwm1" ng-model="numMBCWpwm1" ui-number-mask="0" class="form-control" ng-disabled="disableMBCW1" ng-blur="gonumMBCWpwm1(numMBCWpwm1)">
+                -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedMBWOMen1" ng-options="selectedMBWOMen1.name for selectedMBWOMen1 in PushMBCWgpo1 track by selectedMBWOMen1.name"
+                        ng-change="goTotal()" ng-disabled="disableMBCW1" />
+                <label ng-hide="ocultar">Age 20-29  {{selectedMBWOMen1.value}}</label>
+            </section>
+
+            <section ng-hide="disableMBCW2">
+                <label class="label">Kneeling MB Chest Throw 6lbs</label>
+                <input id="inputChestWoMen2" ng-model="numMBCWpwm2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCWpwm2(numMBCWpwm2)" />
+
+                <!--
+                <input type="text" name="numMBCWpwm2" ng-model="numMBCWpwm2" ui-number-mask="0" class="form-control" ng-disabled="disableMBCW2" ng-blur="gonumMBCWpwm2(numMBCWpwm2)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedMBWOMen2" ng-options="selectedMBWOMen2.name for selectedMBWOMen2 in PushMBCWgpo2 track by selectedMBWOMen2.name"
+                        ng-change="goTotal()" ng-disabled="disableMBCW2" />
+                <label ng-hide="ocultar">Age 30-39 {{selectedMBWOMen2.value}}</label>
+            </section>
+
+            <section ng-hide="disableMBCW3">
+                <label class="label">Kneeling MB Chest Throw 6lbs</label>
+                <input id="inputChestWoMen3" ng-model="numMBCWpwm3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCWpwm3(numMBCWpwm3)" />
+
+                <!--
+                <input type="text" name="numMBCWpwm3" ng-model="numMBCWpwm3" ui-number-mask="0" class="form-control" ng-disabled="disableMBCW3" ng-blur="gonumMBCWpwm3(numMBCWpwm3)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedMBWOMen3" ng-options="selectedMBWOMen3.name for selectedMBWOMen3 in PushMBCWgpo3 track by selectedMBWOMen3.name"
+                        ng-change="goTotal()" ng-disabled="disableMBCW3" />
+                <label ng-hide="ocultar">Age 40-49 {{selectedMBWOMen3.value}}</label>
+            </section>
+
+            <section ng-hide="disableMBCW4">
+                <label class="label">Kneeling MB Chest Throw 6lbs</label>
+                <input id="inputChestWoMen4" ng-model="numMBCWpwm4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCWpwm4(numMBCWpwm4)" />
+
+                <!--
+                <input type="text" name="numMBCWpwm4" ng-model="numMBCWpwm4" ui-number-mask="0" class="form-control" ng-disabled="disableMBCW4" ng-blur="gonumMBCWpwm4(numMBCWpwm4)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedMBWOMen4" ng-options="selectedMBWOMen4.name for selectedMBWOMen4 in PushMBCWgpo4 track by selectedMBWOMen4.name"
+                        ng-change="goTotal()" ng-disabled="disableMBCW4" />
+                <label ng-hide="ocultar">Age 50+ {{selectedMBWOMen4.value}}</label>
+            </section>
+
+            <!-- end -->
+            <!-- Cooper Endurance  Men Test -->
+
+            <section ng-hide="true">
+                <br /><br />
+                <label class="label">12 min Cooper Endurance Test</label>
+                <select class="form-control-bootstrap" ng-model="selectedCooMen" ng-options="selectedCooMen.name for selectedCooMen in CooMens track by selectedCooMen.name"
+                        ng-change="goTotal()" ng-disabled="disablegendermen1" />
+                <label ng-hide="ocultar">{{selectedCooMen.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendercoomen1">
+                <label class="label">12 min Cooper Endurance Test</label>
+                <input id="inputCooperMen1" ng-model="numMBCOOWpwm1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWpwm1(numMBCOOWpwm1)" />
+
+                <!--
+                <input type="text" name="numMBCOOWpwm1" ng-model="numMBCOOWpwm1" ui-number-mask="2" class="form-control" ng-disabled="disablegendercoomen1"
+                       ng-blur="gonumMBCOOWpwm1(numMBCOOWpwm1)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedCooMen1" ng-options="selectedCooMen1.name for selectedCooMen1 in CooMens1 track by selectedCooMen1.name"
+                        ng-change="goTotal()" ng-disabled="disablegendercoomen1" />
+                <label ng-hide="ocultar">Age 20-29 {{selectedCooMen1.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendercoomen2">
+                <label class="label">12 min Cooper Endurance Test</label>
+                <input id="inputCooperMen2" ng-model="numMBCOOWpwm2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWpwm2(numMBCOOWpwm2)" />
+
+                <!--
+                <input type="text" name="numMBCOOWpwm2" ng-model="numMBCOOWpwm2" ui-number-mask="2" class="form-control" ng-disabled="disablegendercoomen2"
+                       ng-blur="gonumMBCOOWpwm2(numMBCOOWpwm2)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedCooMen2" ng-options="selectedCooMen2.name for selectedCooMen2 in CooMens2 track by selectedCooMen2.name"
+                        ng-change="goTotal()" ng-disabled="disablegendercoomen2" />
+                <label ng-hide="ocultar">Age 30-39 {{selectedCooMen2.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendercoomen3">
+                <label class="label">12 min Cooper Endurance Test</label>
+                <input id="inputCooperMen3" ng-model="numMBCOOWpwm3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWpwm3(numMBCOOWpwm3)" />
+
+                <!--
+                <input type="text" name="numMBCOOWpwm3" ng-model="numMBCOOWpwm3" ui-number-mask="2" class="form-control" ng-disabled="disablegendercoomen3"
+                       ng-blur="gonumMBCOOWpwm3(numMBCOOWpwm3)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedCooMen3" ng-options="selectedCooMen3.name for selectedCooMen3 in CooMens3 track by selectedCooMen3.name"
+                        ng-change="goTotal()" ng-disabled="disablegendercoomen3" />
+                <label ng-hide="ocultar">Age 40-49 {{selectedCooMen3.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendercoomen4">
+                <label class="label">12 min Cooper Endurance Test</label>
+                <input id="inputCooperMen4" ng-model="numMBCOOWpwm4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWpwm4(numMBCOOWpwm4)" />
+
+                <!--
+                <input type="text" name="numMBCOOWpwm4" ng-model="numMBCOOWpwm4" ui-number-mask="2" class="form-control" ng-disabled="disablegendercoomen4"
+                       ng-blur="gonumMBCOOWpwm4(numMBCOOWpwm4)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedCooMen4" ng-options="selectedCooMen4.name for selectedCooMen4 in CooMens4 track by selectedCooMen4.name"
+                        ng-change="goTotal()" ng-disabled="disablegendercoomen4" />
+                <label ng-hide="ocultar">Age 50+ {{selectedCooMen4.value}}</label>
+            </section>
+
+            <!-- end -->
+            <!-- Cooper Endurance  WOMen Test -->
+
+            <section ng-hide="true">
+                <label class="label">12 min Cooper Endurance Test(Women Age Dependent)</label>
+                <select class="form-control-bootstrap" ng-model="selectedCooWomen" ng-options="selectedCooWomen.name for selectedCooMen in CooWomens track by selectedCooWomen.name"
+                        ng-change="goTotal()" ng-disabled="disablegenderwomen" />
+                <label ng-hide="ocultar">{{selectedCooWomen.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendercoowomen1">
+                <label class="label">12 min Cooper Endurance Test</label>
+                <input id="inputCooperWoMen1" ng-model="numMBCOOWOpwm1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWOpwm1(numMBCOOWOpwm1)" />
+
+                <!--
+                <input type="text" name="numMBCOOWOpwm1" ng-model="numMBCOOWOpwm1" ui-number-mask="2" class="form-control" ng-disabled="disablegendercoowomen1"
+                       ng-blur="gonumMBCOOWOpwm1(numMBCOOWOpwm1)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedCooWomen1" ng-options="selectedCooWomen1.name for selectedCooMen1 in CooWomens1 track by selectedCooWomen1.name"
+                        ng-change="goTotal()" ng-disabled="disablegendercoowomen1" />
+                <label ng-hide="ocultar">Age 20-29 {{selectedCooWomen1.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendercoowomen2">
+                <label class="label">12 min Cooper Endurance Test</label>
+                <input id="inputCooperWoMen2" ng-model="numMBCOOWOpwm2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWOpwm2(numMBCOOWOpwm2)" />
+                <!--
+                <input type="text" name="numMBCOOWOpwm2" ng-model="numMBCOOWOpwm2" ui-number-mask="2" class="form-control" ng-disabled="disablegendercoowomen2"
+                       ng-blur="gonumMBCOOWOpwm2(numMBCOOWOpwm2)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedCooWomen2" ng-options="selectedCooWomen2.name for selectedCooMen2 in CooWomens2 track by selectedCooWomen2.name"
+                        ng-change="goTotal()" ng-disabled="disablegendercoowomen2" />
+                <label ng-hide="ocultar">Age 30-39 {{selectedCooWomen2.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendercoowomen3">
+                <label class="label">12 min Cooper Endurance Test</label>
+                <input id="inputCooperWoMen3" ng-model="numMBCOOWOpwm3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWOpwm3(numMBCOOWOpwm3)" />
+
+                <!--
+                <input type="text" name="numMBCOOWOpwm3" ng-model="numMBCOOWOpwm3" ui-number-mask="2" class="form-control" ng-disabled="disablegendercoowomen3"
+                       ng-blur="gonumMBCOOWOpwm3(numMBCOOWOpwm3)">
+                    -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedCooWomen3" ng-options="selectedCooWomen3.name for selectedCooMen3 in CooWomens3 track by selectedCooWomen3.name"
+                        ng-change="goTotal()" ng-disabled="disablegendercoowomen3" />
+                <label ng-hide="ocultar">Age 40-49  {{selectedCooWomen3.value}}</label>
+            </section>
+
+            <section ng-hide="disablegendercoowomen4">
+                <label class="label">12 min Cooper Endurance Test</label>
+                <input id="inputCooperWoMen4" ng-model="numMBCOOWOpwm4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWOpwm4(numMBCOOWOpwm4)" />
+                <!--
+                <input type="text" name="numMBCOOWOpwm4" ng-model="numMBCOOWOpwm4" ui-number-mask="2" class="form-control" ng-disabled="disablegendercoowomen4"
+                       ng-blur="gonumMBCOOWOpwm4(numMBCOOWOpwm4)">
+                -->
+                <br />
+                <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedCooWomen4" ng-options="selectedCooWomen4.name for selectedCooMen4 in CooWomens4 track by selectedCooWomen4.name"
+                        ng-change="goTotal()" ng-disabled="disablegendercoowomen4" />
+                <label ng-hide="ocultar">Age 50+ {{selectedCooWomen4.value}}</label>
+            </section>
+
+            <!-- End -->
+
+            <section ng-hide="ocultar">
+                <label class="label">Total</label>
+                <input type="text" class="form-control col-lg-offset-4" style="width:100px;" data-ng-model="total2" ng-readonly />
+            </section>
+
+            <section ng-hide="ocultar">
+                <label class="label">Combined</label>
+                <input type="text" class="form-control col-lg-offset-4" style="width:100px;" data-ng-model="total3" ng-readonly />
+            </section>
+
+            <section ng-hide="ocultar">
+                <label class="label">Combined Conversion</label>
+                <input type="text" class="form-control col-lg-offset-4" style="width:100px;" data-ng-model="total4" ng-readonly />
+            </section>
+
+            <section ng-hide="ocultarMessage">
+                <h2>Qualitative </h2>
+            </section>
+
+            <section ng-hide="hideRated">
+                <label class="label">How would you rate your fitness?</label>
+                <select class="form-control-bootstrap" ng-model="selectedRated" ng-options="selectedRated.name for selectedRated in selectedRateds track by selectedRated.name" />
+            </section>
+
+            <section ng-hide="hideLife">
+                <label class="label">How would you rank your current fitness to your lifetime peak?</label>
+                <select class="form-control-bootstrap" ng-model="selectedLife" ng-options="selectedLife.name for selectedLife in selectedLifes track by selectedLife.name" />
+            </section>
+
+            <section ng-hide="hideOrg">
+                <label class="label">Have you participated in an organized competitive event in the past 6 months? (marathon, triathlon, tough mudder, etc)</label>
+                <div class="inline-group">
+                    <label class="radio">
+                        <input type="radio" name="radioOrg" ng-model="radioOrg" ng-value="true">
+                        <i></i>No
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="radioOrg" ng-model="radioOrg" ng-value="false">
+                        <i></i>Yes
+                    </label>
+                </div>
+            </section>
+
+        </fieldset>
+
+        <footer>
+            <button class="btn btn-success" ng-click="save()" ng-hide="hideSave">Save</button>
+            <button class="btn btn-success" ng-click="next()" ng-hide="hideNext">Next</button>
+            <button class="btn btn-success" ng-click="backQ()" ng-hide="hideBack">Back</button>
+            <button class="btn btn-success" ng-click="back()" ng-hide="doneSubmitweb">Done</button>
+
+        </footer>
+        <fieldset>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="checkOcultar" class="checkbox style-0" ng-click="chkOcultar()">
+                    <span>Show Points</span>
+                </label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <div class="col-md-9 col-md-offset-3">
+                    <div id="messages"></div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</form>
+
+
+
+

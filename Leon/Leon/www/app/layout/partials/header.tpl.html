@@ -1,0 +1,116 @@
+<div id="main-menu">
+    <header id="header" style="font-family: TradeGothic, sans-serif;
+      position: fixed;
+      height:  100%;
+      width:  100%;
+            margin-top:-20px; background:white; height: 60px;padding: 0 0 0 0;" ng-init="changetop()">
+
+        <!--
+        <div id="logo-group" >
+            <span id="logo"> <label>{{userdata}} </label> </span>
+        </div>
+        -->
+        <div style="height: 40px;">
+            <!-- collapse menu button -->
+            <div id="hide-menu" class="btn-header" style="margin: 27px 0 0 !important;">
+                <!--<span > <a id="id-toggle-menu" toggle-menu title="Collapse Menu" style="background-image:none;background-color:black;color:white;border:0px;" ><i class="fa fa-reorder" style="color:white" ></i></a> </span>-->
+                <div style="width:33%;display: inline-block !important;padding-left: 3%;">
+                        <i class="fa fa-reorder" style="color: #9b9b9b; font-size: 18px !important;height: 24px;" ng-click="menuToggle()"></i>
+                </div>
+                <div style="width:33%;display: inline-block !important;text-align:center;">
+                    <img src="styles/mztimgs/user-leon.png" style="height:24px;" alt="Alternate Text" />
+                    <!--<p style="margin-left:10px; font-family:Montserrat;font-size:35px;font-weight:bold">Le<span style="font-weight:bolder;font-family:Montserrat;color:#ffa202;">O</span>N</p>-->
+                </div>
+
+                <div style="width:31%;display: inline-block !important;text-align:right">
+                    <img src="styles/mztimgs/logo-letras-grises.png" style="height:24px" alt="Alternate Text" />
+                    <!--<p style="margin-left:10px; font-family:Montserrat;font-size:35px;font-weight:bold">Le<span style="font-weight:bolder;font-family:Montserrat;color:#ffa202;">O</span>N</p>-->
+                </div>
+            </div>
+
+
+
+            <!-- end collapse menu -->
+            <!-- #MOBILE -->
+            <!-- Top menu profile link : this shows only when top menu is active -->
+            <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5" style="background-color:black;">
+                <li class="">
+                    <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
+                        <img src="styles/img/avatars/sunny.png" alt="John Doe" class="online" />
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href-void class="padding-10 padding-top-0 padding-bottom-0">
+                                <i class="fa fa-cog"></i> Setting
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a ui-sref="app.appViews.profileDemo" class="padding-10 padding-top-0 padding-bottom-0">
+                                <i class="fa fa-user"></i>
+                                <u>P</u>rofile
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href-void class="padding-10 padding-top-0 padding-bottom-0"
+                               data-action="toggleShortcut"><i class="fa fa-arrow-down"></i><u>S</u>hortcut</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href-void class="padding-10 padding-top-0 padding-bottom-0"
+                               data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i>Full<u>S</u>creen</a>
+                        </li>
+                        <li class="divider"></li>
+
+                        <li>
+                            <a href="#/login" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout">
+                                <i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <language-selector ng-hide="true"></language-selector>
+            <!-- end multiple lang -->
+
+        </div>
+
+
+        <!-- pulled right: nav area -->
+        <!-- end pulled right: nav area -->
+
+    </header>
+
+    <div id="modalDelete" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure of delete it?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="statusDelete()">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div id="modalRecover" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure of recover it?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="statusDelete()">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>

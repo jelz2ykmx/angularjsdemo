@@ -1,0 +1,1854 @@
+﻿/*@import url('https://fonts.googleapis.com/css?family=Montserrat');*/
+
+
+
+/* Main body: */
+a:active { 
+    background-color: yellow !important;
+}
+body, html {
+    background: #FAFEFE !important;
+    /*overflow:hidden;*/
+}
+
+/* Customize the row from bootstrap */
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+#main {
+    /*overflow:hidden;*/
+    padding-bottom: 0px
+}
+
+#main-menu {
+    background: #FAFEFE !important;
+    padding-top: 20px;
+}
+
+#widget-grid {
+    margin-top: 60px !important;
+}
+.user-center {
+    position: absolute; 
+    top: 2px; 
+    left: 47%;
+}
+
+/*#MainId {
+    min-height: 100vh !important;
+}*/
+
+#content {
+    padding: 0;
+}
+
+/********************************/
+/*    swiper custom styles     */
+/******************************/
+.page {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 90vh;
+    /*margin: 20px auto;*/
+}
+.swiper-slide {
+    text-align: center;
+    /*font-size: 18px;*/
+    /*background: #fff;*/
+        
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+/**********************************************************/
+/*    Customize the placeholder web browser styles       */
+/********************************************************/
+::-webkit-input-placeholder {
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    text-align: center;
+    line-height: 1;
+    color: #A8A8A8 !important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    text-align: center;
+    line-height: 2;
+    color: #A8A8A8 !important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    line-height: 2;
+    text-align: center;
+    color: #A8A8A8 !important;
+}
+
+:-ms-input-placeholder {  
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    line-height: 2;
+    text-align: center;
+    color: #A8A8A8 !important;
+}
+
+/**********************************************************/
+/*            Style for Login Initial Page               */
+/********************************************************/
+.login-main.leon-logo {
+    justify-content: center; 
+    display: flex; 
+    padding-top: 100px;
+}
+
+.leon-footer-register {
+    padding-top: 200px !important; 
+}
+
+.leon-register {
+    padding-top: 20px;
+}
+
+.leon-have-account {
+    padding-top: 50px;
+}
+
+.leon-logo-label {
+    font-family: Montserrat;
+    font-size: 4.5em;
+    color: #A8A8A8;
+}
+
+.leon-health-label {
+    font-family: Montserrat;
+    font-size: 1.3em;
+    color: #A8A8A8;
+}
+
+.leon-not-registered-label {
+    font-family: Montserrat;
+    font-size: 1.25em;
+    color: #A8A8A8;
+}
+
+.leon-have-account-label {
+    font-family: Montserrat;
+    font-size: 1.25em;
+    color: #A8A8A8;
+}
+
+.button-leon-register {
+    background: #FFA202;
+    border-radius: 15px;
+    font-family: Montserrat;
+    font-size: 1.8em;
+    color: #FFFFFF;
+    padding-right: 35px;
+    padding-left: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+}
+
+.leon-label-color {
+    color: #FFA202;
+}
+
+#dialog_simple .modal-dialog {
+    width:100%;
+}
+
+/**********************************************************/
+/*                Style for Login Sign In                */
+/********************************************************/
+.leon-section-logo {
+    justify-content: center; 
+    display: flex; 
+    padding-top: 20px;
+}
+
+.leon-section-txt-email {
+    padding-top: 50px; 
+    margin-bottom: 0px;
+}
+
+.text-leon-email {
+    background: #FFFFFF !important;
+    border: 1px solid #979797 !important;
+    border-radius: 30px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    width: auto !important;
+    font-family: Montserrat !important;
+    font-size: 22px !important;
+    color: #A8A8A8 !important;
+    text-align: center !important;
+    display: inline !important;
+    box-sizing: initial !important;
+}
+
+.text-leon-password {
+    background: #FFFFFF !important;
+    border: 1px solid #979797 !important;
+    border-radius: 30px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    width: auto !important;
+    font-family: Montserrat !important;
+    font-size: 22px !important;
+    color: #A8A8A8 !important;
+    text-align: center !important;
+    display: inline !important;
+    box-sizing: initial !important;
+}
+
+.leon-footer-login {
+    padding-top: 50px !important;
+}
+
+.leon-forgot-password {
+    padding-top: 50px;
+}
+
+.leon-or {
+    padding-top: 25px;
+}
+
+.leon-or .leon-or-label {
+    font-family: Montserrat;
+    font-size: 1.5em;
+    color: #A8A8A8;
+}
+
+.leon-or .leon-separator {
+    border-top: 1px solid #b3b0b0;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 12px;
+}
+
+.leon-social {
+    padding-top: 25px;
+}
+
+.button-leon-login {
+    background: #FFA202;
+    border-radius: 15px;
+    font-family: Montserrat;
+    font-size: 2.2em;
+    color: #FFFFFF;
+    padding-right: 53px;
+    padding-left: 53px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+}
+
+/**********************************************************/
+/*       Styles for the Forgot Password content          */
+/********************************************************/
+.leon-username .text-leon-username {
+    background: #FFFFFF !important;
+    border: 1px solid #979797 !important;
+    border-radius: 30px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 28px !important;
+    padding-left: 28px !important;
+    width: 8em !important;
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    color: #A8A8A8 !important;
+    text-align: center !important;
+    display: inline !important;
+    box-sizing: initial !important;
+}
+
+.button-leon-options {
+    background: #FFA202;
+    border-radius: 15px;
+    font-family: Montserrat;
+    font-size: 1.8em;
+    color: #FFFFFF;
+    padding-right: 35px;
+    padding-left: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    border: none;
+}
+
+.button-bottom-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+}
+
+/*************************************************/
+/*       Styles for leon assessment form        */
+/***********************************************/
+#container-pages {
+    min-height: 88vh;
+}
+
+.label-leon-assessment {
+    color:black;
+    font-weight:bold;
+    font-size:25px;
+    font-family:Arial;
+}
+
+.select-field-leon-assessment {
+    -webkit-appearance: none;
+    background: #fff url('../../mztimgs/custom-dropdown.png') no-repeat right center;
+    border: 1px solid #979797 !important;
+    border-radius: 30px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 28px !important;
+    padding-left: 28px !important;
+    width: 8em !important;
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    color: #A8A8A8 !important;
+    text-align: center !important;
+    display: inline !important;
+    box-sizing: initial !important;
+}
+
+.text-field-leon-assessment {
+    background: #FFFFFF !important;
+    border: 1px solid #979797 !important;
+    border-radius: 30px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 28px !important;
+    padding-left: 28px !important;
+    width: 8em !important;
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    color: #A8A8A8 !important;
+    text-align: center !important;
+    display: inline !important;
+    box-sizing: initial !important;
+}
+
+.button-leon-assessment {
+    background: #FFA202;
+    border-radius: 15px;
+    font-family: Montserrat;
+    font-size: 2.2em;
+    color: #FFFFFF;
+    padding-right: 53px;
+    padding-left: 53px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    z-index: 9;
+}
+
+.button-leon-directions-assessment {
+    background: #FFA202;
+    border-radius: 15px;
+    font-family: Montserrat;
+    font-size: 2.2em;
+    color: #FFFFFF;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    border: none;
+    z-index: 9;
+}
+
+.button-direction-container {
+    display: none;
+}
+
+.button-direction-container-last {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
+
+.button-direction-container-last .back {
+    display: none;
+}
+
+.div-header-assassment {
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+}
+
+.i-information-assassment {
+    font-size:20px !important; 
+    cursor:pointer; 
+    color:#333333
+}
+
+.button-activated {
+    background-color: rgba(255,  162,  2,  1);
+}
+
+.button-deactivated {
+    background-color: #a8a8a8;
+}
+
+.deep-green {
+    width:100%;
+    height:85px;
+    margin:0px;
+    background-color: rgba(0,  141,  50,  0.3);
+    -webkit-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    -moz-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    -o-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    -ms-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    transition: width 500ms ease-in-out, height 500ms ease-in-out;
+}
+.deep-green-shown {
+    height:140px !important;
+}
+.iluminationText1 {
+    color:white;
+    text-align:center;
+    font-size:14px;
+    margin:0px 0px 0px 0px;
+    font-weight:bold;
+    -webkit-transition:opacity 500ms;
+    -moz-transition:opacity 500ms;
+    -o-transition:opacity 500ms;
+    -ms-transition:opacity 500ms;
+    transition:opacity 500ms; 
+    opacity:0;
+}
+.iluminationText1-shown {
+    opacity:1 !important;
+}
+.deep-blue {
+    width:100%;
+    height:85px;
+    margin:0px;
+    background-color: rgba(0,  0,  108,  0.3);
+    -webkit-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    -moz-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    -o-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    -ms-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    transition: width 500ms ease-in-out, height 500ms ease-in-out;
+}
+.deep-blue-shown {
+    height:160px !important;
+}
+.iluminationText2 {
+    color:white;
+    text-align:center;
+    font-size:14px;
+    margin:0px 0px 0px 0px;
+    font-weight:bold;
+    -webkit-transition:opacity 500ms;
+    -moz-transition:opacity 500ms;
+    -o-transition:opacity 500ms;
+    -ms-transition:opacity 500ms;
+    transition:opacity 500ms; 
+    opacity:0;
+}
+.iluminationText2-shown {
+    opacity:1 !important;
+}
+.deep-red {
+    width:100%;
+    height:85px;
+    margin:0px;
+    background-color: rgba(187,  0,  0,  0.3);
+    -webkit-transition: width 500ms ease-in-out, height 300ms ease-in-out;
+    -moz-transition: width 500ms ease-in-out, height 300ms ease-in-out;
+    -o-transition: width 500ms ease-in-out, height 300ms ease-in-out;
+    -ms-transition: width 500ms ease-in-out, height 300ms ease-in-out;
+    transition: width 500ms ease-in-out, height 300ms ease-in-out;
+}
+.deep-red-shown {
+    height:140px !important;
+}
+.iluminationText3 {
+    color:white;
+    text-align:center;
+    font-size:14px;
+    margin:0px 0px 0px 0px;
+    font-weight:bold;
+    -webkit-transition:opacity 600ms;
+    -moz-transition:opacity 600ms;
+    -o-transition:opacity 600ms;
+    -ms-transition:opacity 600ms;
+    transition:opacity 600ms; 
+    opacity:0;
+}
+.iluminationText3-shown {
+    opacity:1 !important;
+}
+
+.deep-green-leg {
+    width:100%;
+    height:125px;
+    margin:0px;
+    background-color: rgba(0,  141,  50,  0.3);
+}
+.deep-blue-leg {
+    width:100%;
+    height:125px;
+    margin:0px;
+    background-color: rgba(0,  0,  108,  0.3);
+}
+.deep-red-leg {
+    width:100%;
+    height:125px;
+    margin:0px;
+    background-color: rgba(187,  0,  0,  0.3);
+}
+
+.deep-green-shoulder {
+    width:100%;
+    height:105px;
+    margin:0px;
+    background-color: rgba(0,  141,  50,  0.3);
+}
+.deep-blue-shoulder {
+    width:100%;
+    height:105px;
+    margin:0px;
+    background-color: rgba(0,  0,  108,  0.3);
+}
+.deep-red-shoulder {
+    width:100%;
+    height:105px;
+    margin:0px;
+    background-color: rgba(187,  0,  0,  0.3);
+}
+
+.leg-text1 {
+    color:white;
+    text-align:center;
+    font-size:12px;
+    margin:0px 0px 0px 0px;
+    font-weight:bold;
+}
+.leg-text2 {
+    color:white;
+    text-align:center;
+    font-size:12px;
+    margin:0px 0px 0px 0px;
+    font-weight:bold;
+}
+.leg-text3 {
+    color:white;
+    text-align:center;
+    font-size:12px;
+    margin:0px 0px 0px 0px;
+    font-weight:bold;
+}
+.deep-squatL {
+    width:95px;
+    height:80px;
+    margin:0px 5px 0px 0px;
+}
+.deep-squatR {
+    width:65px;
+    height:80px;
+    margin:0px 20px 0px 5px;
+}
+.swiper-slide-hidden {
+    display:none;
+}
+/**************************************************/
+/*       Styles for leon assessment Score        */
+/************************************************/
+.percentile {
+    text-align: center;
+    color: #a8a8a8;
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    margin-right: 20px !important;
+    margin-top: 10px !important;
+}
+.label-name {
+    font-size: 18px;
+    color: #a8a8a8;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    margin-left: 18px !important;
+    margin-top: 10px !important;
+}
+.bar {
+    left: -2px !important;
+}
+.myProgress {
+    position: relative;
+    height: 50px !important;
+    background-color: white  !important;
+    border: solid !important;
+    border-width: 1px !important;
+    border-color: #979797 !important;
+    border-radius: 37px !important;
+}
+.bar-wrapper {
+    width: 100.0%;
+    left: 2px;
+}
+.score-chart {
+    width:200px;
+    height:200px;
+    border-radius:100%;
+    background-color:white;
+    margin: 20px 10px 20px 10px !important;
+}
+
+.score-avarage {
+    margin-top: -108px;
+    color: #a8a8a8;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
+.score-user {
+    font-size:20px;
+    text-align: center;
+    margin-top:10px;
+}
+.score-message {
+    text-align: center;
+}
+.score-compare {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.score-compare a {
+    font-size:20px;
+    text-align: center;
+    margin-top:10px;
+}
+
+.score-done {
+    text-align: center;
+}
+.score-assessment {
+    text-align: center;
+}
+.score-assessment p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    color: #a8a8a8;
+}
+
+.progress-bar {
+    background-color: #FCCF7F !important;
+    display: block !important;
+}
+
+.fillAssessmentbar {
+    background-color: #FFA202 !important;
+    display: block;
+    height: 100% !important;
+    border-radius: 37px !important;
+}
+
+
+
+/**********************************************/
+/*   Styles for leon user daily questions    */
+/********************************************/
+.img-daylight {
+    width:245px;
+    height:245px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+/**********************************************************/
+/*       Styles for leon assessment Score Fitness        */
+/********************************************************/
+.label-name-description {
+    font-size: 10px;
+    font-weight: bold;
+    color: #a8a8a8;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    margin-left: 18px !important;
+    margin-top: 35px !important;
+}
+.my-progress-score {
+    height: 50px !important;
+    position: relative;
+    background-color: white !important;
+    border: solid !important;
+    border-width: 1px !important;
+    border-color: #979797 !important;
+    border-radius: 37px !important;
+}
+.button-leon-back-score {
+    text-align:center; 
+    padding-top: 40px;
+}
+
+
+/* asui empieza*/
+
+ .status-bar-bottom {
+        position: fixed;
+        z-index: 100; 
+        bottom: 0; 
+        left: 0;
+        width: 100%;
+        height:50px;
+        background: white;
+    }
+    .status-bar-bottom-fonts {
+        margin: 10px 0px;
+        width: 30px;
+        height: 30px;
+        font-size: 32px !important;
+    }
+    .button-statusbar-center {
+        width:33%;
+        display: inline-block !important;
+        text-align: center;
+    }
+   
+
+     .score-user-col {
+        margin-left:25px;
+        margin-right:25px;
+    }
+
+  
+    .score-size-container {
+        width: 300px;
+    }
+  
+   
+   
+    
+    .label-name-description {
+        font-size: 10px;
+        margin-left: 15px !important;
+        margin-top: 23px !important;
+    }
+   
+  
+    .score-chart {
+        width:120px;
+        height:120px;
+        margin: 1vh 2vh 1vh 2vh !important;
+    }
+  
+
+    .score-percent {
+        margin-top: 1vh;
+        font-size: 5vh;
+    }
+    .score-avarage {
+        margin-top: -16vh;
+        font-size: 2.1vh;
+    }
+
+    
+  
+   
+    /*Mobility*/
+    
+    
+
+   
+   
+
+   
+
+    .MobilityHeaderLeft {
+      width: 50%;
+      text-align: center;
+       float:left;
+    }
+
+    .MobilityHeaderRight {
+      width: 50%;
+      text-align: center;
+       float:right;
+    }
+
+    
+   
+    
+    
+   
+    
+   
+
+  
+
+   
+
+     /*biometrics*/
+
+   
+
+     
+
+   
+
+   
+
+   
+  
+
+   
+
+   
+
+    
+
+ 
+
+   
+
+    
+
+     
+
+    
+
+    
+   
+
+    
+
+  
+
+     .imgCicleTexttWo {
+        font-size: 10px;
+        margin-top: -35px;
+        margin-bottom: 20px;
+        width: 27px;
+        text-align: center;
+    }
+       /*------*/
+
+    
+    
+     /*before day*/
+ 
+  
+    
+    /*end*/
+
+     /*circles*/
+    
+
+
+
+    .frontalternative {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -120px;
+        margin-left: -5px;
+    }
+
+  
+
+  
+    .frontChartAssessment {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -23vh;
+    }
+
+   
+    
+   
+    
+   
+   
+
+   
+
+    /*end*/
+
+
+
+    
+
+  
+
+    .chart-score-main {
+        width:80px !important;
+        height:80px !important;
+
+    }
+   
+ 
+   
+   
+   
+
+   
+   
+
+   
+
+    
+
+   
+
+   
+    
+
+   
+
+  
+
+    
+
+   
+   
+
+   
+
+ 
+
+   
+
+    
+
+
+   
+
+   
+
+    .lifestyleRightAntibiotics {
+        margin-top: 21px;
+    }
+    
+   
+
+
+    
+
+   
+    
+
+   
+
+   
+   
+    
+    
+   
+     
+   
+   
+
+    
+
+   
+     
+   
+     
+   
+
+   
+
+  
+
+  
+         /*------*/
+
+
+
+    .login-main.leon-logo {
+        justify-content: center; 
+        display: flex; 
+        padding-top: 20px;
+    }
+    .leon-footer-register {
+        padding-top: 170px !important;
+    }
+    .leon-section-txt-email {
+        padding-top: 10px; 
+        margin-bottom: 0px;
+    }
+    .leon-footer-login {
+        padding-top: 43px !important;
+    }
+    .leon-forgot-password {
+        padding-top: 22px;
+    }
+    .leon-or {
+        padding-top: 15px;
+    }
+    .leon-social {
+        padding-top: 0px !important;
+    }
+    .text-leon-email {
+        width:90% !important;
+    }
+    .text-leon-password {
+        width:90% !important;
+    }
+    .button-leon-options {
+        font-size: 1.4em;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .button-leon-assessment {
+        font-size: 1.4em;
+    }
+    #container-pages {
+        min-height: 84vh;
+    }
+    .label-leon-assessment {
+        font-size:18px;
+    }
+    .button-leon-assessment {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding-right: 35px;
+        padding-left: 35px;
+    }
+    #content{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .deep-green-shown {
+        height:160px !important;
+    }
+    .deep-blue-shown {
+        height:180px !important;
+    }
+    .deep-blue-shoulder {
+        height:125px;
+    }
+    /*assessment Score*/
+   
+    
+    .score-user {
+        margin-top:0px;
+        font-size:14px;
+    }
+    .score-compare {
+        display:none;
+    }
+    .score-assessment {
+        display:none;
+    }
+    
+    /*leon user daily questions*/
+    .img-daylight {
+        width: 145px;
+        height: 145px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    /*assessment Score Fitness*/
+    .button-leon-back-score {
+        text-align:center; 
+        padding-top: 10px;
+    }
+
+    /* new classes*/
+    .score_div_mixed {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+    }
+
+     .score-Assessment-today-back {
+        width: 24vh !important;
+        height: 24vh !important;
+        border: .8vh solid #bdbdbd !important;
+        margin-top: 0vh !important;
+        margin-left: 0vh !important;
+        margin-right:0vh !important;
+        margin-bottom:0vh !important;
+    }
+
+     .score_today_avarage {
+        font-size: 5vh;           
+        color: #FFA202;
+        font-weight: bold;
+        line-height: 0vh;
+        display:block;
+        margin-top: -18.5vh;
+    }
+
+    .score_today_percentil {
+        font-size: 1.9vh;           
+        color: #a8a8a8;
+        font-weight: bold;
+        display:block;
+         margin-top: 5vh;
+    }
+
+    .score-Assessment-today-front {
+        width: 24.5vh !important;
+        height: 24.5vh !important;
+        background: transparent !important;
+        margin-top: -.60vh !important;
+        margin-left: -.60vh !important;
+        margin-right:0vh !important;
+        margin-bottom:0vh !important;
+    }
+
+    .score-animated {
+          display: flex; 
+          justify-content:center;
+          
+    }
+   
+    .score-size-container {
+        width: 52vh;
+        margin-top: 4vh;
+    }
+    
+ .myProgress  {
+        height: 7vh !important;
+        margin-left:3vh;
+        margin-right:3vh;
+        background-color: #EAEBED   !important;
+        border: none !important;
+    }
+
+ .score-fitness-content {
+    display:block;
+    justify-content:center;
+    align-items:center;
+    margin-top:1vh;
+    margin-bottom:.5vh;
+    padding-left:0;
+    padding-right:0;
+}
+
+   .label-name {
+        font-size: 2.8vh;
+        margin-left: 2.7vh !important;
+    }
+
+    .label-name-main-score {
+        margin-top: 1.4vh !important;
+        color: #94959A !important;
+    }
+
+     .percentile {
+        font-size: 2.8vh;
+        margin-right: 2.5vh !important;
+    }
+      .score-user-date {
+        margin-top:8px;
+        text-align:center;
+        font-size:2vh;
+    }
+
+    .score-assesments-total {
+        position: fixed;
+        z-index: 100; 
+        bottom: 45px; 
+        left: 0;
+        width: 100%;
+        text-align:center;
+        font-size:1.5vh;
+    }
+
+    .score-chart-main {
+        width: 20vh !important;
+        height: 20vh !important;
+        border-radius: 100%;
+        background-color: #EAEBED;
+        margin: 3vhpx 15px 20px 0px !important;
+        border: 4px solid #FFA202!important;
+        margin-top: -5vh;
+        margin-left: 0vh;
+        margin-bottom: 0vh;
+        margin-right: 0vh;
+    }
+
+    .beforeAssessment{
+        position: absolute;
+        margin-left: -15vh;
+        width: 100%;
+        text-align: center;
+    }
+
+
+      .score-percent-beforeDay {
+       color: #94959A;
+       font-size: 3vh;
+       margin-top: 9.5vh;
+       line-height: 0vh;
+       margin-left: 1vh;
+    }
+
+    
+
+    .chart-score-items {
+        width:13vh;
+    }
+
+   
+
+    
+
+   
+
+    
+
+     
+    
+
+    
+    
+
+    .scroe_divitems {
+        display: flex;
+        top: 17vh;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+ 
+    .score-div-avarage-label-item {
+        margin-top: -2.5vh;
+    }    
+
+    .score-div-avarage-item {
+        margin-top: 1vh;
+    }
+
+
+   
+
+   
+
+    
+
+      .scoreBarFitnees {
+        width: 48vh!important;
+        height: 30vh !important;
+        margin-top: 10vh !important;
+    }
+
+    .scoreBarFitneeButtons {
+        margin-top:-4vh;
+    }
+
+     .scoreBarFitneesAge {
+        border-radius: 15px;
+        font-family: Montserrat !important;
+        font-size: 1.6vh!important;
+        color: #FFFFFF;
+        border: none;
+        width: 8vh;
+        height: 3.3vh;
+        margin-left: 0vh;
+    }
+
+     .scoreBarFitneesGender {
+        border-radius: 15px;
+        font-family: Montserrat !important;
+        font-size: 1.6vh !important;
+        color: #FFFFFF;
+        border: none;
+        width: 10vh;
+        height: 3.3vh;
+        margin-left: 0vh;
+    }
+
+    .score-assessment-header p {
+        margin-top: 0.5vh;
+        margin-bottom: 0.5vh;
+        font-size: 3.5vh;
+        text-align: center;
+        font-weight: bold;
+        color: #a8a8a8;
+    }
+
+    .bioimghuman {
+       width: 20vh;
+       height: 60vh;
+       margin-top: 50px;
+    }
+
+     .bloodPresureHeaderText {
+        margin-top: 3vh;
+        font-size: 2.5vh;
+        margin-bottom: 2vh;
+        margin-left: 3vh!important;
+    }
+
+     .imgText {
+        margin-top:0.5vh;
+            
+    }
+
+    .imgHeader {
+        width: 25.5vh;
+        height: 4.9vh;
+    }
+    
+    .progressBox {
+        background: #d8d8d8;
+        border-radius: 30px;
+        border: 1px #9c9c9c solid;
+    }
+
+    .threepointsbox {
+        background: #a8a8a8;
+        border-radius: 30px;
+        width: .7vh;
+        height: .7vh;
+        margin-top: 1.5vh;
+    }
+
+    .threepointsdivider {
+        width: 33%;
+    }
+
+    .sevenpointsdivider {
+        width: 15%;
+    }
+
+    .fourpointsdivider {
+        width: 24.7%;
+    }
+
+     .sixpointsdivider {
+        width: 20%;
+    }
+
+    .twopointsbox {
+        background: #a8a8a8;
+        border-radius: 30px;
+        width: .7vh;
+        height: .7vh;
+        margin-top: 1.5vh;
+    }
+
+    .twopointsdivider {
+        width: 50%;
+    }
+
+    .progressCircle {
+        background: white;
+        border-radius: 5vh;
+        border: .36vh #ffa202 solid;
+        width: 5vh;
+        height: 4.9vh;
+        margin-top: -4.9vh;
+    }
+
+    .progressCircleMultiple {
+        width: 4vh;
+        height: 4vh;
+        margin-top: -4vh;
+        margin-left: -8vh;
+        background: white;
+        position: relative;
+    }
+
+    .progressCircleTextMultiple {
+        font-size: 1.5vh;
+        font-weight: bold;
+        margin-top: .63vh;
+        color:#aaaaaa;
+    }
+
+    
+
+    .imginnerText {
+        margin-top: 0px;
+        margin-left: 26.5vh;
+        margin-top: -6vh;
+        margin-bottom: 2vh;
+    }
+
+    .BioRightPanel {
+        width: 55%;
+        margin-right: 1.2vh;
+        float: right;
+        margin-top: 2.7vh;
+        color: #a8a8a8;
+        font-size: 2vh;
+    }
+
+    .twoColumns {
+      margin-top:2vh;
+    }
+
+    .smalltexttwoColumns {
+        margin-top:1.7vh;
+    
+    }
+
+    .bigtexttwoColumns {
+        margin-top: 1.7vh;
+        font-size: 2vh;
+    }
+
+    .texttwoColumnsRight {
+        font-size: 2vh;
+        margin-top: 4.5vh;
+        margin-bottom: .8vh;
+        margin-left: 7.9vh !important;
+     }
+
+     .imginnerTextRight {
+        margin-top: -6.3vh;
+        margin-left: 20vh;
+     }
+
+     .imgCircle {
+        width: 5vh;
+        height: 5vh;
+        margin-top: -5vh;
+        display: inherit;
+     }
+
+     .imgCicleText {
+       font-size: 1.7vh;
+       margin-top: -3.5vh;
+       margin-bottom: 3.5vh;
+       width: 5vh;
+       text-align: center;
+    }
+    
+    .imgTwogHeader {
+       width: 19vh;
+       height: 4.9vh;
+    }
+
+     .imgCircleTwo {
+       width: 5vh;
+       height: 5vh;
+       margin-top: -7.5vh;
+    }
+
+     /* mobility*/
+
+    .imghuman {
+       width: 20vh;
+       height: 60vh;
+       margin-left: 5vh;
+       margin-top: 9vh;
+       margin-bottom: 2vh;
+    }
+
+     .MobilityLeftPanel {
+        width: 45%;
+        margin-left: 0vh;
+        float: left;
+        text-align: right;
+    }
+
+    .MobilityRightPanel {
+        width: 48%;
+        float: left;
+        margin-top: 0vh;
+    }
+   
+     .headerText {
+      font-size: 1.7vh;
+      color: #a8a8a8 ;
+    }
+
+     .BioLeftPanel {
+       width: 40%;
+    margin-right: 2vh;
+    float: left;
+    text-align: right;
+    }
+
+    .MobilityleftpPanelData {
+        text-align: center;
+        color: #a8a8a8;
+        font-size: 1.4vh;
+        margin-top: 12.5vh;
+    }
+    
+    .imgTextBelow {
+      margin-top: 1.9vh;
+    }
+
+    .imgThreeChoice {
+      width: 12vh;
+      height: 4vh;
+      margin-top: 1.5vh;
+      display: flex;
+    }
+
+    .imgSevenChoice {
+      width: 24vh;
+      margin-left: -3.3vh;
+      height: 4vh;
+      display: flex;
+    }
+
+     .imgFourChoice {
+        width: 13.8vh;
+        margin-left: -9.5vh;
+        height: 4vh;
+        display: flex;
+    }
+
+      .imgSixChoice {
+        width: 15.5vh;
+        margin-left: -17.9vh;
+        height: 4vh;
+        display: flex;
+    }
+   
+
+     .imgTwoChoice {
+      width: 7vh;
+      height: 4vh;
+      margin-top: 10px;
+      display:flex;
+    }
+
+    .imgRisk {
+      width: 9vh;
+      height: 1.8vh;
+      margin-bottom: 2vh;
+    }
+
+     /*lifestyle*/
+    .lifestyleHeaderMargins {
+        margin-top:4vh;
+    }
+
+     .lifestyleHeader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #a8a8a8;
+        margin-left: -1.2vh;
+        font-size: 2.1vh;
+    }
+
+     .lifestyRightHeaderPanel {
+        width: 45%;
+        margin-left: 32vh !important;
+     }
+
+     .lifestyLeftPanelLine {
+        position: absolute;
+        border-width: .1vh;
+        border-style: solid;
+        height: 55vh;
+        margin-left: 50%;
+        border-color: #cac9c9;
+     }
+
+     .lifestyLeftPanel {
+        width: 45%;
+        margin-left: 2vh;
+        float: left;
+    }
+
+    .imgaADaily {
+       width: 23.5vh;
+       height:4.3vh;
+    }
+
+    
+
+    .lifestyleRightText {
+      font-size: 1.8vh;
+      color: #a8a8a8;
+      margin-left: .5vh;
+      margin-top: 1vh;
+    }
+
+     .lifestyleRightImage {
+        margin-left: -3.3vh;
+    }
+
+     .imgWeekly {
+       width: 23.5vh;
+       height: 4.3vh;
+    }
+
+     .imgsitting {
+        width: 14vh;
+        height:4.3vh;
+    }
+
+    .lifestyleLeftTextSitting {
+        margin-top: 1.7vh;
+    }
+
+     .lifestyleRightSittingText {
+        font-size: 1.8vh;
+        color: #a8a8a8;
+        margin-left: 17.5vh;
+            line-height: 2.3vh;
+
+    }
+    
+     .lifestyleRightDaily {
+        margin-top: 2.1vh;
+    }
+
+    
+    .lifestyleRightImageSmoking {
+        margin-left: -19vh;
+    }
+
+     .smoking {
+       width: 17.5vh;
+       height: 4.3vh;
+    }
+
+    .lifestyleRightSmoking {
+        margin-top: 0vh;
+    }
+
+    .lifestyleRightSittingSecondLine {
+        margin-left: -1vh !important;
+    }
+
+     .lifestyleRightSmokingSecondLine {
+        margin-left: -4.5vh !important;
+    }
+
+    .imgsecond {
+       width: 7.5vh;
+       height: 4.3vh;
+    }
+
+    .lifestyleRightImageSmokingHand {
+        margin-left: -12.5vh;
+    }
+
+     .lifestyleRightDrinking {
+        margin-top: 0vh;
+    }
+
+    .imgdrinking {
+       width: 15vh;
+    height: 4.3vh;
+    }
+
+     .lifestyleRightImageDrinks {
+            margin-left: -9.5vh;
+    }
+
+      .lifestyleRightDrinksFirstLine {
+        margin-left: -.5vh !important;
+    } 
+
+     .lifestyleRightDrinksSecondLine {
+        margin-left: -2.3vh  !important;
+    }
+
+     .lifestyleLeftTextSecondHand {
+        margin-top: 3vh;
+    }
+
+     
+    .lifestyleLeftTextDrinking {
+        margin-top: 2.4vh;
+    }
+
+     .lifestyleRightImageAntibiotics {
+        margin-left: -13.4vh;
+    }
+
+    .imgAntibiotics {
+        width: 14.5vh;
+        height: 4.3vh;
+    }
+
+     .lifestyleRightAntibioticsText {
+       margin-left: 12.5vh;
+           margin-top: 1vh;
+    }
+
+      
+    .lifestyleLeftHeightText {
+        height: 8vh;
+        margin-top:3.4vh;
+    }
+
+    /*biometrics*/
+    .twoColumnsLeft {
+        text-align: center;
+        float: left;
+        margin-left: 1vh !important;
+    }
+
+    .twoColumnsRight {
+        display: inline-block;
+        margin-left: 1.5vh !important;
+    }
+
+    .lifestyleRightWeekly {
+        margin-top: 0vh;
+    }
+
+    
+    .lifestyleRightSitting {
+        margin-top: 0vh;
+    }
+
+    
+    .lifestyleLeftWeeklyText {
+        margin-top:0px;
+    }
+
+    
+     .lifestyleLeftSmoking {
+        margin-top: 3.5vh;
+    }
+
+    .lifestyRightPanel {
+        width: 45%;
+        margin-right: 1vh;
+        float: right;
+        margin-top: 3vh !important;
+    }
+
+    
+    .lifestyleLeftText {
+       color: #FFA202;
+       font-size: 1.9vh;
+       margin-right: 20vh !important;
+    }
+
+    .lifestyle_dividers {
+        display: flex;
+        margin-top: 3vh;
+        line-height: 2.2vh;
+        z-index: 2;
+        position: inherit;
+    }
+    
+    /* score */
+
+    .exile_loader{
+        height: 24.5vh;
+        width: 23.5vh;
+        margin: 0px auto;
+    }   
+
+.exile_load {
+	width: 24vh;
+	height: 24vh;
+	border-radius: 50%;
+	border-width: 8px;
+	position: absolute;
+    transform: rotate(45deg);
+}
+
+.exile_stage{
+	border: solid #ffa202 1vh;
+	border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+}
+
+    
+    .exile_flex{
+       flex: 1
+    }
+
+    .exile_percent{
+        position: absolute;
+        text-align: center;
+        width: 24vh;
+        padding-top: 0vh;
+        width:100%
+    }
+    /*
+    .exile_percent span{
+	    font-size: 80px;
+        color: #ffa202
+    }
+        */
+
+    .exile_load-gray1{
+	width: 24vh;
+	height: 24vh;
+	border-radius: 50%;
+	border: solid #bdbdbd 1vh;
+	position: absolute;
+    background: white;
+}
+
+.exile_load-gray2{
+	border: solid #bdbdbd 1.05vh;
+    width: 24vh;
+    height: 24vh;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.exile_load-hidder{
+	width: 145px;
+    height: 145px;
+    border-radius: 50%;
+	border: solid white 10px;
+	border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    margin: -2px;
+    position: absolute;
+    transform: rotate(45deg);
+}
+

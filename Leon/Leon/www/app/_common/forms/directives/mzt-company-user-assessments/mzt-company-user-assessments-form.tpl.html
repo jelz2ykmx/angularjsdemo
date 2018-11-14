@@ -1,0 +1,77 @@
+
+<form id="comprobanteForm">
+    <div class="form-group">
+        <h2>{{nombre}}</h2>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-success" ng-click="back()">Back</button>
+        <div class="table-responsive">
+            <table id="tablaTipoAgencia" datatable="ng" dt-options="datatables.standardOptions" dt-columns="datatables.standardColumns" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                    <tr>
+                        <th data-hide="phone"><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>Assessment</th>
+                        <th data-hide="phone" style="text-align:right"><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>Percentage %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--data-smart-jqui-dialog-launcher="#dialogoClienteEspecifico"-->
+                    <tr ng-repeat="assessment in assessmenttemp" ng-click="go(assessment)">
+                        <td>{{assessment.iduser}}</td>
+                        <td style="text-align:right">{{assessment.avarage}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <a id="queryAssessments" href="#" data-toggle="modal" data-target="#dialogQueryAssessments" style="visibility:hidden; width:0px; height:0px"></a>
+    </div>
+    <div class="modal fade" id="dialogQueryAssessments" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <button id="botonCerrarAssessments" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-info" id="myModalLabel">Assessments</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="tablaTipoAgencia" datatable="ng" dt-options="datatables.standardOptions" dt-columns="datatables.standardColumns" class="table table-striped table-bordered table-hover" width="100%">
+                            <thead>
+                                <tr>
+                                    <th data-hide="phone"><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--data-smart-jqui-dialog-launcher="#dialogoClienteEspecifico"-->
+                                <tr ng-repeat="assessment in assessments" ng-click="goAssessments(assessment)">
+                                    <td>{{assessment.nombre}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a id="idErrorMessage" href="#" data-toggle="modal" data-target="#dialogQueryTipoAgencia" style="visibility:hidden; width:0px; height:0px"></a>
+    </div>
+    <div class="modal fade" id="dialogQueryTipoAgencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <button id="botonCerrarCliente" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class='widget-header'><h4><i class='fa fa-warning'></i> Error</h4></div>
+                    </div>
+                    <p>
+                        <h4>{{errorMessage}}</h4>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

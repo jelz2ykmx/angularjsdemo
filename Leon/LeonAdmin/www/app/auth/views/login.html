@@ -1,0 +1,163 @@
+<div class="fondo" style="font-family: TradeGothic, sans-serif;
+      position: absolute;
+      height:  100%;
+      width:  100%;
+      /*background-image: url('styles/mztimgs/fondo-blanco-web.jpg');*/
+      background-size: 100% 100%;
+      background-attachment:fixed;">
+    <!--<header class="animated fadeInDown" ng-controller="loginController" style="background-color:transparent;padding-bottom:30px;">-->
+        <!--id="header"-->
+
+
+        <!--<div style="width:100%;height:50px;background-color:black;color:white;display:flex;justify-content:center;">
+            <p style="font-family:Montserrat;font-size:35px;font-weight:bold">Le<span style="font-weight:bolder;font-family:Montserrat;color:#ffa202;">O</span>N</p>
+        </div>-->
+
+        <!--
+        <div id="logo-group">
+            <span id="logo"> <img src="styles/img/logo.png" alt="SmartAdmin"> </span>
+        </div>
+
+        <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">Need an account?</span> <a
+               ui-sref="register" class="btn btn-danger">Create account</a> </span>
+            -->
+        
+    <!--<div id="content" class="container">
+            <div class="row">
+                <div id="logo-group">-->
+                    <!--   <button type="button" class="btn btn-primary" ng-click="registerClick()">
+                       Create an account
+                       </button>-->
+                    
+                <!--</div>
+            </div>
+        </div>-->
+
+        <!--<span id="extr-page-header-space">-->
+
+            <!--<span class="hidden-mobile hiddex-xs" >Leon 2016</span>-->
+            <!--           <button type="button" class="btn btn-primary" ng-click="clearClick()">
+                           Clear
+                       </button>-->
+        <!--</span>-->
+
+    <!--</header>-->
+    <div role="main" >
+        <!--id="main"-->
+
+        <div id="content" class="container">
+            <img style="margin: 0px auto; display: block;" alt="Alternate Text" src="styles/mztimgs/logo-letras-negras.png">
+            <div class="row" style="display:flex; justify-content:center;">               
+                <div class="col-xs-8 col-sm-8 col-md-5 col-lg-3">
+                    <div class="well no-padding" style="border-width: 0px; border-radius: 25px !important; background-color: transparent;">
+                        <form id="login-form" class="smart-form client-form" data-smart-validate-form ng-controller="loginController">
+                            <div ng-hide="hidelogin">
+                                <fieldset style="border-radius: 25px !important;  padding-top: 0px; padding-left: 2px; margin-left: 0px; background-color: transparent;">
+                                    <section>
+                                        <div style="margin:0px 0px 0px 5px;font-size:18px;text-align:center;font-weight:bold;">Email</div>
+                                        <label class="input">                                            
+                                            <input class="inputsLogin" style="border-color: #FFF; height:43px; letter-spacing: 3px; border-radius: 10px; font-size: 16px;" 
+                                                   type="email" name="email" 
+                                                   data-ng-model="loginData.userName"
+                                                   data-smart-validate-input
+                                                   data-required
+                                                   data-email
+                                                   data-message-required="Please enter your email address"
+                                                   data-message-email="Please enter a VALID email address">
+                                            <b class="tooltip tooltip-top-right">
+                                                <i class="fa fa-user txt-color-teal"></i>
+                                                Please enter email address/username
+                                            </b>
+                                        </label>
+                                    </section>
+                                    <br />
+                                    <section>
+                                        <div style="margin:0px 0px 0px 5px;font-size:18px;text-align:center;font-weight:bold;">Password</div>
+                                        <label class="input">
+                                            <input class="inputsLogin" style="border-color: #FFF;height:43px; letter-spacing: 3px; border-radius: 10px; font-size: 16px;" 
+                                                   type="password" name="password" 
+                                                   data-ng-model="loginData.password"
+                                                   data-smart-validate-input
+                                                   data-required
+                                                   data-minlength="3"
+                                                   data-maxnlength="20"
+                                                   data-message="Please enter your email password">
+                                            <b class="tooltip tooltip-top-right">
+                                                <i class="fa fa-lock txt-color-teal"></i> Enter
+                                                your password
+                                            </b>
+                                        </label>
+                                        <!--<a ui-sref="forgotPassword">Forgot password?</a>
+                                        <!-- <a ng-click="registerClick()">Create an account</a> -->
+                                    </section>
+                                    
+                                    <!--<section>
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="remember" checked>
+                                            <i></i>Stay signed in
+                                        </label>
+                                    </section>-->
+                                        
+
+                                </fieldset>
+
+                                <footer style="border-radius: 25px !important; text-align: center; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; background-color: transparent;">
+                                    <div>
+                                        <button style="border: none; width: 140px; height: 40px; color: #000; border-color: #FFF; border-radius: 8px; background-color: #FFA202" type="button" class="btn-primary" ng-click="login()">
+                                            <b style="font-size: 25px;">GO</b>
+                                        </button>
+                                    </div>
+                                </footer>
+                                <div style="display: none;">
+                                    <a id="errorMessage" href="#" data-smart-jqui-dialog-launcher="#dialog_simple" class="btn btn-info" style="visibility:hidden"> Open Dialog </a>
+                                </div>
+                                <div id="dialog_simple" data-smart-jqui-dialog data-modal="true">
+                                        
+
+                                    <!-- dialog header // removing on compile-->
+                                    <div data-dialog-title>
+                                        <div class='widget-header'><h4><i class='fa fa-warning'></i> Error</h4></div>
+                                    </div>
+
+                                    <p>
+                                        <h4>{{errorMessage}}</h4>
+                                    </p>
+
+                                    <!-- dialog buttons // transform to jquery dialog buttons -->
+                                    <div data-dialog-buttons>
+                                        <button class="btn btn-default" data-action="modalDemo2()"><i class='fa fa-times'></i>&nbsp; Cancel</button>
+                                    </div>
+                                </div>
+                                <div id="dialog" style="background-color:black">
+                                        <img src="styles/mztimgs/progress2.gif" style="padding-left:13px;">
+                                </div>
+
+                            </div>
+                            <div ng-hide="hidemNewVersion">
+                                <header>
+                                    <h4>Info</h4>
+                                </header>
+                                <section>
+                                    <br />
+                                    <h4> New version have been released!</h4>
+                                    <br />
+                                    <h4> Push continue button to get it!</h4>
+                                </section>
+                                <footer>
+                                    <button type="button" class="btn btn-primary" ng-click="UpdateVersion()">
+                                        Continue
+                                    </button>
+                                </footer>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br /><br /><br /><br /><br /><br /><br /><br />
+    </div>
+    <div class="container" style="width:100%;height:40px;display:flex;justify-content:center;bottom:20px;position:fixed;">
+        <b style="display: block; font-size: 14px; color: #000; margin-top: 20px; margin-bottom: 5px">Want to Join? Forgot Password?</b>
+    </div>
+</div>

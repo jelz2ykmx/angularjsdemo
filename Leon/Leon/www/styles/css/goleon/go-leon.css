@@ -1,0 +1,781 @@
+/*@import url('https://fonts.googleapis.com/css?family=Montserrat');*/
+/* Main body: */
+body, html {
+    background: #FAFEFE !important;
+    /*overflow:hidden;*/
+}
+
+body:not(.menu-on-top).desktop-detected {
+    min-height: initial !important;
+}
+
+/* Customize the row from bootstrap */
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+#main {
+    overflow:hidden;
+    padding-bottom: 0px;
+}
+
+#main-menu {
+    background: #FAFEFE !important;
+}
+
+#widget-grid {
+    margin-top: 48px !important;
+}
+
+#content {
+    padding: 0;
+}
+
+/*#MainId {
+    min-height: 100vh !important;
+}*/
+.user-center {
+    position: absolute; 
+    top: 2px; 
+    left: 48%;
+}
+/********************************/
+/*    swiper custom styles     */
+/******************************/
+.page {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.swiper-container {
+    width: 450px;
+    height: 93vh;
+    /*margin: 20px auto;*/
+}
+.swiper-slide {
+    text-align: center;
+    /*font-size: 18px;*/
+    /*background: #fff;*/
+        
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+/**********************************************************/
+/*    Customize the placeholder web browser styles       */
+/********************************************************/
+::-webkit-input-placeholder {
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    text-align: center;
+    line-height: 1;
+    color: #A8A8A8 !important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    text-align: center;
+    line-height: 2;
+    color: #A8A8A8 !important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    line-height: 2;
+    text-align: center;
+    color: #A8A8A8 !important;
+}
+
+:-ms-input-placeholder {  
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    line-height: 2;
+    text-align: center;
+    color: #A8A8A8 !important;
+}
+
+/**********************************************************/
+/*            Style for Login Initial Page               */
+/********************************************************/   
+.login-main.leon-logo {
+    justify-content: center; 
+    display: flex; 
+    padding-top: 100px;
+}
+
+.leon-footer-register {
+    padding-top: 200px !important; 
+}
+
+.leon-register {
+    padding-top: 20px;
+}
+
+.leon-have-account {
+    padding-top: 50px;
+}
+
+.leon-logo-label {
+    font-family: Montserrat;
+    font-size: 4.5em;
+    color: #A8A8A8;
+}
+
+.leon-health-label {
+    font-family: Montserrat;
+    font-size: 1.3em;
+    color: #A8A8A8;
+}
+
+.leon-not-registered-label {
+    font-family: Montserrat;
+    font-size: 1.25em;
+    color: #A8A8A8;
+}
+
+.leon-have-account-label {
+    font-family: Montserrat;
+    font-size: 1.25em;
+    color: #A8A8A8;
+}
+
+.button-leon-register {
+    background: #FFA202;
+    border-radius: 15px;
+    font-family: Montserrat;
+    font-size: 1.8em;
+    color: #FFFFFF;
+    padding-right: 35px;
+    padding-left: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+}
+
+.button-leon-options {
+    background: #FFA202;
+    border-radius: 15px;
+    font-family: Montserrat;
+    font-size: 1.8em;
+    color: #FFFFFF;
+    padding-right: 35px;
+    padding-left: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    border: none;
+}
+
+.leon-label-color {
+    color: #FFA202;
+}
+/**********************************************************/
+/*                Style for Login Sign In                */
+/********************************************************/
+.leon-section-logo {
+    justify-content: center; 
+    display: flex; 
+    padding-top: 20px;
+}
+
+.leon-section-txt-email {
+    padding-top: 50px; 
+    margin-bottom: 0px;
+}
+
+.text-leon-email {
+    background: #FFFFFF !important;
+    border: 1px solid #979797 !important;
+    border-radius: 30px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    width: auto !important;
+    font-family: Montserrat !important;
+    font-size: 22px !important;
+    color: #A8A8A8 !important;
+    text-align: center !important;
+    display: inline !important;
+    box-sizing: initial !important;
+}
+
+.text-leon-password {
+    background: #FFFFFF !important;
+    border: 1px solid #979797 !important;
+    border-radius: 30px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    width: auto !important;
+    font-family: Montserrat !important;
+    font-size: 22px !important;
+    color: #A8A8A8 !important;
+    text-align: center !important;
+    display: inline !important;
+    box-sizing: initial !important;
+}
+
+.leon-footer-login {
+    padding-top: 50px !important;
+}
+
+.leon-forgot-password {
+    padding-top: 50px;
+}
+
+.leon-or {
+    padding-top: 25px;
+}
+
+.leon-or .leon-or-label {
+    font-family: Montserrat;
+    font-size: 1.5em;
+    color: #A8A8A8;
+}
+
+.leon-or .leon-separator {
+    border-top: 1px solid #b3b0b0;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 12px;
+}
+
+.leon-social {
+    padding-top: 25px;
+}
+
+.button-leon-login {
+    background: #FFA202;
+    border-radius: 15px;
+    font-family: Montserrat;
+    font-size: 2.2em;
+    color: #FFFFFF;
+    padding-right: 53px;
+    padding-left: 53px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+}
+
+/**********************************************************/
+/*       Styles for the Forgot Password content          */
+/********************************************************/
+.leon-username .text-leon-username {
+    background: #FFFFFF !important;
+    border: 1px solid #979797 !important;
+    border-radius: 30px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 28px !important;
+    padding-left: 28px !important;
+    width: 8em !important;
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    color: #A8A8A8 !important;
+    text-align: center !important;
+    display: inline !important;
+    box-sizing: initial !important;
+}
+
+.button-leon-options {
+    background: #FFA202;
+    border-radius: 15px;
+    font-family: Montserrat;
+    font-size: 1.8em;
+    color: #FFFFFF;
+    padding-right: 35px;
+    padding-left: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    border: none;
+}
+
+.button-bottom-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+}
+/*************************************************/
+/*       Styles for leon assessment form        */
+/***********************************************/
+#container-pages {
+    min-height: 100vh;
+}
+.label-leon-assessment {
+    color:black;
+    font-weight:bold;
+    font-size:25px;
+    font-family:Arial;
+}
+
+.select-field-leon-assessment {
+    -webkit-appearance: none;
+    background: #fff url('../../mztimgs/custom-dropdown.png') no-repeat right center;
+    border: 1px solid #979797 !important;
+    border-radius: 30px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 28px !important;
+    padding-left: 28px !important;
+    width: 8em !important;
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    color: #A8A8A8 !important;
+    text-align: center !important;
+    display: inline !important;
+    box-sizing: initial !important;
+}
+
+.text-field-leon-assessment {
+    background: #FFFFFF !important;
+    border: 1px solid #979797 !important;
+    border-radius: 30px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 28px !important;
+    padding-left: 28px !important;
+    width: 8em !important;
+    font-family: Montserrat !important;
+    font-size: 24px !important;
+    color: #A8A8A8 !important;
+    text-align: center !important;
+    display: inline !important;
+    box-sizing: initial !important;
+}
+
+.button-leon-assessment {
+    background: #FFA202;
+    border-radius: 15px;
+    font-family: Montserrat;
+    font-size: 2.2em;
+    color: #FFFFFF;
+    padding-right: 53px;
+    padding-left: 53px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    z-index: 9;
+}
+
+.button-leon-directions-assessment {
+    background: #FFA202;
+    border-radius: 15px;
+    font-family: Montserrat;
+    font-size: 2.2em;
+    color: #FFFFFF;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    border: none;
+    z-index: 9;
+}
+
+.button-direction-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+}
+
+.button-direction-container-last {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
+
+.div-header-assassment {
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+}
+
+.i-information-assassment {
+    font-size:20px !important; 
+    cursor:pointer; 
+    color:#333333
+}
+
+
+.deep-green {
+    width:100%;
+    height:85px;
+    margin:0px;
+    background-color: rgba(0,  141,  50,  0.3);
+    -webkit-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    -moz-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    -o-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    -ms-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    transition: width 500ms ease-in-out, height 500ms ease-in-out;
+}
+.deep-green-shown {
+    height:140px !important;
+}
+.iluminationText1 {
+    color:white;
+    text-align:center;
+    font-size:14px;
+    margin:0px 0px 0px 0px;
+    font-weight:bold;
+    -webkit-transition:opacity 500ms;
+    -moz-transition:opacity 500ms;
+    -o-transition:opacity 500ms;
+    -ms-transition:opacity 500ms;
+    transition:opacity 500ms; 
+    opacity:0;
+}
+.iluminationText1-shown {
+    opacity:1 !important;
+}
+.deep-blue {
+    width:100%;
+    height:85px;
+    margin:0px;
+    background-color: rgba(0,  0,  108,  0.3);
+    -webkit-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    -moz-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    -o-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    -ms-transition: width 500ms ease-in-out, height 500ms ease-in-out;
+    transition: width 500ms ease-in-out, height 500ms ease-in-out;
+}
+.deep-blue-shown {
+    height:140px !important;
+}
+.iluminationText2 {
+    color:white;
+    text-align:center;
+    font-size:14px;
+    margin:0px 0px 0px 0px;
+    font-weight:bold;
+    -webkit-transition:opacity 500ms;
+    -moz-transition:opacity 500ms;
+    -o-transition:opacity 500ms;
+    -ms-transition:opacity 500ms;
+    transition:opacity 500ms; 
+    opacity:0;
+}
+.iluminationText2-shown {
+    opacity:1 !important;
+}
+.deep-red {
+    width:100%;
+    height:85px;
+    margin:0px;
+    background-color: rgba(187,  0,  0,  0.3);
+    -webkit-transition: width 500ms ease-in-out, height 300ms ease-in-out;
+    -moz-transition: width 500ms ease-in-out, height 300ms ease-in-out;
+    -o-transition: width 500ms ease-in-out, height 300ms ease-in-out;
+    -ms-transition: width 500ms ease-in-out, height 300ms ease-in-out;
+    transition: width 500ms ease-in-out, height 300ms ease-in-out;
+}
+.deep-red-shown {
+    height:140px !important;
+}
+.iluminationText3 {
+    color:white;
+    text-align:center;
+    font-size:14px;
+    margin:0px 0px 0px 0px;
+    font-weight:bold;
+    -webkit-transition:opacity 600ms;
+    -moz-transition:opacity 600ms;
+    -o-transition:opacity 600ms;
+    -ms-transition:opacity 600ms;
+    transition:opacity 600ms; 
+    opacity:0;
+}
+.iluminationText3-shown {
+    opacity:1 !important;
+}
+
+.deep-green-leg {
+    width:100%;
+    height:125px;
+    margin:0px;
+    background-color: rgba(0,  141,  50,  0.3);
+}
+.deep-blue-leg {
+    width:100%;
+    height:125px;
+    margin:0px;
+    background-color: rgba(0,  0,  108,  0.3);
+}
+.deep-red-leg {
+    width:100%;
+    height:125px;
+    margin:0px;
+    background-color: rgba(187,  0,  0,  0.3);
+}
+
+.deep-green-shoulder {
+    width:100%;
+    height:105px;
+    margin:0px;
+    background-color: rgba(0,  141,  50,  0.3);
+}
+.deep-blue-shoulder {
+    width:100%;
+    height:105px;
+    margin:0px;
+    background-color: rgba(0,  0,  108,  0.3);
+}
+.deep-red-shoulder {
+    width:100%;
+    height:105px;
+    margin:0px;
+    background-color: rgba(187,  0,  0,  0.3);
+}
+
+.leg-text1 {
+    color:white;
+    text-align:center;
+    font-size:12px;
+    margin:0px 0px 0px 0px;
+    font-weight:bold;
+}
+.leg-text2 {
+    color:white;
+    text-align:center;
+    font-size:12px;
+    margin:0px 0px 0px 0px;
+    font-weight:bold;
+}
+.leg-text3 {
+    color:white;
+    text-align:center;
+    font-size:12px;
+    margin:0px 0px 0px 0px;
+    font-weight:bold;
+}
+.deep-squatL {
+    width:95px;
+    height:80px;
+    margin:0px 5px 0px 0px;
+}
+.deep-squatR {
+    width:65px;
+    height:80px;
+    margin:0px 20px 0px 5px;
+}
+.swiper-slide-hidden {
+    display:none;
+}
+/**************************************************/
+/*       Styles for leon assessment Score        */
+/************************************************/
+.percentile {
+    text-align: center;
+    color: #a8a8a8;
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    margin-right: 20px !important;
+    margin-top: 10px !important;
+}
+.label-name {
+    font-size: 18px;
+    color: #a8a8a8;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    margin-left: 18px !important;
+    margin-top: 10px !important;
+}
+.bar {
+    left: -2px !important;
+}
+.myProgress {
+    position: relative;
+    height: 50px !important;
+    background-color: white !important;
+    border: solid !important;
+    border-width: 1px !important;
+    border-color: #9e9e9e !important;
+    border-radius: 37px !important;
+}
+.bar-wrapper {
+    width: 100.0%;
+    left: 2px;
+}
+.score-chart {
+    width:200px;
+    height:200px;
+    border-radius:100%;
+    background-color:white;
+    margin: 20px 10px 20px 10px !important;
+}
+.score-percent {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 48px;
+    font-size: 48px;
+    color: #ffbe42;
+    font-weight: bold;
+}
+.score-avarage {
+    margin-top: -108px;
+    color: #a8a8a8;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.score-percent-main {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 22px;
+    font-size: 14px;
+    color: #A8A8A8;
+    font-weight: lighter;
+}
+.score-avarage-main {
+    margin-top: -98px;
+    color: #FFA202;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+.score-percent-item {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: -4px;
+    font-size: 8px;
+    color: #A8A8A8;
+    font-weight: lighter;
+}
+.score-avarage-item {
+    margin-top: -84px;
+    color: #FFA202;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+.score-fitness-content {
+    display:block;
+    justify-content:center;
+    align-items:center;
+    margin-top:5px;
+    margin-bottom:5px;
+    padding:0;
+}
+.score-user {
+    font-size:15px;
+    text-align: center;
+    margin-top:10px;
+}
+.score-message {
+    text-align: center;
+}
+.score-compare {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.score-compare a {
+    font-size:20px;
+    text-align: center;
+    margin-top:10px;
+}
+.score-size-container {
+    width: 318px;
+}
+.score-done {
+    text-align: center;
+}
+.score-assessment {
+    text-align: center;
+}
+.score-assessment p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    color: #a8a8a8;
+}
+.score-assessment-header p {
+    margin-top: 2px;
+    margin-bottom: 0px;
+    font-size: 22px;
+    text-align: center;
+    font-weight: bold;
+    color: #a8a8a8;
+}
+.progress-bar {
+    background-color: #fccf7f !important;
+}
+/**********************************************/
+/*   Styles for leon user daily questions    */
+/********************************************/
+.img-daylight {
+    width:245px;
+    height:245px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+/**********************************************************/
+/*       Styles for leon assessment Score Fitness        */
+/********************************************************/
+.label-name-description {
+    font-size: 10px;
+    font-weight: bold;
+    color: #a8a8a8;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    margin-left: 18px !important;
+    margin-top: 32px !important;
+}
+.my-progress-score {
+    height: 50px !important;
+    position: relative;
+    background-color: white !important;
+    border: solid !important;
+    border-width: 1px !important;
+    border-color: #9e9e9e !important;
+    border-radius: 37px !important;
+}
+.button-leon-back-score {
+    text-align:center; 
+    padding-top: 40px;
+}
+
+/*****************************************/
+/*    Media Queries for web browser     */
+/***************************************/

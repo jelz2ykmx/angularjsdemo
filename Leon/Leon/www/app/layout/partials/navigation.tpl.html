@@ -1,0 +1,158 @@
+
+
+
+<aside id="left-panel" style="background:none; background-color:white;">
+
+    <!-- User info -->
+    <!--
+    <div login-info></div>
+    <!-- end user info -->
+
+    <nav style="background:none;background-color:white;">
+        <!-- NOTE: Notice the gaps after each icon usage <i></i>..
+        Please note that these links work a bit different than
+        traditional href="" links. See documentation for details.
+        -->
+
+        <ul data-smart-menu style="background:none;background-color:white;">
+
+            <!-- mzt -->
+
+            <li data-menu-collapse>
+                <a ng-click="ocultarMenus(true)" data-ui-sref="app.dashboard" title="{{getWord('Home')}}">
+                    <i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">{{getWord('Home')}}</span>
+                </a>
+            </li>
+
+            <li data-menu-collapse>
+                <a ng-click="ocultarMenus(true)" data-ui-sref="app.form.mztLeonValidicPoints" title="{{getWord('Points')}}">
+                    <i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">{{getWord('Points')}}</span>
+                </a>
+                <!--
+                <a ng-click="ocultarMenus(true)" data-ui-sref="app.form.mztLeonValidicPointsAds" title="{{getWord('ADS')}}">
+                    <i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">{{getWord('ADS')}}</span>
+                </a>
+                    -->
+            </li>
+            
+            <li data-menu-collapse>
+                <a href="#" title="{{getWord('Company')}}" ng-hide="companyRole">
+                    <i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">{{getWord('Company')}}</span>
+                </a>
+                <ul style="background-color:white;">
+                    <li data-ui-sref-active="active">
+                        <a ng-click="ocultarMenus()" data-ui-sref="app.form.mztCompanyUsers"
+                           style="background-color:white;color:gray !important">{{getWord('Users')}}</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a ng-click="ocultarMenus()" data-ui-sref="app.form.mztCompanyUsersAssessments"
+                           style="background-color:white;color:gray !important">{{getWord('Assesments')}}</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li data-menu-collapse>
+                <a ng-click="ocultarMenus(true)" ng-hide="userRole" data-ui-sref="app.form.mztLeonUserDailyQuestions" title="{{getWord('Questionary')}}">
+                    <i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">{{getWord('Questionary')}}</span>
+                </a>
+            </li>
+
+            <li data-menu-collapse>
+                <a ng-click="ocultarMenus(true)" ng-hide="userRole" data-ui-sref="app.form.mztLeonUserProfile" title="{{getWord('Profile')}}">
+                    <i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">{{getWord('Profile')}}</span>
+                </a>
+            </li>
+
+            <li data-menu-collapse>
+                <a ng-hide="providerRole" title="{{getWord('Assessments')}}">
+                    <i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">{{getWord('Assessments')}}</span>
+                </a>
+                <ul style="background:none;background-color:white;">
+                    <li data-ui-sref-active="active" >
+                        <a ng-click="ocultarMenus()" data-ui-sref="app.form.mztLeonProviderProfile"
+                           style="background-color:white;color:gray !important">{{getWord('Profile')}}</a>
+                    </li>
+                    <li >
+                        <a ng-click="ocultarMenus()" data-ui-sref="app.form.mztLeonQuestionsUser"
+                           style="background-color:white;color:gray !important">{{getWord('Assessments')}}</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li data-menu-collapse >
+                <a href="#" title="{{getWord('Leon')}}" ng-hide="adminRole">
+                    <i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">{{getWord('Leon')}}</span>
+                </a>
+                <ul style="background-color:white;">
+                    <li>
+                        <a ng-click="ocultarMenus()" data-ui-sref="app.form.mztLeonProviders" 
+                           style="background-color:white;color:gray !important">{{getWord('Clients')}}</a>
+                    </li>
+                    <li >
+                        <a ng-click="ocultarMenus()" data-ui-sref="app.form.mztLeonQuestionsUser"
+                           style="background-color:white;color:gray !important">{{getWord('Assessments')}}</a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li data-menu-collapse>
+                <a href="#" title="{{getWord('Validic')}}" ng-hide="adminRole">
+                    <i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">{{getWord('Validic')}}</span>
+                </a>
+                <ul style="background-color:white;">
+                    <li data-ui-sref-active="active" >
+                        <a ng-click="ocultarMenus()" data-ui-sref="app.form.mztLeonValidicRegister"
+                           style="background-color:white;color:gray !important">{{getWord('Register devices')}}</a>
+                    </li>
+                    <li data-ui-sref-active="active" >
+                        <a ng-click="ocultarMenus()" data-ui-sref="app.form.mztLeonValidicSteps"
+                           style="background-color:white;color:gray !important">{{getWord('Steps')}}</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a ng-click="ocultarMenus()" data-ui-sref="app.form.mztLeonValidicData"
+                           style="background-color:white;color:gray !important">{{getWord('Data')}}</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li data-menu-collapse  ng-hide="roleLeonAdmin">
+                <a href="#" title="{{getWord('Modes')}}" >
+                    <i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">{{getWord('Modes')}}</span>
+                </a>
+                <ul style="background-color:white;">
+                    <li data-ui-sref-active="active">
+                        <a ng-click="showBarBottomClient()" ng-hide="adminRole" style="background-color:white;color:gray !important">{{getWord('User')}}</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a ng-click="showBarBottomClient()" ng-hide="userRole" style="background-color:white;color:gray !important">{{getWord('Admin')}}</a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li data-menu-collapse>
+                <a ui-sref="login" title="Sign Out" data-action="userLogout" onclick="
+                   localStorage.removeItem('queryQuestionTempFactory');
+                   localStorage.removeItem('questionFactory');
+                   localStorage.removeItem('uTokenInfo');
+                   var $body = angular.element(document.body);
+                   var $rootScope = $body.injector().get('$rootScope');
+                   $rootScope.returnToState = undefined;">
+                    <i class="fa fa-sign-out"></i> <span class="menu-item-parent">{{getWord('Sign Out')}}</span>
+                </a>
+
+            </li>
+           
+        </ul>
+
+     
+      
+    </nav>
+   
+</aside>
+
+
+
+

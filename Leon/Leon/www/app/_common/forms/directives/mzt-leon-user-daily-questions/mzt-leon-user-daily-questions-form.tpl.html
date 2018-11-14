@@ -1,0 +1,134 @@
+﻿<div id="MainId">
+
+    <section ng-hide="hideDailyOption" >
+        <div class="div-header-assassment">
+            <label class="label-leon-assessment">Questionary {{datedone}}</label>
+        </div>
+        <div style="display:flex;justify-content:center;">
+            <img id="sunlight" class="img-daylight" ng-src="{{imgsunlight}}" ng-click="sunlightGo()" />
+            <img id="nightlight" class="img-daylight" ng-src="{{imgnightlight}}" ng-click="nightlightGo()" />
+        </div>
+    </section>
+
+    <div id="ContainerSunlightId" class="container" style="padding:0;" ng-hide="hideSunlight">
+        <!-- Swiper -->
+        <div class="swiper-container" id="swiper-container-sunlight">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <section id="sleep-id" class="page">
+                        <div class="div-header-assassment">
+                            <label class="label-leon-assessment">
+                                How did you sleep today? 
+                            </label>
+                        </div>
+                        <div class="button-container" style="display: flex; flex-direction:column;">
+                            <button id="sleep1" ng-click="setSleeping($event, 1); slidePageForward();" class="button-leon-assessment button-deactivated">Poor</button>
+                            <button id="sleep2" ng-click="setSleeping($event, 2); slidePageForward();" class="button-leon-assessment button-deactivated">Rested</button>
+                            <button id="sleep3" ng-click="setSleeping($event, 3); slidePageForward();" class="button-leon-assessment button-deactivated">Well Rested</button>
+                        </div>
+                        <div class="button-direction-container">
+                            <button class="button-leon-directions-assessment" ng-click="slidePageForward()"> next </button>
+                        </div>
+                    </section>
+                </div>
+                <div class="swiper-slide">
+                    <section id="mood-id" class="page">
+                        <div class="div-header-assassment">
+                            <label class="label-leon-assessment">
+                                What is your mood like?
+                            </label>
+                        </div>
+                        <div class="button-container" style="display: flex; flex-direction:column;">
+                            <button id="mood1" ng-click="setMoodlike($event, 1); slidePageForward();" class="button-leon-assessment button-deactivated">Bad</button>
+                            <button id="mood2" ng-click="setMoodlike($event, 2); slidePageForward();" class="button-leon-assessment button-deactivated">Ok</button>
+                            <button id="mood3" ng-click="setMoodlike($event, 3); slidePageForward();" class="button-leon-assessment button-deactivated">Great</button>
+                        </div>
+                        <div class="button-direction-container">
+                            <button class="button-leon-directions-assessment" ng-click="slidePageBackward()"> back </button>
+                            <button class="button-leon-directions-assessment" ng-click="slidePageForward()"> next </button>
+                        </div>
+                    </section>
+                </div>
+                <div class="swiper-slide">
+                    <section id="score-id" class="page">
+                        <div class="div-header-assassment">
+                            <label class="label-leon-assessment">
+                                How sore are you?
+                            </label>
+                        </div>
+                        <div class="button-container" style="display: flex; flex-direction:column;">
+                            <button id="sore1" ng-click="setSore($event, 1); slidePageForward();" class="button-leon-assessment button-deactivated">Not at all</button>
+                            <button id="sore2" ng-click="setSore($event, 2); slidePageForward();" class="button-leon-assessment button-deactivated">Some</button>
+                            <button id="sore3" ng-click="setSore($event, 3); slidePageForward();" class="button-leon-assessment button-deactivated">Very sore</button>
+                        </div>
+                        <div class="button-direction-container-last">
+                            <button class="button-leon-directions-assessment back" ng-click="slidePageBackward()"> back </button>
+                            <button class="button-leon-directions-assessment" style="display:block;" ng-click="doSave()"> Submit </button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ContainerNightlightId" class="container" style="padding:0;" ng-hide="hideNightlight">
+        <!-- Swiper -->
+        <div class="swiper-container" id="swiper-container-nightlight">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <section id="nutrition-id" class="page">
+                        <div class="div-header-assassment">
+                            <label class="label-leon-assessment">
+                                How was your nutrition today?
+                            </label>
+                        </div>
+                        <div class="button-container" style="display: flex; flex-direction:column;">
+                            <button id="nutrition1" ng-click="setNutrition($event, 1);" class="button-leon-assessment button-deactivated">Light</button>
+                            <button id="nutrition2" ng-click="setNutrition($event, 2);" class="button-leon-assessment button-deactivated">Medium </button>
+                            <button id="nutrition3" ng-click="setNutrition($event, 3);" class="button-leon-assessment button-deactivated">Heavy</button>
+                        </div>
+                        <div class="button-direction-container-last">
+                            <button class="button-leon-directions-assessment" ng-click="doSave()"> Submit </button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="Tooltip-Id" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                </div>
+                <div class="modal-body">
+                    <p> {{Message}} </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a id="idErrorMessage" href="#" data-toggle="modal" data-target="#dialogQueryTipoAgencia" style="visibility:hidden; width:0px; height:0px"></a>
+    </div>
+    <div class="modal fade" id="dialogQueryTipoAgencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <button id="botonCerrarCliente" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class='widget-header'><h4><i class='fa fa-warning'></i> Error</h4></div>
+                    </div>
+                    <p>
+                        <h4>{{errorMessage}}</h4>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

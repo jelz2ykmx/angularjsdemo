@@ -1,0 +1,930 @@
+/*@import url("AssessmentScore.css");*/
+
+/*
+@-webkit-viewport{
+  width: device-width;
+  height: 10px;
+}
+    */
+    
+.imgShouldeClearing {
+    width: 20vh;
+}
+
+.imgSpinalExtension {
+    width: 30vh;
+    padding-top: 5vh;
+}
+
+.imgsidebridge {
+    width: 50vh;
+    margin-top: 8vh;
+}
+
+.questionImageYesNo1 {
+    height:38vh !important;
+}
+
+.questionImageYesNo2 {
+    margin-bottom: 40vh !important;
+}
+
+.questionImageYesNo3 {
+    margin-top: 9vh !important;
+}
+
+.questionImageYesNo4 {
+    margin-bottom: 4vh !important;
+}
+
+.questionImageYesNo5 {
+    margin-top: 0vh !important;
+}
+   
+.cb_container {
+    margin-top: 0vh; 
+    margin-bottom: 0vh; 
+    width: 100%; 
+    height: 76vh;
+    /*margin-bottom: 15vh;*/
+    text-align: -webkit-center;
+    padding-right: 1.5vh;
+    padding-left: 1.5vh;
+    
+}
+
+.formAssessment {
+    margin-top: -4vh;
+}
+
+.swiper-container {
+       height:80vh !important;
+}
+
+.swiper-slide {
+    display:block !important;
+ 
+}
+
+.cb_container .cb_text {
+    font-size: 3vh;
+    margin: 0 0;
+}
+
+.cb_btn {
+    height: 8.5vh;
+    border-radius: 12px;
+    width:120px;
+}
+
+
+.cb_progress_bar_divider {
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    bottom: 70px;
+}
+
+.cb_progress_bar {
+    position: relative;
+    width: 100%;
+}
+/*
+.cb_progress_bar hr.cb_all_steps {
+    bottom: 1px;
+}
+
+.cb_progress_bar div.cb_step:before {
+    width: 12px;
+    height: 12px;
+    margin-left: -9px;
+}
+
+.cb_progress_bar div.cb_step:after {
+    width: 12px;
+    height: 12px;
+    bottom: 17px;
+    margin-left: -7px;
+}
+*/
+.divHeightWeight {
+    margin-top: 15%;
+}
+
+.cb_mzt_heart {
+    margin-top: 20% !important;
+    margin-bottom: 8% !important;
+    /*font-size: 3.2vh !important;*/
+}
+ 
+.cb_btn_stact_name {
+    margin-top: 1.5vh !important;
+    margin-left: 5vh !important;
+    text-align: left !important;
+ }
+
+.cb_btn_stact {
+    width: 90%;
+    display: flex;
+    /*font-size: 3.2vh;*/
+    color: #a5a5a5;
+    flex-direction: row;
+    margin: 0 16px;
+    margin-bottom: 16px;
+    line-height: 5vh;
+}
+
+.cb_btn_angina {
+    /*font-size: 4vh;*/
+    font-weight: bold;
+    width: 19.5vh;
+    color: white;
+    border: none;
+    margin-top: 7vh;
+    height: 8vh !important;
+}
+
+.cb_btn_input {
+    color: #a5a5a5;
+    border: solid;
+    border-width: 1px;
+}
+
+.cb_few_btns {
+    margin-top: 1.2vh;
+    width: 45vh;
+    font-size: 2.8vh;
+}
+
+.cb_few_btns_2 {
+    font-size: 3vh;
+}
+
+.mzt_p_angina {
+    position: absolute;
+    /*
+    margin-left: 1.5vh;
+    margin-right: 1.5vh;
+     */
+    bottom: 0vh;
+    width:100%
+
+}
+
+.cb_text_angina {
+    height: 40vh;
+    vertical-align: bottom;
+    position: relative;
+    /*font-size: 4vh !important;*/
+}
+
+.cb_mzt_divider {
+    width: 8%
+}
+
+.mzt_row {
+    flex-direction: row;
+    display: flex; 
+}
+
+
+
+/*age*/
+.cb_mzt_age_header {
+    margin-top: 18vh;
+}
+
+.cb_mzt_age_content {
+    width: 6vh;
+}
+
+.cb_img {
+    width: 11vh;
+    height: 16vh;
+}
+
+/*lifestyle 1*/
+.cb_mzt_lf1_header{
+    font-size: 3.4vh !important;
+    margin-top: 2vh !important;
+}
+
+.cb_mzt_div_lf2 {
+    margin-top: 10vh;
+}
+
+.cb_mzt_lf2_Content {
+    margin-top: 10vh;
+}
+
+.cb_mzt_lf2_header{
+    font-size: 3.8vh !important;
+    color: #a5a5a5;
+}
+
+.cb_flex_center{
+    justify-content: center;
+}
+
+.cb_mzt_gender_header {
+    margin-bottom: 5vh;
+    width: 100%;
+    margin-left: 0%;
+    font-size: 3.4vh;
+}
+
+/*life 3*/
+.cb_mzt_div_lf3 {
+    margin-top: 2vh !important; 
+}
+
+.cb_mzt_dev_lf3_text {
+    font-size: 3.6vh !important;
+    font-weight: normal !important;
+}
+
+.cb_mzt_div_lf3_btns {
+    margin-top: 4vh;
+}
+
+.cb_btn.cb_full {
+    border: none;
+    color: white;
+}
+
+.cb_btn_mzt_lf4 {
+    height: 7.5vh;
+}
+
+
+.cb_btn_mzt_lf5 {
+    height: 7.5vh;
+    border: none;
+    color: white;
+    font-size: 3.6vh;
+    width: 18vh;
+}
+
+.cb_texto_lifesstyle_5 {
+    font-size: 3.6vh !important;
+    width: 90% !important;
+    margin-left: 3vh !important
+}
+
+.cb_mzt_div_lf5 {
+    margin-top: 15vh;
+}
+
+.cb_mzt_div_lf5_btns {
+    margin-top: 7vh;
+}
+
+.cb_mszt_div_lf5_between {
+    width: 5vh;
+}
+
+.cb_mzt_dev_lf6_text {
+    font-size: 4vh !important;
+    font-weight: normal !important;
+}
+
+.cb_text_small {
+    font-size: 2.3vh;
+    color: #c3c3c3;
+    margin-top: 8vh;
+}
+
+.cb_mzt_dev_lf6_text {
+    font-size: 3.6vh !important;
+    font-weight: normal !important;
+    height: 5vh;
+    margin-bottom: 7vh;
+}
+
+.cb_mzt_div_lf7_btns {
+    margin-top: 14vh;
+}
+
+.cb_mzt_adjust {
+    width: 98%;
+    margin: 0px;
+}
+
+.cb_mzt_text_small {
+    font-size: 2.1vh;
+    margin-top: 0vh;
+    width: 98%;
+    color: #a5a5a5;
+}
+
+.cb_mzt_btn2 {
+   width: 11.5vh;
+    height: 8vh;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    font-size: 3.5vh;
+    font-weight: bolder;
+}
+
+.cb_img_m {
+    margin: 0;
+    height: 13.5vh;
+}
+
+.cb_img_mzt_upper {
+    width: 14vh;
+}
+
+.cb_img_m_mzt {
+    width: 20vh;
+}
+.cb_mzt_shoulder {
+    margin-bottom: 7vh;
+}
+
+.cb_mzt_text_small_shoulder {
+    font-size: 2.1vh;
+    margin-top: 1vh;
+}
+
+.cb_margin_contener_performance_cooper {
+    font-size: 2.4vh;
+    width: 93%;
+    margin-left: 10px !important;
+    font-size: 2.7vh;
+    margin-top: 7vh;
+}
+
+.cb_title_button_performance_cooper {
+    width: 165px !important;
+    margin-top: 6vh;
+    font-size: 3.3vh;
+}
+
+.cb_text_medium {
+    color: #a5a5a5;
+    text-align: center;
+    font-size: 2.5vh;
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 2vh;
+}
+
+.cb_mzt_mb_btn {
+    margin-top: 6vh;
+    font-size: 4vh;
+    width: 18vh;
+}
+
+.cb_mzt_shoulder_pain_text {
+    margin-top: 15vh !important;
+    font-size: 3.7vh !important;
+}
+
+.cb_mzt_shoulder_pain_text_inside {
+    margin-top: 4vh;
+}
+
+.cb_mzt_shoulder_pain_bnts {
+    margin-top: 10vh;
+}
+
+.cb_mzt_shoulder_pain_bnt {
+    color: white;
+    border: none;
+    width: 19vh;
+    font-size: 4vh;
+}
+
+.cb_mzt_shoulder_pain_div_btns {
+    width:4vh;
+}
+
+.cb_mzt_spinal_text {
+    width: 80%;
+    margin-left: 11% !important;
+}
+
+
+.cb_mzt_fitnes_btns {
+    margin-top: 10vh;
+}
+
+.cb_mzt_fitnes_btn {
+    height: 7.8vh;
+    margin-bottom: 2.8vh;
+}
+
+.cb_mzt_fitnes_btn_inside {
+    width: 48vh;
+    font-size: 3.5vh;
+}
+
+.cb_mzt_organized_text {
+    margin-top: 8vh !important;
+}
+
+.cb_mzt_organized_bnts {
+    margin-top: 3vh;
+}
+
+.cb_mzt_planning_text {
+    margin-top: 12vh !important;
+}
+
+.cb_mzt_planning_bnts {
+    margin-top: 7vh;
+}
+.cb_mzt_push_text {
+    font-size: 2.7vh;
+}
+
+.cb_mzt_push_modified_text {
+    margin-left: 7vh;
+    margin-bottom: 2.5vh;
+    font-size: 3vh;
+}
+
+
+.cb_toggleWrapper {
+    margin-left: 7vh;
+}
+   
+.cb_toggle__handler {
+    margin-left: -46px;
+}
+
+.cb_toggle {
+    height: 34px;
+    width: 80px;
+}
+.cb_toggle:before {
+    content: "No";
+    left: 8px;
+    margin-top: -3px;
+}
+
+.cb_toggle:after {
+   content: "Yes";
+   right: 6px;
+   margin-top: -3px;
+}
+
+input:checked+.cb_toggle:before {
+    color: #a5a5a5;
+}
+
+.cb_mzt_push_btn {
+    font-size: 4vh;
+    width: 35vh;
+}
+
+.cb_mzt_push_div_men {
+    margin-top: 5vh;
+}
+
+.cb_progress_bar hr.cb_border {
+    bottom: .5px;
+}
+
+.cb_progress_bar hr.cb_all_steps {
+    bottom: 1.5px;
+    background: #f7f2f2;
+}
+
+.cb_progress_bar div.cb_step:after {
+    width: 13px;
+    height: 13px;
+    background: #f7f2f2;
+    bottom: 15px;
+}
+
+.cb_progress_bar div.cb_step:before {
+    width: 9px;
+    height: 9px;
+    background: #ffa202;
+    bottom: 17px;
+    left: 50%;
+    margin-left: -6px;
+}
+
+.cb_progress_bar hr.cb_current_steps {
+    bottom: 2px;
+}
+
+.cb_btn_mzt_birthday {
+    display: inline;
+    margin: -1px;
+    color:#a5a5a5;
+    background:white !important;
+    margin-left: 0px !important;
+    margin-right:0px !important;
+}
+
+.cb_btn_mzt_birthday_btns {
+    padding-bottom: 1.5vh;
+    padding-top: 1.5vh;
+    padding-left: .5vh;
+    padding-right: .5vh;
+    border-radius: 0px;
+}
+
+.cb_btn_mzt_birthday_btns2 {
+    padding-left: 3vh;
+    padding-right: 3vh;
+}
+
+.cb_btn_mzt_birthday_btns_fisrt {
+    border-radius: 10px 0 0 10px;
+}
+
+.cb_btn_mzt_birthday_btns_last {
+    border-radius: 0 10px 10px 0;
+}
+    
+
+.cb_mzt_birthday {
+    font-size: 3.2vh;
+    margin-top: 2vh;
+}
+
+
+.cb_mzt_birthday_text_up {
+    margin-left: 11vh;
+    width: 60%;
+    margin-top: 5vh;
+}
+
+.cb_mzt_birthday_text_medium {
+    margin-top: 18vh;
+}
+
+.cb_mzt_birthday_input {
+    position: absolute;
+    display: block;
+    margin-top: -7.5vh;
+    margin-left: 4.1vh;
+    width: 48vh;
+    height: 8vh;
+    z-index: 999;
+    opacity: 0;
+}
+
+.cb_mzt_waist_text {
+    font-size: 2.6vh !important;
+    width: 80% !important;
+    margin-left: 5.5vh !important;
+}
+
+.cb_mzt_waist_div_btns {
+    margin-top: 5vh;
+}
+  
+.cb_mzt_waist_text_btns {
+    margin-top: 5%;
+}
+
+.cb_mzt_waist_btns {
+    height: 7vh;
+    width: 17vh;
+}
+
+.cb_mzt_sys_dia {
+    font-size: 3.5vh !important;
+}    
+
+.mzt_text_final{
+  font-size: 3.2vh;
+  color: #a5a5a5;
+}
+
+.mzt_textbox_final {
+    font-size: 2.5vh;
+    width: 90%;
+    border-radius: 10px;
+    height: 6vh;
+    padding: 1vh;
+    border-width: 1px !important;
+    border-style: solid;
+    border-color: #a9a9a9;
+    color: #8e8e8e;
+}
+
+.mzt_btn_submit {
+    margin-top: 5vh;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: #8e8e8e ;
+}
+
+.mzt_sidebridge_back_counter {
+    position: absolute;
+    /* height: 5vh; */
+    width: 100%;
+    margin-top: 0vh;
+    
+}
+
+.mzt_sidebridge_front_counter  {
+    width: 22vh !important;
+    height: 22vh!important;
+    border-radius: 100%;
+    background-color: white;
+    border: 4px solid #FFA202!important;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: -.5vh;
+    margin-right: 0px;
+}
+
+.mzt_sidebridge_counter_center {
+    /*margin-top: -12vh; */
+    font-size: 8vh;
+    color: #a5a5a5;
+    font-weight: bolder;
+    width: 18vh;
+    /* margin-left: 20.5vh; */
+    z-index: 101;
+    position: absolute;
+    margin-top: 5.5vh !important;
+    /* width: 100%; */
+    margin-left: -9.1vh;
+}
+
+.mzt_sidebridge_start_counter {
+    width: 8vh !important;
+    height: 8vh!important;
+    border-radius: 100%;
+    background-color: red;
+    border: 2px solid #a5a5a5!important;
+    margin-top: 7.2vh;
+    margin-left: 13vh; 
+    position: absolute;
+}
+
+.mzt_sidebridge_start_text {
+    margin-top: 9.7vh;
+    /* display: flex; */
+    margin-left: 14.7vh;
+    color: white;
+    font-size: 2vh;
+    position: absolute;
+    z-index: 102;
+}
+
+.mzt_sidebridge_btns {
+    background: white;
+    color: #a5a5a5;
+    border-color: #a5a5a5;
+    border-style: solid;
+    height: 6vh;
+}
+
+.mzt_sidebridge_counter_text {
+    width: 0px;
+    height: 0vh;
+    /*margin-left: 23vh;*/
+    opacity: 0;
+    position:absolute;
+}
+
+.mzt_complete_header {
+    font-size: 3.5vh;
+}
+
+.mzt_complate_body {
+    font-size: 2.7vh;
+    margin-top: 10vh;
+}
+
+.mzt_complete_btn {
+    background-color: #ffa202!important;
+    width: 30vh !important;
+}
+
+.cb_mzt_calendar {
+    margin-top: 0vh;
+}
+
+.cb_mzt_calendartext {
+    font-size: 3vh !important;
+    text-align: center;
+    color: #a5a5a5;
+}
+
+.cb_mzt_div_calendar_toggle {
+    margin-top: 1vh;
+   
+}
+
+.cb_text_small_calendar {
+    margin-top: 4vh;
+}
+
+.cb_mzt_calendarweek tbody td {
+    width: 10vh;
+}
+
+.borderright {
+    border-right: none !important;
+}
+
+.borderrightleft {
+    border-right: none !important;
+    border-left: none !important;
+}
+
+.borderleft {
+   border-left: none !important;
+}
+
+.borderbottom {
+   border-bottom: none !important;
+}
+
+.divtotalweek {
+    text-align: center;
+    font-size: 2vh;
+    margin-top: 1.5vh;
+}
+
+.divtotalweekday {
+    text-align: center;
+    font-size: 1.7vh;
+    margin-top: .25vh;
+}
+
+.cb_calendar_contain {
+    background: none;
+}
+
+.cb_calendar {
+    background: white;
+}
+
+.cb_day {
+    background: #FAFEFE;
+}
+
+.lastroweek {
+    background: #FAFEFE;
+}
+
+.cb_calendar_control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2.5vh;
+}
+
+.cb_month {
+    margin-left: 3vh;
+    margin-right: 3vh;
+}
+
+.maz_calendartoggle {
+    height: 5vh !important;
+}
+
+.mzt_points_Month_Week_Toggle .cb_toggle:after  {
+    margin-top: -1vh !important;
+}
+
+.mzt_points_Month_Week_Toggle .cb_toggle:before  {
+    margin-top: -1vh !important;
+}
+
+.mzt_pictures_Monthly_Activities {
+    text-align: center;
+}
+
+.mzt_miles_Monthly_Activities {
+    font-size: 1.5vh;
+    padding-left: .5vh;
+    padding-right: .5vh;
+    text-align: center;
+}
+
+.mzt_img_calendar_activities {
+    width: 2.5vh;
+    text-align: center;
+}
+
+.cb_day_num {
+    padding-right: .5vh;
+}
+
+
+.cellfitnessWeek{
+    text-align: center !important;
+    vertical-align: inherit !important;
+    font-size: 2vh !important;
+}
+
+.cellfitnessWeekImg{
+    font-size: 1.5vh !important;
+}
+
+.todayBoxFitnees {
+    width: auto;
+}
+
+/* push women checkbox toogle*/
+/*
+input:checked+.cb_toggle .cb_toggle__handler {
+   transform: translateX(8vh);
+}
+*/ 
+input:checked+#idPushWomenToggle #idPushWomenToggleHandler {
+   transform: translateX(8vh);
+}
+
+
+#idPushWomenToggleWrapper.cb_toggleWrapper {
+    margin-left: 7vh;
+}
+   
+#idPushWomenToggleHandler.cb_toggle__handler {
+    width: 6vh !important;
+    height: 6vh;
+    margin-left: -8vh;
+}
+
+#idPushWomenToggle.cb_toggle {
+    height: 6.2vh;
+    width: 14vh;
+}
+#idPushWomenToggle.cb_toggle:before {
+    content: "No";
+    left: 1.5vh;
+    font-size: 2vh;
+    line-height: 7vh;
+}
+
+#idPushWomenToggle.cb_toggle:after {
+   content: "Yes";
+   right: 1.2vh;
+   font-size: 2vh;
+   line-height: 7vh;
+}
+
+.modal-content {
+    color: #a5a5a5 !important;
+    font-size: 3vh !important;
+    background: white !important;
+}
+
+.modal-footer {
+    padding: 0px !important;
+    text-align: center !important;
+}
+
+.btn.btn-default {
+    color: #ffa202 !important;
+    font-size: 3vh !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    background-color: inherit;
+}
+
+/*  push women checkbox toogle*/
+
+@media screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+    .cb_toggleWrapper {
+        margin-left: 10vh;
+    }
+
+    .formAssessment {
+        margin-top: -2vh;
+    }
+}
+
+@media screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) {
+    .cb_toggleWrapper {
+         margin-left: 12vh;
+    }
+
+    .formAssessment {
+        margin-top: -2vh;
+    }
+}
+
+@media screen and (min-device-width : 768px) {
+    .formAssessment {
+        margin-top: 0vh;
+    }
+}
+
+

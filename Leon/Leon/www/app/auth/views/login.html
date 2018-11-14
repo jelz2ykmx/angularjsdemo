@@ -1,0 +1,393 @@
+<div ng-controller="loginController" style="font-family: TradeGothic, sans-serif;
+      position: absolute;
+      height:  100%;
+      width:  100%;
+      /*background-image: url('styles/mztimgs/fondo-blanco-web.jpg');*/
+      background-size: 100% 100%;
+      background-attachment:fixed;">
+    <div role="main">
+        <!--id="main"-->
+        <div id="content" class="container">
+            <div class="row" style="display:flex; justify-content:center;">
+                <div class="col-xs-11 col-sm-8 col-md-5 col-lg-4">
+                    <div class="no-padding" style="border-width: 0px; border-radius: 25px !important; background-color: transparent;">
+                        <form id="login-form" class="smart-form client-form" data-smart-validate-form>
+                            <!-- Login Initial Page -->
+                            <div ng-hide="initialPage">
+                                <fieldset style="border-radius: 25px !important;  padding-top: 0px; padding-left: 2px; margin-left: 0px; background-color: transparent; padding-right: 2px;">
+                                    <section class="login-main leon-logo">
+                                        <label class="leon-logo-label">Le<label class="leon-label-color">O</label>N</label>
+                                    </section>
+                                    <section style="justify-content: center; display: flex; padding-top: 5px;">
+                                        <label class="leon-health-label">#<label class="leon-label-color">O</label>wnYourHealth</label>
+                                    </section>
+                                    <footer class="leon-footer-register" style="border-radius: 25px !important; text-align: center; padding-bottom: 0px; border-top-width: 0px; background-color: transparent;">
+                                        <div class="row leon-not-registered">
+                                            <div class="col-sm-12">
+                                                <label class="leon-not-registered-label"> Not registered?</label>
+                                            </div>
+                                        </div>
+                                        <div class="row leon-register">
+                                            <div class="col-sm-12">
+                                                <button class="button-leon-register">Register</button>
+                                            </div>
+                                        </div>
+                                        <div class="row leon-have-account">
+                                            <div class="col-sm-12">
+                                                <label class="leon-have-account-label">Already have an account? <a ng-click="goToSignUp()" class="leon-label-color">Sign in</a></label>
+                                            </div>
+                                        </div>
+                                    </footer>
+                                </fieldset>
+                            </div>
+
+                            <!-- Sign in View -->
+                            <div ng-hide="hidelogin">
+                                <fieldset style="border-radius: 25px !important;  padding-top: 0px; padding-left: 2px; margin-left: 0px; background-color: transparent; padding-right: 2px;">
+                                    <section class="leon-section-logo">
+                                        <label class="leon-logo-label">Le<label class="leon-label-color">O</label>N</label>
+                                    </section>
+                                    <section class="leon-section-txt-email">
+                                        <label class="input" style="justify-content:center; display:flex;">
+                                            <input class="text-leon-email"
+                                                   placeholder="E-mail"
+                                                   type="email" name="email"
+                                                   data-ng-model="loginData.userName"
+                                                   data-smart-validate-input
+                                                   data-required
+                                                   data-email
+                                                   data-message-required="Please enter your email address"
+                                                   data-message-email="Please enter a VALID email address">
+                                            <b class="tooltip tooltip-top-right">
+                                                <i class="fa fa-user txt-color-teal"></i>
+                                                Please enter email address/username
+                                            </b>
+                                        </label>
+                                    </section>
+                                    <br />
+                                    <section style="margin-bottom: 0px;">
+                                        <label class="input" style="justify-content:center; display:flex;">
+                                            <input class="text-leon-password"
+                                                   placeholder="Password"
+                                                   type="password" name="password"
+                                                   data-ng-model="loginData.password"
+                                                   data-smart-validate-input
+                                                   data-required
+                                                   data-minlength="3"
+                                                   data-maxnlength="20"
+                                                   data-message="Please enter your email password">
+                                            <b class="tooltip tooltip-top-right">
+                                                <i class="fa fa-lock txt-color-teal"></i> Enter
+                                                your password
+                                            </b>
+                                        </label>
+                                    </section>
+                                </fieldset>
+
+                                <footer class="leon-footer-login" style="border-radius: 25px !important; text-align: center; padding-bottom: 0px; border-top-width: 0px; background-color: transparent;">
+                                    <div>
+                                        <button class="button-leon-login" ng-click="login()">Login</button>
+                                    </div>
+
+                                    <div class="row leon-forgot-password">
+                                        <div class="col-sm-12">
+                                            <label ng-click="forgotPassword()" class="leon-have-account-label">Forgot your <label ng-click="forgotPassword()" class="leon-label-color">password</label>?</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row leon-or">
+                                        <div class="col-xs-5">
+                                            <hr class="leon-separator">
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <label class="leon-or-label">or</label>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <hr class="leon-separator">
+                                        </div>
+                                    </div>
+                                    <div class="row leon-social">
+                                        <div class="col-xs-5">
+                                          <!--  <fb:login-button show-faces="true" max-rows="1" size="large" hidden="hidden"></fb:login-button>-->
+                                            <img class="fb_login" src="styles/css/goleon/facebook-icon.png" />
+                                        </div>
+                                        <div class="col-xs-2">
+
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <!--<span id="googleSignIn">
+                                                <span id="signInButton">
+                                                </span>
+                                            </span>-->
+                                            <img id="googleSignInImg" class="Google_login" src="styles/css/goleon/google-icon.png" /> 
+                                        </div>
+                                    </div>
+
+                                    <!--<div style="margin-top:20px">
+                                        <input class="fb_login" type="image" style="width:40px;height:40px;" src="styles/mztimgs/fb.png" />
+                                    </div>-->
+                                </footer>
+                                
+                            </div>
+
+                            <!-- Login Forgot Password -->
+                            <div ng-hide="hideForgotPassword" style="height: 100vh;">
+                                <section class="leon-section-logo">
+                                    <label class="leon-logo-label">Le<label class="leon-label-color">O</label>N</label>
+                                </section>
+                                <section class="leon-section-txt-email">
+                                    <label class="input" style="justify-content:center; display:flex;">
+                                        <input class="text-leon-email" 
+                                               placeholder="E-mail"
+                                               type="text" name="emailForgotPassword"
+                                               ng-model="emailForgotPassword" 
+                                               data-smart-validate-input
+                                               data-required
+                                               data-email
+                                               data-message-required="Please enter your email address"
+                                               data-message-email="Please enter a VALID email address">
+                                        <b class="tooltip tooltip-top-right">
+                                            <i class="fa fa-user txt-color-teal"></i>
+                                            Please enter email address/username
+                                        </b>
+                                    </label>
+                                </section>
+                                <fieldset style="border-radius: 25px !important;  padding-top: 0px; padding-left: 2px; margin-left: 0px; background-color: transparent;">
+                                    <section>
+                                        <div id="emailForgotPassword" style="margin:0px 0px 0px 5px;font-size:18px;text-align:center;font-weight:bold;">
+                                            Enter your e-mail address. When you click the submit button a generated recovery code will be sent to the e-mail address on record for your account.
+                                        </div>
+                                    </section>
+                                    <br />
+                                </fieldset>
+                                <footer style="border-radius: 25px !important; text-align: center; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; background-color: transparent;">
+                                    <div class="button-bottom-container">
+                                        <button type="button" class="button-leon-options" ng-click="doForgotPassword()">
+                                            <b >Submit</b>
+                                        </button>
+                                        <button type="button" class="button-leon-options" ng-click="backForgotPassword()">
+                                            <b >Back</b>
+                                        </button>
+                                    </div>
+                                </footer>
+                            </div>
+
+                            <!-- Login Associate Email -->
+                            <div ng-hide="hideAssociatedEmail" style="height: 100vh;">
+                                <section class="leon-section-logo">
+                                    <label class="leon-logo-label">Le<label class="leon-label-color">O</label>N</label>
+                                </section>
+                                <fieldset style="border-radius: 25px !important;  padding-top: 0px; padding-left: 2px; margin-left: 0px; background-color: transparent;">
+                                    <section>
+                                        <div id="emailForgotPassword" style="margin:0px 0px 0px 5px;font-size:18px;text-align:center;font-weight:bold;">
+                                            Associate this account.
+                                        </div>
+                                    </section>
+                                </fieldset>
+                                    
+                                <section class="leon-section-txt-email">
+                                    <label class="input" style="justify-content:center; display:flex;">
+                                        <input class="text-leon-email"
+                                                placeholder="E-mail"
+                                                type="text" ng-model="emailForgotPassword" name="emailForgotPassword"
+                                                data-smart-validate-input
+                                                data-required
+                                                data-message-required="Please enter your email address"
+                                                data-message-email="Please enter a VALID email address">
+                                        <b class="tooltip tooltip-top-right">
+                                            <i class="fa fa-user txt-color-teal"></i>
+                                            Please enter email address/username
+                                        </b>
+                                    </label>
+                                </section>
+                                
+                                <footer style="border-radius: 25px !important; text-align: center; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; background-color: transparent;">
+                                    <div class="button-bottom-container">
+                                        <button type="button" class="button-leon-options" ng-click="clickExternalLogin()">
+                                            <b >Register</b>
+                                        </button>
+                                        <button type="button" class="button-leon-options" ng-click="backForgotPassword()">
+                                            <b >Back</b>
+                                        </button>
+                                    </div>
+                                </footer>
+                            </div>
+
+                            <!-- Modal dialogs-->
+
+                            <div ng-hide="hideGUID">
+                                <fieldset style="border-radius: 25px !important;  padding-top: 0px; padding-left: 2px; margin-left: 0px; background-color: transparent;">
+                                    <section>
+
+                                        <div id="email" style="margin:0px 0px 0px 5px;font-size:18px;text-align:center;font-weight:bold;">New password</div>
+                                        <label class="input">
+                                            <input class="inputsLogin" style="border-color: #FFF; height:43px; letter-spacing: 3px; border-radius: 10px; font-size: 16px;"
+                                                   type="password" ng-model="recoverForgotPassword" name="emailForgotPassword"
+                                                   data-smart-validate-input
+                                                   data-required />
+                                        </label>
+                                    </section>
+                                    <section>
+                                        <div id="email" style="margin:0px 0px 0px 5px;font-size:18px;text-align:center;font-weight:bold;">Password confirm</div>
+                                        <label class="input">
+                                            <input class="inputsLogin" style="border-color: #FFF; height:43px; letter-spacing: 3px; border-radius: 10px; font-size: 16px;"
+                                                   type="password" ng-model="recoverForgotPasswordConfirm" name="emailForgotPassword"
+                                                   data-smart-validate-input
+                                                   data-required />
+                                        </label>
+                                    </section>
+                                    <section>
+                                        <div id="email" style="margin:0px 0px 0px 5px;font-size:18px;text-align:center;font-weight:bold;">Recovery code</div>
+                                        <label class="input">
+                                            <input class="inputsLogin" style="border-color: #FFF; height:43px; letter-spacing: 3px; border-radius: 10px; font-size: 16px;"
+                                                   type="password" ng-model="recoverCode" name="emailForgotPassword"
+                                                   data-smart-validate-input
+                                                   data-required />
+                                        </label>
+                                    </section>
+                                    <br />
+                                </fieldset>
+                                <footer style="border-radius: 25px !important; text-align: center; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; background-color: transparent;">
+                                    <div>
+                                        <button style="border: none; width: 100px; height: 40px; color: #000; border-color: #FFF; border-radius: 8px; background-color: #FFA202" type="button" class="btn-primary" ng-click="doChangeNewPassword()">
+                                            <b style="font-size: 25px;">Submit</b>
+                                        </button>
+                                        <button style="border: none; width: 100px; height: 40px; color: #000; border-color: #FFF; border-radius: 8px; background-color: #FFA202" type="button" class="btn-primary" ng-click="backRecover()">
+                                            <b style="font-size: 25px;">Back</b>
+                                        </button>
+                                    </div>
+                                </footer>
+                            </div>
+
+                            <div ng-hide="hideMagicLink">
+                                <fieldset style="border-radius: 25px !important;  padding-top: 0px; padding-left: 2px; margin-left: 0px; background-color: transparent;">
+                                    <section>
+                                        <div style="margin:0px 0px 0px 5px;font-size:18px;text-align:center;font-weight:bold;">
+                                            Check your email
+                                        </div>
+                                        <div style="margin:0px 0px 0px 5px;font-size:18px;text-align:center;font-weight:bold;">
+                                            We send email to you.
+                                        </div>
+                                        <div style="margin:0px 0px 0px 5px;font-size:18px;text-align:center;font-weight:bold;">
+                                            It has a magic link that'll sing you in.
+                                        </div>
+                                    </section>
+                                    <br />
+                                </fieldset>
+                                <footer style="border-radius: 25px !important; text-align: center; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; background-color: transparent;">
+                                    <div>
+                                        <button style="border: none; width: 100px; height: 40px; color: #000; border-color: #FFF; border-radius: 8px; background-color: #FFA202" type="button" class="btn-primary" ng-click="backForgotPassword()">
+                                            <b style="font-size: 25px;">Back</b>
+                                        </button>
+                                    </div>
+                                </footer>
+                            </div>
+
+                            <div ng-hide="hidemNewVersion">
+                                <header>
+                                    <h4>Info</h4>
+                                </header>
+                                <section>
+                                    <br />
+                                    <h4> New version have been released!</h4>
+                                    <br />
+                                    <h4> Push continue button to get it!</h4>
+                                </section>
+                                <footer>
+                                    <button type="button" class="btn btn-primary" ng-click="UpdateVersion()">
+                                        Continue
+                                    </button>
+                                </footer>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a id="openCodeInvalid" href="#" data-toggle="modal" data-target="#dialogCodeInvalid" style="visibility:hidden; width:0px; height:0px"></a>
+    </div>
+    <div class="modal fade" id="dialogCodeInvalid" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <label>Recover code is not valid</label>
+                </div>
+                <div class="modal-footer">
+                    <div data-dialog-buttons>
+                        <button class="btn" data-dismiss="modal" style="background-color: rgba(255,  162,  2,  1);color:white;">Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a id="errorMessage" href="#" data-toggle="modal" data-target="#dialog_simple" style="visibility:hidden; width:0px; height:0px"></a>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="dialog_simple" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class='widget-header'><h4><i class='fa fa-warning'></i> Error</h4></div>
+                </div>
+                <div class="modal-body">
+                    <p> {{errorMessage}} </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a id="errorMessage" href="#" data-toggle="modal" data-target="#dialog_simple" style="visibility:hidden; width:0px; height:0px"></a>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="dialog_simple" style="justify-content: center;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class='widget-header'><h4><i class='fa fa-warning'></i> Error</h4></div>
+                </div>
+                <div class="modal-body">
+                    <p> {{errorMessage}} </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dialog" style="background-color:white">
+        <img src="styles/mztimgs/progress2.gif" style="padding-left:13px;">
+    </div>
+
+    <div>
+        <a id="passwordChanged" href="#" data-toggle="modal" data-target="#modalPasswordChanged" style="visibility:hidden; width:0px; height:0px"></a>
+    </div>
+    <div class="modal fade" id="modalPasswordChanged" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <label>Password changed</label>
+                </div>
+                <div class="modal-footer">
+                    <div data-dialog-buttons>
+                        <button class="btn" data-dismiss="modal" style="background-color: rgba(255,  162,  2,  1);color:white;">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

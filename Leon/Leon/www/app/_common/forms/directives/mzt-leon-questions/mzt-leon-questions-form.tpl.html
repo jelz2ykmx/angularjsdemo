@@ -1,0 +1,989 @@
+
+<form id="formQuestions" class="smart-form client-form" style="background:inherit">
+
+    <section ng-hide="hideScoreQ">
+        <div style="text-align:center;">
+            <button class="btn" ng-click="goradioScoreQ(0)" style="padding:5px 5px 5px 5px;font-size:30px;font-weight:bold;border:none;border-radius:5px;margin: 50px;background-color: rgba(255,  162,  2,  1);color:white;">Assessment</button>
+        </div>
+        <div style="text-align:center;">
+            <button class="btn" ng-click="goradioScoreQ(1)" style="padding:5px 5px 5px 5px;font-size:30px;font-weight:bold;border:none;border-radius:5px;background-color: rgba(255,  162,  2,  1);color:white;">Score</button>
+        </div>
+        <div style="text-align:center;" ng-hide="assessmentdeleted">
+            <button class="btn" ng-click="modalDelete()" style="padding:5px 5px 5px 5px;font-size:30px;font-weight:bold;border:none;border-radius:5px;margin-top: 50px;background-color: rgba(255,  162,  2,  1);color:white;">Delete</button>
+        </div>
+        <div style="text-align:center;" ng-hide="assessmentecover">
+            <button class="btn" ng-click="modalRecover()" style="padding:5px 5px 5px 5px;font-size:30px;font-weight:bold;border:none;border-radius:5px;margin-top: 50px;background-color: rgba(255,  162,  2,  1);color:white;">Recover</button>
+        </div>
+    </section>
+
+
+    <section ng-hide="hidepoints">
+
+        <div style="display:flex;justify-content:center;align-items:center;">
+            <span class="chart rotate" data-percent="0" style="width:250px;height:250px;border-radius:100%;background-color:rgba(255,  162,  2,  0.4);margin-top:40px;">
+                <span class="percent rotateScore" style="display:flex;justify-content:center;align-content:center;margin-top:75px;font-size:100px;color:white;font-weight:bold;">
+                </span>
+                <span ng-hide="scoreAnimated">
+                    <p style="margin-top:-130px;color:white;font-size:15px;text-align:center;" class="rotate">{{avarage}} Percentile</p>
+                </span>
+            </span>
+
+        </div>
+
+        <div class="row" ng-hide="scoreAnimated">
+            <div style="display:block;justify-content:center;align-items:center;margin-top:5px;margin-bottom:5px;" class="col-lg-4"></div>
+            <div style="display:block;justify-content:center;align-items:center;margin-top:5px;margin-bottom:5px;" class="col-lg-4">
+                <div class="myProgress progress">
+                    <div class="label-name">Fitness</div>
+                    <div id="percentile-fitness" class="percentile">10th</div>
+                    <div id="bar-fitness" class="progress-bar" role="progressbar" aria-valuenow="70"
+                         aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-hide="scoreAnimated">
+            <div style="display:block;justify-content:center;align-items:center;margin-top:5px;margin-bottom:5px;" class="col-lg-4"></div>
+            <div style="display:block;justify-content:center;align-items:center;margin-top:5px;margin-bottom:5px;" class="col-lg-4">
+                <div class="myProgress progress">
+                    <div class="label-name">Biometrics</div>
+                    <div id="percentile-biometrics" class="percentile">10th</div>
+                    <div id="bar-biometrics" class="progress-bar" role="progressbar" aria-valuenow="70"
+                         aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-hide="scoreAnimated">
+            <div style="display:block;justify-content:center;align-items:center;margin-top:5px;margin-bottom:5px;" class="col-lg-4"></div>
+            <div style="display:block;justify-content:center;align-items:center;margin-top:5px;margin-bottom:5px;" class="col-lg-4">
+                <div class="myProgress progress">
+                    <div class="label-name">Mobility</div>
+                    <div id="percentile-mobility" class="percentile">10th</div>
+                    <div id="bar-mobility" class="progress-bar" role="progressbar" aria-valuenow="70"
+                         aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-hide="scoreAnimated">
+            <div style="display:block;justify-content:center;align-items:center;margin-top:5px;margin-bottom:5px;" class="col-lg-4"></div>
+            <div style="display:block;justify-content:center;align-items:center;margin-top:5px;margin-bottom:5px;" class="col-lg-4">
+                <div class="myProgress progress">
+                    <div class="label-name">Lifestyle</div>
+                    <div id="percentile-life" class="percentile">10th</div>
+                    <div id="bar-life" class="progress-bar" role="progressbar" aria-valuenow="70"
+                         aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--
+        <div id="idSocreData" style="display:flex;justify-content:center;align-items:center;margin-top:10px"></div>
+            -->
+
+        <div ng-hide="scoreAnimated">
+            <p style="font-size:20px;text-align: center;margin-top:10px;color:white">{{firstname + " " + lastname}}, this is your score! Your last assessment was performed on {{datedone}}.</p>
+            <div style="display:flex;justify-content:center;align-items:center;margin-top:10px;margin-bottom:15px;">
+                <a href="http://goleon.com/comp" target="_blank" style="font-size:25px;text-align: center;margin-top:10px;color:white">Compare</a>
+            </div>
+            <div style="display:flex;justify-content:center;" ng-hide="doneSubmitwebPoints">
+                <button class="btn" ng-click="back()" style="font-size:30px;width:100px; height:50px;margin-top:10px;border-radius:5px;font-weight:bold;background-color: rgba(255,  162,  2,  1);color:white;">Done</button>
+            </div>
+            <div style="display:flex;justify-content:center;">
+                <p style="margin-top:30px;color:white;font-size:18px;text-align:center;">{{totalUsers}} Assessments and counting...</p>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <div ng-hide="hideAll" style="background-color:white">
+
+        <div ng-hide="hideAll">
+            <header ng-hide="hideHeader">
+                <h4>{{totalQuestions}}</h4>
+            </header>
+            <fieldset>
+
+                <section ng-hide="hideEmail">
+                    <div class="form-group">
+                        <label class="label">First Name</label>
+                        <input type="text" class="form-control-bootstrap" name="firstname" ng-model="firstname" ng-disabled="emailDisable">
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Last Name</label>
+                        <input type="text" class="form-control-bootstrap" name="lastname" ng-model="lastname" ng-disabled="emailDisable">
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Email</label>
+                        <input type="email" class="form-control-bootstrap" name="email" ng-model="email" ng-disabled="emailDisable">
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Location</label>
+                        <select class="form-control-bootstrap" ng-model="selectedLocation" ng-options="location.name for location in locationList"></select>
+                    </div>
+                </section>
+
+                <section ng-hide="questions">
+
+                    <section ng-hide="hideGender">
+                        <label class="label">Gender?</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input id="idreadiogender" type="radio" name="radioGender" ng-model="radioGender" ng-click="clickGender()" ng-value="true">
+                                <i></i>Men
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioGender" ng-model="radioGender" ng-click="clickGender()" ng-value="false">
+                                <i></i>Women
+                            </label>
+                        </div>
+                    </section>
+
+                    <section ng-hide="hideOld">
+                        <label class="label">Age?</label>
+                        <input id="inputAge" ng-model="howold" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowold(howold)" />
+
+                        <!--<input type="text" name="howold" ng-model="howold" ui-number-mask="0" class="form-control" ng-blur="gohowold(howold)">
+                        <br />
+                        <!--
+                        <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedAge"
+                                ng-options="selectedAge.name for selectedAge in Ages track by selectedAge.name"
+                                ng-change="goModified()" />
+                        <label ng-hide="ocultar">{{selectedAge.value}}</label>
+                        -->
+                    </section>
+
+                    <section ng-hide="hideHeight">
+                        <label class="label">Height?</label>
+                        <input id="inputHeight" ng-model="howHeight" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowHeight(howHeight)" />
+                    </section>
+
+                    <section ng-hide="hideWeight">
+                        <label class="label">Weight?</label>
+                        <input id="inputWeight" ng-model="howWeight" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowWeight()" />
+                    </section>
+
+                    <section ng-hide="hideCar">
+                        <label class="label">Has a doctor ever diagnosed you with a heart condition?</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radioCar" ng-model="radioCar" ng-value="true">
+                                <i></i>No
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioCar" ng-model="radioCar" ng-value="false">
+                                <i></i>Yes
+                            </label>
+                        </div>
+                        <label ng-hide="ocultar">{{selectedCar.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerCar}} )</label>
+                    </section>
+
+                    <section ng-hide="hideChe">
+                        <label class="label">Have you experienced pain in your chest (angina) during physical activity or at rest?</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radioChe" ng-model="radioChe" ng-value="true">
+                                <i></i>No
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioChe" ng-model="radioChe" ng-value="false">
+                                <i></i>Yes
+                            </label>
+                        </div>
+                        <label ng-hide="ocultar">{{selectedChe.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerChe}} )</label>
+
+                    </section>
+
+                    <section ng-hide="hideFat">
+                        <label class="label">Has your father been diagnosed with a cardiovascular disease under the age of 55 (stroke, heart attack, high blood pressure, angina, atherosclerosis)?</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radioFat" ng-model="radioFat" ng-value="true">
+                                <i></i>No
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioFat" ng-model="radioFat" ng-value="false">
+                                <i></i>Yes
+                            </label>
+                        </div>
+                        <label ng-hide="ocultar">{{selectedFat.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerFat}} )</label>
+                    </section>
+
+                    <section ng-hide="hideMot">
+                        <label class="label">Has your mother been diagnosed with cardiovascular disease under the age of 65 (stroke, heart attack, high blood pressure, angina, atherosclerosis)?</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radioMot" ng-model="radioMot" ng-value="true">
+                                <i></i>No
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioMot" ng-model="radioMot" ng-value="false">
+                                <i></i>Yes
+                            </label>
+                        </div>
+                        <label ng-hide="ocultar">{{selectedMot.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerMot}} )</label>
+                    </section>
+
+                    <section ng-hide="hideDia">
+                        <label class="label">Has either parent been diagnosed with Type II diabetes?</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radioDia" ng-model="radioDia" ng-value="true">
+                                <i></i>No
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioDia" ng-model="radioDia" ng-value="false">
+                                <i></i>Yes
+                            </label>
+                        </div>
+                        <label ng-hide="ocultar">{{selectedDiabetes.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerDia}} )</label>
+                    </section>
+
+                    <section ng-hide="hideMod">
+                        <label class="label">During the week, how many days are you active including walking/cycling to work, grocery store, etc for more than 30 minutes or actively on your feet and moving for most of the day (waiter, construction worker, taking care of a toddler, etc)?</label>
+                    </section>
+
+                    <section ng-hide="hideMod">
+                        <input id="inputMod" ng-model="howmod" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowmod(howmod)" />
+                        <label ng-hide="ocultar">{{selectedMod.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerMod}} )</label>
+                    </section>
+
+                    <section ng-hide="hideMod">
+                        <label class="label">How many days a week do you workout, run or exercise at a moderate to high intensity (including playing sports)?</label>
+                    </section>
+
+                    <section ng-hide="hideMod">
+                        <input id="inputVig" ng-model="howvig" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowvig(howvig)" />
+                        <label ng-hide="ocultar">{{selectedVig.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerVig}} )</label>
+                    </section>
+
+                    <section ng-hide="hideSit">
+                        <label class="label">How much time do you spend sitting throughout the day on average?</label>
+                        <select class="form-control-bootstrap" ng-model="selectedSit" ng-options="selectedSit.name for selectedSit in Sits track by selectedSit.name"
+                                ng-change="goTotal()" />
+                        <label ng-hide="ocultar">{{selectedSit.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerSit }} )</label>
+                    </section>
+
+                    <section ng-hide="hideSmo">
+                        <label class="label">Do you smoke?</label>
+                        <select class="form-control-bootstrap" ng-model="selectSmo" ng-options="selectSmo.name for selectSmo in Smos track by selectSmo.name"
+                                ng-change="goSmoCheckExposed(selectSmo)" />
+                        <label ng-hide="ocultar">{{selectSmo.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerSmo }} )</label>
+
+                    </section>
+
+                    <section ng-hide="hideSmokes">
+                        <label class="label">Are you exposed to second hand smoke frequently at home or work?</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radioSmo" ng-model="radioSmo" ng-value="true">
+                                <i></i>No
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioSmo" ng-model="radioSmo" ng-value="false">
+                                <i></i>Yes
+                            </label>
+                        </div>
+                        <label ng-hide="ocultar">{{selectedSmokes.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerSmokes }} )</label>
+
+                    </section>
+
+                    <section ng-hide="hideAlc">
+                        <label class="label">How often do you consume alcohol? </label>
+                        <select class="form-control-bootstrap" ng-model="selectAlc" ng-options="selectAlc.name for selectAlc in Alcs track by selectAlc.name"
+                                ng-change="goTotal()" />
+                        <label ng-hide="ocultar">{{selectAlc.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerAlc }} )</label>
+
+                    </section>
+
+                    <section ng-hide="true">
+                        <label class="label">Have you taken an oral contraceptive for longer than 6 months in the last year?</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radioOra" ng-model="radioOra" ng-value="true">
+                                <i></i>No
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioOra" ng-model="radioOra" ng-value="false">
+                                <i></i>Yes
+                            </label>
+                        </div>
+                        <label ng-hide="ocultar">{{selectedOra.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerOra }} )</label>
+                    </section>
+
+                    <section ng-hide="hideAnt">
+                        <label class="label">For what length of time have you been on antibiotics in the last year?</label>
+                        <select class="form-control-bootstrap" ng-model="selectedAnt" ng-options="selectedAnt.name for selectedAnt in Ants track by selectedAnt.name"
+                                ng-change="goTotal()" />
+                        <label ng-hide="ocultar">{{selectedAnt.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerAnt }} )</label>
+                    </section>
+
+                    <section ng-hide="ocultar">
+                        <label class="label">Total</label>
+                        <input type="text" style="width:100px;" data-ng-model="total1" ng-readonly />
+                        <label ng-hide="ocultar">( {{ServerTotal1 }} )</label>
+                    </section>
+
+                    <section ng-hide="ocultarMessage">
+                        <h2>Qualitative </h2>
+                    </section>
+
+                    <section ng-hide="hideRated">
+                        <label class="label">How would you rate your fitness?</label>
+                        <select class="form-control-bootstrap" ng-model="selectedRated" ng-options="selectedRated.name for selectedRated in selectedRateds track by selectedRated.name" ng-change="goTotal()" />
+                    </section>
+
+                    <section ng-hide="hideLife">
+                        <label class="label">Are you at or near your lifetime peak fitness level?</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radiofitness" ng-model="radiofitness" ng-value="true">
+                                <i></i>No
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radiofitness" ng-model="radiofitness" ng-value="false">
+                                <i></i>Yes
+                            </label>
+                        </div>
+                        <!-- <select class="form-control-bootstrap" ng-model="selectedLife" ng-options="selectedLife.name for selectedLife in selectedLifes track by selectedLife.name" ng-change="goTotal()" />-->
+                    </section>
+
+                    <section ng-hide="hideOrg">
+                        <label class="label">Have you participated in an organized competitive event in the past 12 months? (marathon, triathlon, tough mudder, etc)</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radioOrg" ng-model="radioOrg" ng-value="true">
+                                <i></i>No
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioOrg" ng-model="radioOrg" ng-value="false">
+                                <i></i>Yes
+                            </label>
+                        </div>
+                    </section>
+
+                    <section ng-hide="hidePlaning">
+                        <label class="label">Are you planning to participate in an organised event in the next 12 months?</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radioPlaning" ng-model="radioPlaning" ng-value="true">
+                                <i></i>No
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioPlaning" ng-model="radioPlaning" ng-value="false">
+                                <i></i>Yes
+                            </label>
+                        </div>
+                    </section>
+
+                    <section ng-hide="ocultarMessage">
+                        <h2>Physical Assessment</h2>
+                    </section>
+
+                    <section ng-hide="hideSys">
+                        <label class="label">Systolic</label>
+                        <input id="inputSys" ng-model="howsys" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowsys(howsys)" />
+                        <label ng-hide="ocultar">{{selectedSys.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerSys }} )</label>
+
+                    </section>
+
+                    <section ng-hide="hideDialostic">
+                        <label class="label">Diastolic</label>
+                        <input id="inputDia" ng-model="howdia" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowdia(howdia)" />
+                        <label ng-hide="ocultar">{{selectedDiastolic.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerDiastolic }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendermenWai">
+                        <label class="label">Waist</label>
+                        <input id="inputWaist" ng-model="howwaist" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowwaist(howwaist)" />
+                        <!---
+                        <input type="text" name="howwaist" ng-model="howwaist" ui-number-mask="2" class="form-control" ng-blur="gohowwaisttohip()">
+                        -->
+                    </section>
+
+                    <section ng-hide="disablegendermenWai2">
+                        <label class="label">Hip</label>
+                        <input id="inputHip" ng-model="howhip" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowhip(howhip)" />
+
+                        <br />
+                        <div>
+                            <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedWaiMen" ng-options="selectedWaiMen.name for selectedWaiMen in WaiMens track by selectedWaiMen.name"
+                                    ng-change="goTotal()" ng-disabled="disablegendermenWai" />
+                            <label ng-hide="ocultar">{{selectedWaiMen.value}}</label>
+                            <label ng-hide="ocultar">( {{ServerWaiMen }} )</label>
+                        </div>
+                    </section>
+
+                    <section ng-hide="ocultarMen">
+                        <select ng-hide="ocultarMen" class="form-control-bootstrap" ng-model="selectedWaiMen" ng-options="selectedWaiMen.name for selectedWaiMen in WaiMens track by selectedWaiMen.name"
+                                ng-change="goTotal()" ng-disabled="disablegendermenWai" />
+                        <label ng-hide="ocultarMen">{{selectedWaiMen.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerWaiMen }} )</label>
+
+                    </section>
+
+                    <section ng-hide="disablegenderwomenWai">
+                        <label class="label">Waist</label>
+                        <input id="inputwaistw" ng-model="howwaistw" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowwaistw(howwaistw)" />
+                        <!--
+                        <input type="text" name="howwaistw" ng-model="howwaistw" ui-number-mask="2" class="form-control" ng-blur="gohowwaisttohipw()">
+                            -->
+                    </section>
+
+                    <section ng-hide="disablegenderwomenWai2">
+                        <label class="label">Hip</label>
+                        <input id="inputhipw" ng-model="howhipw" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowhipw(howhipw)" />
+
+                        <br />
+                        <div>
+                            <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedWaiWomen" ng-options="selectedWaiWomen.name for selectedWaiWomen in WaiWomens track by selectedWaiWomen.name"
+                                    ng-change="goTotal()" ng-disabled="disablegenderwomenWai" />
+                            <label ng-hide="ocultar">{{selectedWaiWomen.value}}</label>
+                            <label ng-hide="ocultar">( {{ServerWaiWomen }} )</label>
+
+                        </div>
+                    </section>
+
+                    <section ng-hide="ocultarWomen">
+                        <select ng-hide="ocultarWomen" class="form-control-bootstrap" ng-model="selectedWaiWomen" ng-options="selectedWaiWomen.name for selectedWaiWomen in WaiWomens track by selectedWaiWomen.name"
+                                ng-change="goTotal()" ng-disabled="disablegenderwomenWai" />
+                        <label ng-hide="ocultarWomen">{{selectedWaiWomen.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerWaiWomen }} )</label>
+                    </section>
+
+                    <section ng-hide="hideDee">
+                        <label class="label">Deep Squat</label>
+                        <select class="form-control-bootstrap" ng-model="selectedDee" ng-options="selectedDee.name for selectedDee in Dees track by selectedDee.name"
+                                ng-change="goTotal()" />
+                        <label ng-hide="ocultar">{{selectedDee.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerDee }} )</label>
+                    </section>
+
+                    <section ng-hide="hideAct">
+                        <label class="label">Active Straight Leg Raise</label>
+                        <select class="form-control-bootstrap" ng-model="selectedAct" ng-options="selectedAct.name for selectedAct in Acts track by selectedAct.name"
+                                ng-change="goTotal()" />
+                        <label ng-hide="ocultar">{{selectedAct.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerAct }} )</label>
+                    </section>
+
+                    <section ng-hide="hideMob">
+                        <label class="label">Shoulder Mobility</label>
+                        <select class="form-control-bootstrap" ng-model="selectedMob" ng-options="selectedMob.name for selectedMob in Mobs track by selectedMob.name"
+                                ng-change="goTotal()" />
+                        <label ng-hide="ocultar">{{selectedMob.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerMob }} )</label>
+                    </section>
+
+                    <section ng-hide="hideSho">
+                        <label class="label">Shoulder Clearing Test</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radioSho" ng-model="radioSho" ng-value="true">
+                                <i></i>No Pain
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioSho" ng-model="radioSho" ng-value="false">
+                                <i></i>Pain
+                            </label>
+                        </div>
+                        <label ng-hide="ocultar">{{selectedSho.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerdSho }} )</label>
+                    </section>
+
+                    <section ng-hide="hideSpi">
+                        <label class="label">Spinal Flexion Clearing Test</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radioSpi" ng-model="radioSpi" ng-value="true">
+                                <i></i>No Pain
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioSpi" ng-model="radioSpi" ng-value="false">
+                                <i></i>Pain
+                            </label>
+                        </div>
+                        <label ng-hide="ocultar">{{selectedSpi.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerdSpi }} )</label>
+                    </section>
+
+                    <section ng-hide="hideSpiExt">
+                        <label class="label">Spinal Extension Clearing Test</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radioSpiExt" ng-model="radioSpiExt" ng-value="true">
+                                <i></i>No Pain
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioSpiExt" ng-model="radioSpiExt" ng-value="false">
+                                <i></i>Pain
+                            </label>
+                        </div>
+                        <label ng-hide="ocultar">{{selectedSpiExt.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerSpiExt }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendermenSid">
+                        <label class="label">Side Bridge</label>
+                    </section>
+
+                    <section ng-hide="disablegendermenSid">
+                        <label class="label">Right Side</label>
+                        <input id="inputSideMen" ng-model="howSidMen" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowSidMen(howSidMen,howSidMenLeft)" />
+                    </section>
+
+                    <section ng-hide="disablegendermenSid">
+                        <label class="label">Left Side</label>
+                        <input id="inputSidMenLeft" ng-model="howSidMenLeft" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowSidMen(howSidMen,howSidMenLeft)" />
+                        <label ng-hide="ocultar">{{selectedSidMen.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerSidMen }} )</label>
+                    </section>
+
+
+                    <section ng-hide="disablegenderwomenSid">
+                        <label class="label">Side Bridge</label>
+                    </section>
+
+                    <section ng-hide="disablegenderwomenSid">
+                        <label class="label">Right Sde</label>
+                        <input id="howSidWomen" ng-model="howSidWomen" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowSidWomen(howSidWomen,howSidWomenLeft)" />
+                    </section>
+
+                    <section ng-hide="disablegenderwomenSid">
+                        <label class="label">Left Side</label>
+                        <input id="howSidWomenLeft" ng-model="howSidWomenLeft" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gohowSidWomen(howSidWomen,howSidWomenLeft)" />
+                        <label ng-hide="ocultar">{{selectedSidWomen.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerSiddWomen }} )</label>
+                    </section>
+
+
+
+
+                    <!-- end -->
+                    <!-- MB CHEST MEN-->
+
+                    <section ng-hide="true">
+                        <label class="label">MB Throw 8lbs</label>
+                        <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedMBMen" ng-options="selectedMBMen.name for selectedMBMen in MBMens track by selectedMBMen.name"
+                                ng-change="goTotal()" ng-disabled="disablegendermen" />
+                        <label ng-hide="ocultar">{{selectedMBMen.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerChestMen }} )</label>
+                    </section>
+
+                    <section ng-hide="disableMBCM1">
+                        <label class="label">MB Throw 8lbs</label>
+                        <input id="inputChestMen1" ng-model="numMBCMpwm1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCMpwm1(numMBCMpwm1)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 20-29  {{selectedMBMen1.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerChestMen }} )</label>
+                    </section>
+
+                    <section ng-hide="disableMBCM2">
+                        <label class="label">MB Throw 8lbs </label>
+                        <input id="inputChestMen2" ng-model="numMBCMpwm2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCMpwm2(numMBCMpwm2)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 30-39 {{selectedMBMen2.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerChestMen }} )</label>
+                    </section>
+
+                    <section ng-hide="disableMBCM3">
+                        <label class="label">MB Throw 8lbs </label>
+                        <input id="inputChestMen3" ng-model="numMBCMpwm3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCMpwm3(numMBCMpwm3)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 40-49 {{selectedMBMen3.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerChestMen }} )</label>
+                    </section>
+
+                    <section ng-hide="disableMBCM4">
+                        <label class="label">MB Throw 8lbs</label>
+                        <input id="inputChestMen4" ng-model="numMBCMpwm4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCMpwm4(numMBCMpwm4)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 50+ {{selectedMBMen4.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerChestMen }} )</label>
+                    </section>
+
+                    <!-- end -->
+                    <!-- MB CHEST WOMEN-->
+
+                    <section ng-hide="true">
+                        <label class="label">MB Throw 6lbs</label>
+                        <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedMBWomen" ng-options="selectedMBWomen.name for selectedMBWomen in MBWomens track by selectedMBWomen.name"
+                                ng-change="goTotal()" ng-disabled="disablegenderwomen" />
+                        <label ng-hide="ocultar">{{selectedMBWomen.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerChestWoMen }} )</label>
+                    </section>
+
+                    <section ng-hide="disableMBCW1">
+                        <label class="label">MB Throw 6lbs</label>
+                        <input id="inputChestWoMen1" ng-model="numMBCWpwm1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCWpwm1(numMBCWpwm1)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 20-29  {{selectedMBWOMen1.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerChestWoMen }} )</label>
+                    </section>
+
+                    <section ng-hide="disableMBCW2">
+                        <label class="label">MB Throw 6lbs</label>
+                        <input id="inputChestWoMen2" ng-model="numMBCWpwm2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCWpwm2(numMBCWpwm2)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 30-39 {{selectedMBWOMen2.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerChestWoMen }} )</label>
+                    </section>
+
+                    <section ng-hide="disableMBCW3">
+                        <label class="label">MB Throw 6lbs</label>
+                        <input id="inputChestWoMen3" ng-model="numMBCWpwm3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCWpwm3(numMBCWpwm3)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 40-49 {{selectedMBWOMen3.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerChestWoMen }} )</label>
+                    </section>
+
+                    <section ng-hide="disableMBCW4">
+                        <label class="label">MB Throw 6lbs</label>
+                        <input id="inputChestWoMen4" ng-model="numMBCWpwm4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCWpwm4(numMBCWpwm4)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 50+ {{selectedMBWOMen4.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerChestWoMen }} )</label>
+                    </section>
+
+                    <!-- end -->
+                    <!-- Men push group-->
+
+                    <section ng-hide="true">
+                        <label class="label">Max Push Up test</label>
+                        <select ng-hide="ocultar" class="form-control-bootstrap" ng-model="selectedPusMen" ng-options="selectedPusMen.name for selectedPusMen in PusMens track by selectedPusMen.name"
+                                ng-change="goTotal()" ng-disabled="disablegendermen" />
+                        <label ng-hide="ocultar">{{selectedPusMen.value}}</label>
+                    </section>
+
+                    <section ng-hide="disablegendermen1">
+                        <label class="label">Max Push Up test</label>
+                        <input id="inputPushMen1" ng-model="numnpmen1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpmen1(numnpmen1)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 20-29  {{selectedPusMen1.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerPusMen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendermen2">
+                        <label class="label">Max Push Up test</label>
+                        <input id="inputPushMen2" ng-model="numnpmen2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpmen2(numnpmen2)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 30-39 {{selectedPusMen2.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerPusMen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendermen3">
+                        <label class="label">Max Push Up test</label>
+                        <input id="inputPushMen3" ng-model="numnpmen3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpmen3(numnpmen3)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 40-49 {{selectedPusMen3.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerPusMen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendermen4">
+                        <label class="label">Max Push Up test</label>
+                        <input id="inputPushMen4" ng-model="numnpmen4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpmen4(numnpmen4)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 50- 59 {{selectedPusMen4.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerPusMen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendermen5">
+                        <label class="label">Max Push Up test</label>
+                        <input id="inputPushMen5" ng-model="numnpmen5" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpmen5(numnpmen5)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 60+ {{selectedNPWM5.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerPusMen }} )</label>
+                    </section>
+
+
+                    <!--end -->
+                    <!-- Women push group-->
+
+                    <section ng-hide="true">
+                        <label class="label">Max Push Up test</label>
+                        <select class="form-control-bootstrap" ng-model="selectedPusWomen" ng-options="selectedPusWomen.name for selectedPusWomen in PusWomens track by selectedPusWomen.name"
+                                ng-change="goTotal()" ng-disabled="disablegenderwomen" />
+                        <label>{{selectedPusWomen.value}}</label>
+                    </section>
+
+                    <section ng-hide="disablegenderwomenMod">
+                        <label class="label">"Modified" Max Push Ups?</label>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radioMPW" ng-model="radioMPW" ng-click="clickModified()" ng-value="true">
+                                <i></i>No
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="radioMPW" ng-model="radioMPW" ng-click="clickModified()" ng-value="false">
+                                <i></i>Yes
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- Women push group Normal-->
+
+                    <section ng-hide="disablegender1women">
+                        <label class="label">Max Push Up test</label>
+                        <input id="inputPushWomen1" ng-model="numnpwm1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpwm1(numnpwm1)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 20-29  {{selectedNPWM1.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerPusWomen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegender2women">
+                        <label class="label">Max Push Up test</label>
+                        <input id="inputPushWomen2" ng-model="numnpwm2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpwm2(numnpwm2)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 30-39 {{selectedNPWM2.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerPusWomen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegender3women">
+                        <label class="label">Max Push Up test</label>
+                        <input id="inputPushWomen3" ng-model="numnpwm3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpwm3(numnpwm3)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 40-49 {{selectedNPWM3.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerPusWomen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegender4women">
+                        <label class="label">Max Push Up test</label>
+                        <input id="inputPushWomen4" ng-model="numnpwm4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpwm4(numnpwm4)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 50- 59 {{selectedNPWM4.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerPusWomen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegender5women">
+                        <label class="label">Max Push Up test</label>
+                        <input id="inputPushWomen5" ng-model="numnpwm5" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumnpwm5(numnpwm5)" />
+                        <br />
+                        <label ng-hide="ocultar">Age 60+ {{selectedNPWM5.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerPusWomen }} )</label>
+                    </section>
+
+                    <!-- end -->
+                    <!-- Modified wowen push group-->
+
+                    <section ng-hide="disablegendermod1women">
+                        <label class="label">Max push up test</label>
+                        <input id="inputPushWomenM1" ng-model="numpwm1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumpwm1(numpwm1)" />
+                        <br />
+                        <label ng-hide="ocultar">Modified Age 20-29  {{selectedPWM1.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerMPusWomen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendermod2women">
+                        <label class="label">Max push up test</label>
+                        <input id="inputPushWomenM2" ng-model="numpwm2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumpwm2(numpwm2)" />
+                        <br />
+                        <label ng-hide="ocultar">Modified Age 30-39 {{selectedPWM2.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerMPusWomen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendermod3women">
+                        <label class="label">Max push up test</label>
+                        <input id="inputPushWomenM3" ng-model="numpwm3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumpwm3(numpwm3)" />
+                        <br />
+                        <label ng-hide="ocultar">Modified Age 40-49 {{selectedPWM3.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerMPusWomen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendermod4women">
+                        <label class="label">Max push up test</label>
+                        <input id="inputPushWomenM4" ng-model="numpwm4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumpwm4(numpwm4)" />
+                        <br />
+                        <label ng-hide="ocultar">Modified Age 50- 59 {{selectedPWM4.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerMPusWomen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendermod5women">
+                        <label class="label">Max push up test</label>
+                        <input id="inputPushWomenM5" ng-model="numpwm5" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumpwm5(numpwm5)" />
+                        <br />
+                        <label ng-hide="ocultar">Modified Age 60+ {{selectedPWM5.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerMPusWomen }} )</label>
+                    </section>
+
+
+                    <!-- Cooper Endurance  Men Test -->
+
+                    <section ng-hide="true">
+                        <br /><br />
+                        <label class="label">12 min Cooper Endurance Test</label>
+                        <select class="form-control-bootstrap" ng-model="selectedCooMen" ng-options="selectedCooMen.name for selectedCooMen in CooMens track by selectedCooMen.name"
+                                ng-change="goTotal()" ng-disabled="disablegendermen1" />
+                        <label ng-hide="ocultar">{{selectedCooMen.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerComen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendercoomen1">
+                        <label class="label">12 min Cooper Endurance Test</label>
+                        <input id="inputCooperMen1" ng-model="numMBCOOWpwm1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWpwm1(numMBCOOWpwm1)" />
+
+                        <label ng-hide="ocultar">Age 20-29 {{selectedCooMen1.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerComen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendercoomen2">
+                        <label class="label">12 min Cooper Endurance Test</label>
+                        <input id="inputCooperMen2" ng-model="numMBCOOWpwm2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWpwm2(numMBCOOWpwm2)" />
+
+                        <label ng-hide="ocultar">Age 30-39 {{selectedCooMen2.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerComen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendercoomen3">
+                        <label class="label">12 min Cooper Endurance Test</label>
+                        <input id="inputCooperMen3" ng-model="numMBCOOWpwm3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWpwm3(numMBCOOWpwm3)" />
+
+                        <label ng-hide="ocultar">Age 40-49 {{selectedCooMen3.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerComen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendercoomen4">
+                        <label class="label">12 min Cooper Endurance Test</label>
+                        <input id="inputCooperMen4" ng-model="numMBCOOWpwm4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWpwm4(numMBCOOWpwm4)" />
+
+                        <label ng-hide="ocultar">Age 50+ {{selectedCooMen4.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerComen }} )</label>
+                    </section>
+
+                    <!-- end -->
+                    <!-- Cooper Endurance  WOMen Test -->
+
+                    <section ng-hide="true">
+                        <label class="label">12 min Cooper Endurance Test(Women Age Dependent)</label>
+                        <select class="form-control-bootstrap" ng-model="selectedCooWomen" ng-options="selectedCooWomen.name for selectedCooMen in CooWomens track by selectedCooWomen.name"
+                                ng-change="goTotal()" ng-disabled="disablegenderwomen" />
+                        <label ng-hide="ocultar">{{selectedCooWomen.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerCowomen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendercoowomen1">
+                        <label class="label">12 min Cooper Endurance Test</label>
+                        <input id="inputCooperWoMen1" ng-model="numMBCOOWOpwm1" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWOpwm1(numMBCOOWOpwm1)" />
+
+                        <label ng-hide="ocultar">Age 20-29 {{selectedCW1.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerCowomen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendercoowomen2">
+                        <label class="label">12 min Cooper Endurance Test</label>
+                        <input id="inputCooperWoMen2" ng-model="numMBCOOWOpwm2" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWOpwm2(numMBCOOWOpwm2)" />
+                        <label ng-hide="ocultar">Age 30-39 {{selectedCW2.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerCowomen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendercoowomen3">
+                        <label class="label">12 min Cooper Endurance Test</label>
+                        <input id="inputCooperWoMen3" ng-model="numMBCOOWOpwm3" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWOpwm3(numMBCOOWOpwm3)" />
+                        <label ng-hide="ocultar">Age 40-49  {{selectedCW3.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerCowomen }} )</label>
+                    </section>
+
+                    <section ng-hide="disablegendercoowomen4">
+                        <label class="label">12 min Cooper Endurance Test</label>
+                        <input id="inputCooperWoMen4" ng-model="numMBCOOWOpwm4" class="form-control-bootstrap" placeholder="Please Select ..." ng-change="gonumMBCOOWOpwm4(numMBCOOWOpwm4)" />
+                        <label ng-hide="ocultar">Age 50+ {{selectedCW4.value}}</label>
+                        <label ng-hide="ocultar">( {{ServerCowomen }} )</label>
+                    </section>
+
+                    <!-- End -->
+
+                    <section ng-hide="ocultar">
+                        <label ng-hide="ocultar">BMI</label>
+                        <label ng-hide="ocultar">{{BMI}}</label>
+                    </section>
+
+                    <section ng-hide="ocultar">
+                        <label ng-hide="ocultar">BMI Score</label>
+                        <label ng-hide="ocultar">{{BMILocal}}</label>
+                        <label ng-hide="ocultar">( {{ServerBMI}} )</label>
+                    </section>
+
+                    <section ng-hide="ocultar">
+                        <label class="label">Total</label>
+                        <input type="text" class="form-control col-lg-offset-4" style="width:100px;" data-ng-model="total2" ng-readonly />
+                        <label ng-hide="ocultar">( {{ServerTotal2 }} )</label>
+                    </section>
+
+                    <section ng-hide="ocultar">
+                        <label class="label">Combined</label>
+                        <input type="text" class="form-control col-lg-offset-4" style="width:100px;" data-ng-model="total3" ng-readonly />
+                        <label ng-hide="ocultar">( {{ServerTotal3 }} )</label>
+                    </section>
+
+                    <section ng-hide="ocultar">
+                        <label class="label">Combined Conversion</label>
+                        <input type="text" class="form-control col-lg-offset-4" style="width:100px;" data-ng-model="total4" ng-readonly />
+                        <label ng-hide="ocultar">( {{ServerTotal4 }} )</label>
+                    </section>
+
+                    <section>
+                        <div class="checkbox" ng-hide="adminRole">
+                            <label>
+                                <input type="checkbox" ng-model="checkOcultar" class="checkbox style-0" ng-click="chkOcultar()">
+                                <span>Show Points</span>
+                            </label>
+                        </div>
+                    </section>
+
+                </section>
+
+                <section ng-hide="hideerrors">
+                    <label class="label">Oops!</label>
+                    <label class="label">{{errorMessage}}</label>
+                </section>
+
+            </fieldset>
+
+            <footer>
+                <button class="btn" ng-click="save()" ng-hide="hideSave" style="background-color:rgba(255,  162,  2,  1);color:white;">Save</button>
+                <button class="btn" ng-click="backQ()" ng-hide="hideBack" style="background-color: rgba(255,  162,  2,  1);color:white;">Back</button>
+                <!--<button class="btn btn-success" ng-click="next()" ng-hide="hideNext">Next</button>-->
+
+                <button class="btn" ng-click="back()" ng-hide="doneSubmitweb">Done</button>
+                <button class="btn" ng-click="submitweb()" ng-hide="hideSubmitweb" style="background-color: rgba(255,  162,  2,  1);color:white;">Submit</button>
+                <button class="btn" ng-click="back()" ng-hide="hideBackweb" style="background-color: rgba(255,  162,  2,  1);color:white;">Back</button>
+
+                <!--
+                <div class="form-group">
+                    <div class="col-md-9 col-md-offset-3">
+                        <div id="messages"></div>
+                    </div>
+                </div>
+                    -->
+            </footer>
+
+        </div>
+    </div>
+</form>
+
+
+
+

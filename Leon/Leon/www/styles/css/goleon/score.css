@@ -1,0 +1,223 @@
+﻿.assessmentColor {
+    color: #a5a5a5;
+}
+
+.assessmentFont {
+    font-size: 3vh !important;
+}
+
+.assessmentFont1 {
+    font-size: 3.5vh !important;
+}
+
+.assessmentFont2 {
+    font-size: 2.7vh !important;
+}
+
+.assessmentFont3 {
+    font-size: 2.5vh !important;
+}
+
+.button-activated {
+    background: #FFA202;
+    color: white; 
+}
+
+.button-deactivated {
+    background: #a8a8a8;
+    color: white; 
+}
+
+/* Score */
+
+.bubbleScoreColorFont {
+    color: #FFA202;
+}
+
+.bubbleTextColorFont {
+    color: #a8a8a8;
+}
+
+.bubbleScore {
+    height: 33vh;
+    width: 33vh;
+    margin: 0px auto;
+}
+
+.bubbleScore path {
+    stroke-width: 2;
+}
+ 
+.bubbleScoreBack path:nth-child(1) {
+    fill-opacity: 1;
+    fill: white;
+}
+
+.bubbleScoreFront {
+    margin-top: -33vh;
+      /* Safari */
+    -webkit-transform: rotate(-180deg);
+    /* Firefox */
+    -moz-transform: rotate(-180deg);
+    /* IE */
+    -ms-transform: rotate(-180deg);
+    /* Opera */
+    -o-transform: rotate(-180deg);
+    /* Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.bubbleScoreFront path:nth-child(1) {
+    stroke: #dcdcdc;
+}
+
+.bubbleScoreFront path:nth-child(2) {
+    stroke: #FFA202;
+}
+
+.leonCircleMainFont {
+    font-size: 10vh;
+}
+
+.leonCircleSecondaryFont {
+    font-size: 2.8vh;
+}
+
+.historicCircle {
+    background-color: #EAEBED;
+    border: 4px solid #FFA202 !important;
+}
+
+.historicCircleMainFont {
+    color: #94959A;
+    font-size: 4vh;
+}
+
+
+.categoriesBack {
+    background-color: #EAEBED !important;
+}
+
+.categoriesFront {
+    background-color: #FFA202 !important;
+}
+
+.FitnessCircleBack {
+    background-color: white;
+    border: .6vh solid #dcdcdc!important;
+}
+
+.FitnessCircleFront {
+    color: #FFA202;
+}
+
+/* fitness */
+.fitnessCircleMain {
+    width: 14vh !important;
+    height: 14vh !important;
+}
+ 
+.fitnessCircleMainFront {
+    margin-top: -14vh;
+}
+
+.fitnessSecondaryCircles {
+     width: 9vh !important;
+     height: 9vh !important;
+}
+
+.fitnessSecondaryCircleBack {
+     margin-top: 1.5vh;
+}
+
+.fitnessSecondaryCircleFront {
+     margin-top: -9vh;
+}
+
+.fitnessBarChart {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:27vh;
+}
+
+.fitnessButtonsBarChart {
+    width:100%;
+    text-align:center;
+}
+
+.fitnessBubbleDivText {
+    position: relative;
+    margin-top: -9vh;
+}
+
+ .fitnessNameItem {
+    font-size: .8vh;
+    font-weight: lighter;
+    line-height: 0vh;
+    display: block;
+    text-align: center;
+    margin-top: 1.8vh;
+    margin-bottom: 1vh;
+}
+
+ .fitnessScoreItem {
+    font-size: 2.5vh;
+    font-weight: bold;
+    text-align: center;
+    line-height:0vh;
+    display:block;
+    margin-top: 2.5vh;
+}   
+ 
+ .fitnessScoreMain {
+    margin-top: 4vh;
+    font-size: 4vh;
+    font-weight: bold;
+    text-align: center;
+} 
+
+ .fitnessTextMain {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 10px;
+    font-size: 10px;
+    font-weight: lighter;
+}
+
+ 
+.bubblePoints {
+    height: 27vh;
+    width: 27vh;
+}
+
+.bubblePointsFront {
+    margin-top: -27.5vh;
+}
+
+.bubbleScoreCircleFront path:nth-child(1) {
+    stroke: #FFA202;
+}
+
+.bubbleScoreCircleFront {
+    margin-top: -.5vh;
+    opacity: 0;
+}
+
+.scorePoints {
+    font-size: 11vh;
+    margin-top: 13vh;
+}
+
+.scoreHideDate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 6vh;
+    background: white;
+    margin-top: -8vh;
+    margin-bottom: 2vh;
+    opacity: 0;
+}       

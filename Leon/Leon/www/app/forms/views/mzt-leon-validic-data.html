@@ -1,0 +1,279 @@
+<div id="content">
+
+    <section id="widget-grid" widget-grid style="margin-top:50px;">
+
+        <div class="row" ng-hide="adminRole" style="margin-top:80px;">
+
+            <article class="col-sm-12">
+                <div class="form-group">
+                    <label style="font-size:20px;">Date</label>
+                    <div class="form-group">
+                        <div class='input-group date'>
+                            <input type="text" class="form-control" style="font-size:15px;" pick-a-date="datestart" pick-a-date-options="options" /><!--{{ datestart}}-->
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <label style="font-size:20px;">Measurement</label>
+                    <select class="form-control-bootstrap" ng-model="selectedMeasurement" ng-options="Measurement.name for Measurement in Measurements"></select>
+                    <button class="btn" ng-click="Go()" style="padding:5px 5px 5px 5px;font-size:20px;font-weight:bold;border:none;border-radius:5px;margin-top: 5px;background-color: rgba(255,  162,  2,  1);color:white;">Go</button>
+                </div>
+     
+            </article>
+
+        </div>
+
+      
+        <div class="row" ng-hide="adminRole">
+
+            <article class="col-sm-12">
+
+                <div data-jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+
+                    <header>
+                        <h2>Fitness</h2>
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+                        <div class="widget-body no-padding">
+                            <!-- content goes here -->
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table id="idTableFitness" datatable="ng" dt-options="datatables.standardOptionsFitness" dt-columns="datatables.standardColumnsFitness" class="table table-striped table-bordered table-hover" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th data-hide="phone">Email</th>
+                                                <th data-hide="phone">Date</th>
+                                                <th data-hide="phone">Device</th>
+                                                <th data-hide="phone">Activity</th>
+                                                <th data-hide="phone">Calories</th>
+                                                <th data-hide="phone">Distance</th>
+                                                <th data-hide="phone">Duration</th>
+                                                <th data-hide="phone">Intensity</th>
+                                                <th data-hide="phone">Start Time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="fitness in fitnesst" >
+                                                <td>{{fitness.email}}</td>
+                                                <td>{{fitness.timestamp}}</td>
+                                                <td>{{fitness.device}}</td>
+                                                <td>{{fitness.activity}}</td>
+                                                <td>{{fitness.calories}}</td>
+                                                <td>{{fitness.distance}}</td>
+                                                <td>{{fitness.duration}}</td>
+                                                <td>{{fitness.intensity}}</td>
+                                                <td>{{fitness.starttime}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+
+            </article>
+
+        </div>
+
+        <div class="row" ng-hide="adminRole">
+
+            <article class="col-sm-12">
+
+                <div data-jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+
+                    <header>
+                        <h2>Routine</h2>
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+                        <div class="widget-body no-padding">
+                            <!-- content goes here -->
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table id="idTableRoutine" datatable="ng" dt-options="datatables.standardOptionsRoutine" dt-columns="datatables.standardColumnsRoutine" class="table table-striped table-bordered table-hover" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th data-hide="phone">Email</th>
+                                                <th data-hide="phone">Date</th>
+                                                <th data-hide="phone">Device</th>
+                                                <th data-hide="phone">Calories Burned</th>
+                                                <th data-hide="phone">Distance</th>
+                                                <th data-hide="phone">Elevation</th>
+                                                <th data-hide="phone">Floors</th>
+                                                <th data-hide="phone">Steps</th>
+                                                <th data-hide="phone">Water</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="routine in routines">
+                                                <td>{{routine.email}}</td>
+                                                <td>{{routine.timestamp}}</td>
+                                                <td>{{routine.device}}</td>
+                                                <td>{{routine.caloriesburned}}</td>
+                                                <td>{{routine.distance}}</td>
+                                                <td>{{routine.elevation}}</td>
+                                                <td>{{routine.floors}}</td>
+                                                <td>{{routine.steps}}</td>
+                                                <td>{{routine.water}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+
+            </article>
+
+        </div>
+
+        <div class="row" ng-hide="adminRole">
+
+            <article class="col-sm-12">
+
+                <div data-jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+
+                    <header>
+                        <h2>Sleep</h2>
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+                        <div class="widget-body no-padding">
+                            <!-- content goes here -->
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table id="idTableSleep" datatable="ng" dt-options="datatables.standardOptionsSleep" dt-columns="datatables.standardColumnsSleep" class="table table-striped table-bordered table-hover" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th data-hide="phone">Email</th>
+                                                <th data-hide="phone">Date</th>
+                                                <th data-hide="phone">Device</th>
+                                                <th data-hide="phone">Awake</th>
+                                                <th data-hide="phone">Deep</th>
+                                                <th data-hide="phone">Light</th>
+                                                <th data-hide="phone">Rem</th>
+                                                <th data-hide="phone">Time Swoken</th>
+                                                <th data-hide="phone">Total Sleep</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="sleep in sleeps">
+                                                <td>{{sleep.email}}</td>
+                                                <td>{{sleep.timestamp}}</td>
+                                                <td>{{sleep.device}}</td>
+                                                <td>{{sleep.awake}}</td>
+                                                <td>{{sleep.deep}}</td>
+                                                <td>{{sleep.light}}</td>
+                                                <td>{{sleep.rem}}</td>
+                                                <td>{{sleep.timeswoken}}</td>
+                                                <td>{{sleep.totalsleep}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+
+            </article>
+
+        </div>
+
+        <div class="row" ng-hide="adminRole">
+
+            <article class="col-sm-12">
+
+                <div data-jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+
+                    <header>
+                        <h2>Weight</h2>
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+                        <div class="widget-body no-padding">
+                            <!-- content goes here -->
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table id="idTableWeight" datatable="ng" dt-options="datatables.standardOptionsWeight" dt-columns="datatables.standardColumnsWeight" class="table table-striped table-bordered table-hover" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th data-hide="phone">Email</th>
+                                                <th data-hide="phone">Date</th>
+                                                <th data-hide="phone">Device</th>
+                                                <th data-hide="phone">BMI</th>
+                                                <th data-hide="phone">Fat Percent</th>
+                                                <th data-hide="phone">Free Mass</th>
+                                                <th data-hide="phone">Height</th>
+                                                <th data-hide="phone">Mass Weight</th>
+                                                <th data-hide="phone">Weight</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="weight in weights">
+                                                <td>{{weight.email}}</td>
+                                                <td>{{weight.timestamp}}</td>
+                                                <td>{{weight.device}}</td>
+                                                <td>{{weight.bmi}}</td>
+                                                <td>{{weight.fatpercent}}</td>
+                                                <td>{{weight.free_mass}}</td>
+                                                <td>{{weight.height}}</td>
+                                                <td>{{weight.massweight}}</td>
+                                                <td>{{weight.weight}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+
+            </article>
+
+        </div>
+        
+    </section>
+    <!-- end widget grid -->
+
+</div>
+<!-- END MAIN CONTENT -->
+
+<div>
+    <a id="idErrorMessage" href="#" data-toggle="modal" data-target="#dialogQueryTipoAgencia" style="visibility:hidden; width:0px; height:0px"></a>
+</div>
+<div class="modal fade" id="dialogQueryTipoAgencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header">
+                    <button id="botonCerrarCliente" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class='widget-header'><h4><i class='fa fa-warning'></i> Error</h4></div>
+                </div>
+                <p>
+                    <h4>{{errorMessage}}</h4>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+
+<form id="comprobanteForm" >
+
+    <section>
+
+        <div class="form-group">
+            <label style="font-size:20px;" >Steps of {{ DateString }}</label>
+            <input type="text" class="form-control-bootstrap" style="font-size:15px;" name="steps" ng-model="steps" >
+            <button class="btn" ng-click="Previous()" style="padding:5px 5px 5px 5px;font-size:20px;font-weight:bold;border:none;border-radius:5px;margin-top: 5px;background-color: rgba(255,  162,  2,  1);color:white;">Previous</button>
+            <button class="btn" ng-click="Next()" style="padding:5px 5px 5px 5px;font-size:20px;font-weight:bold;border:none;border-radius:5px;margin-top: 5px;background-color: rgba(255,  162,  2,  1);color:white;">Next</button>
+       </div>
+        <div class="form-group">
+            <label style="font-size:20px;">Date</label>
+            <div class="form-group">
+                <div class='input-group date'>
+                    <input type="text" class="form-control" style="font-size:15px;" pick-a-date="datestart" pick-a-date-options="options"/><!--{{ datestart}}-->
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <button class="btn" ng-click="Go()" style="padding:5px 5px 5px 5px;font-size:20px;font-weight:bold;border:none;border-radius:5px;margin-top: 5px;background-color: rgba(255,  162,  2,  1);color:white;">Go</button>
+       </div>
+    </section>
+
+    <div>
+        <a id="idErrorMessage" href="#" data-toggle="modal" data-target="#dialogQueryTipoAgencia" style="visibility:hidden; width:0px; height:0px"></a>
+    </div>
+    <div class="modal fade" id="dialogQueryTipoAgencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <button id="botonCerrarCliente" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class='widget-header'><h4><i class='fa fa-warning'></i> Error</h4></div>
+                    </div>
+                    <p>
+                        <h4>{{errorMessage}}</h4>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

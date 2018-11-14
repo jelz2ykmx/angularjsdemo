@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E2D10665-6D40-41FA-BD01-502515F0747B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LeonModels</RootNamespace>
+    <AssemblyName>LeonModels</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Calculations\AssessmentCalculationModel.cs" />
+    <Compile Include="Capture\QueryUserDailyQuestionsModel.cs" />
+    <Compile Include="Capture\UserBiometricsPointsModel.cs" />
+    <Compile Include="Capture\UserLifestylePointsModel.cs" />
+    <Compile Include="Capture\UserMobilityPointsModel.cs" />
+    <Compile Include="Capture\UserFitnessPointsModel.cs" />
+    <Compile Include="Capture\UserAssessmentsScore.cs" />
+    <Compile Include="Catalogs\RecoveryModel.cs" />
+    <Compile Include="Catalogs\ChangeRoleModel.cs" />
+    <Compile Include="Catalogs\LocationsUserModel.cs" />
+    <Compile Include="Admin\CityModel.cs" />
+    <Compile Include="Admin\StateModel.cs" />
+    <Compile Include="Admin\DashBoadTotalAssessments.cs" />
+    <Compile Include="Admin\DashBoardTopBottomAssessments.cs" />
+    <Compile Include="Admin\DashBoardLastAssessments.cs" />
+    <Compile Include="Capture\QueryUserQuestionsModel.cs" />
+    <Compile Include="Capture\QuestionsAddUpdate.cs" />
+    <Compile Include="Capture\UserPointsModel.cs" />
+    <Compile Include="Catalogs\ChangePasswordModel.cs" />
+    <Compile Include="Catalogs\RegisterUserModel.cs" />
+    <Compile Include="Catalogs\RoleUserQuery.cs" />
+    <Compile Include="Catalogs\UserIdModel.cs" />
+    <Compile Include="Catalogs\UserProviderQuery.cs" />
+    <Compile Include="ErrorModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchModel.cs" />
+    <Compile Include="Validic\ValidicWeekActivitiesModel.cs" />
+    <Compile Include="Validic\ValidicActivitiesModel.cs" />
+    <Compile Include="Validic\ValidicPointsChartModel.cs" />
+    <Compile Include="Validic\ValidicAllPointsModel.cs" />
+    <Compile Include="Validic\ValidicAllDataModel.cs" />
+    <Compile Include="Validic\ValidicPointsModel.cs" />
+    <Compile Include="Validic\ValidicWeightModel.cs" />
+    <Compile Include="Validic\ValidicSleepModel.cs" />
+    <Compile Include="Validic\ValidicRoutineModel.cs" />
+    <Compile Include="Validic\ValidicFitnessModel.cs" />
+    <Compile Include="Validic\ValidicStepsModel.cs" />
+    <Compile Include="Validic\ValidicAppsModel.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

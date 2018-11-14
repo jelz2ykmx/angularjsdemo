@@ -1,0 +1,503 @@
+﻿"use strict";
+
+// production
+//var serviceBase = 'http://jelz2yk-001-site2.atempurl.com/';
+//var serviceModulo = "/farmacia/";
+
+
+// android
+//var serviceBase = 'http://192.168.100.107:45996/';
+//var serviceModulo = "/";
+
+var serviceBase = 'http://localhost:1532/';
+var serviceModulo = "/";
+
+
+var app = angular.module('app.layout', ['ui.router', 'angularUUID2', 'textAngular'])
+
+app.directive('innerHtmlBind', function () {
+    return {
+        restrict: 'A',
+        scope: {
+            inner_html: '=innerHtml'
+        },
+        link: function (scope, element, attrs) {
+            scope.inner_html = element.html();
+        }
+    }
+});
+
+app.config(function ($stateProvider, $urlRouterProvider) {
+
+
+    $stateProvider
+        .state('app', {
+            abstract: true,
+            views: {
+                root: {
+                    templateUrl: 'app/layout/layout.tpl.html'
+                }
+            }
+        });
+    $urlRouterProvider.otherwise('/dashboard');
+})
+.config(['$httpProvider', function ($httpProvider) {
+
+    $httpProvider.interceptors.push(function ($q, $rootScope, $window, $location, authData) {
+
+        return {
+            request: function (config) {
+                if (authData.authenticationData == undefined || !authData.authenticationData.IsAuthenticated) {
+                    if ($rootScope.register == true) {
+                        $location.path('/register');
+                    }
+                    else {
+                        $location.path('/login');
+                    }
+                }
+                return config;
+            },
+            requestError: function (rejection) {
+                return $q.reject(rejection);
+            },
+            response: function (response) {
+                if (response.status == "401") {
+                    $location.path('/login');
+                }
+                return response;
+            },
+            responseError: function (rejection) {
+                if (rejection.status == "401") {
+                    $location.path('/login');
+                }
+                return $q.reject(rejection);
+            }
+        };
+    });
+}]);
+
+app.factory('authData', [function () {
+    var authDataFactory = {};
+
+    var _authentication = {
+        IsAuthenticated: false,
+        userName: ""
+    };
+    authDataFactory.authenticationData = _authentication;
+
+    return authDataFactory;
+}]);
+
+app.service('AuthenticationService', ['$http', '$q', '$window', function ($http, $q, $window) {
+    var tokenInfo;
+
+    this.setTokenInfo = function (data) {
+        tokenInfo = data;
+        $window.sessionStorage["TokenInfo"] = JSON.stringify(tokenInfo);
+    }
+
+    this.getTokenInfo = function () {
+        return tokenInfo;
+    }
+
+    this.removeToken = function () {
+        tokenInfo = null;
+        $window.sessionStorage["TokenInfo"] = null;
+    }
+
+    this.init = function () {
+        if ($window.sessionStorage["TokenInfo"]) {
+            tokenInfo = JSON.parse($window.sessionStorage["TokenInfo"]);
+        }
+    }
+
+    this.setHeader = function (http) {
+        delete http.defaults.headers.common['X-Requested-With'];
+        if ((tokenInfo != undefined) && (tokenInfo.accessToken != undefined) && (tokenInfo.accessToken != null) && (tokenInfo.accessToken != "")) {
+            http.defaults.headers.common['Authorization'] = 'Bearer ' + tokenInfo.accessToken;
+            http.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+        }
+    }
+
+    this.validateRequest = function () {
+        var url = serviceBase + 'api/home';
+        var deferred = $q.defer();
+        $http.get(url).then(function () {
+            deferred.resolve(null);
+        }, function (error) {
+            deferred.reject(error);
+        });
+
+        return deferred.promise;
+    }
+
+    this.init();
+}]);
+
+app.service('LoginService', ['$http', '$q', 'AuthenticationService', 'authData',
+    function ($http, $q, authenticationService, authData) {
+        var userInfo;
+        var loginServiceURL = serviceBase + serviceModulo + 'token';
+        var deviceInfo = [];
+        var deferred;
+
+        this.login = function (userName, password) {
+            deferred = $q.defer();
+            var data = "grant_type=password&username=" + userName + "&password=" + password;
+            $http.post(loginServiceURL, data, {
+                headers:
+                       { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .success(function (response) {
+                var o = response;
+                userInfo = {
+                    accessToken: response.access_token,
+                    userName: response.userName
+                };
+                authenticationService.setTokenInfo(userInfo);
+                authData.authenticationData.IsAuthenticated = true;
+                authData.authenticationData.userName = response.userName;
+                deferred.resolve(null);
+            })
+            .error(function (err, status) {
+                authData.authenticationData.IsAuthenticated = false;
+                authData.authenticationData.userName = "";
+                deferred.resolve(err);
+            });
+            return deferred.promise;
+        }
+
+        this.logOut = function () {
+            authenticationService.removeToken();
+            authData.authenticationData.IsAuthenticated = false;
+            authData.authenticationData.userName = "";
+        }
+    }
+]);
+
+
+
+app.controller('loginController', ['$scope', 'LoginService', '$location', 'AuthenticationService', 'authData', '$rootScope', '$window', '$element', 'uuid2',
+function ($scope, loginService, $location, authenticationService, authData, $rootScope, $window, $element, uuid2) {
+        authenticationService.removeToken();
+        $window.sessionStorage.clear();
+        authData.authenticationData.IsAuthenticated = false;
+        authData.authenticationData.userName = "";
+
+        $rootScope.serviceBase = serviceBase;
+        $rootScope.serviceModulo = serviceModulo;
+        $rootScope.register = false;
+        var collapse = 0;
+       
+        $scope.loginData = {
+            userName: "jelz2yk@hotmail.com",
+            password: "Farmacia2015?"
+        };
+
+        $rootScope.dialogTimer = 500;
+
+        $("#dialog").dialog({
+            title: "Procesando solicitud",
+            width: 220,
+            heigth: 30,
+            resizable: false,
+            draggable: false,
+            modal: true,
+            closeOnEscape: false,
+            autoOpen: false,
+            open: function (event, ui) { $(".ui-dialog-titlebar-close", ui.dialog | ui).hide(); }
+        });
+
+        var init = function () {
+            $rootScope.users = [];
+            $rootScope.roles = [];
+            $rootScope.company = [];
+            $rootScope.providers = [];
+            $rootScope.rewards = [];
+            $rootScope.assessments = [];
+            $rootScope.companyusers = [];
+            $rootScope.subscribers = [];
+            $rootScope.userassessments = [];
+
+         
+            //localStorage.removeItem('users');
+            //localStorage.removeItem('roles');
+            //localStorage.removeItem('company');
+            //localStorage.removeItem('providers');
+            //localStorage.removeItem('rewards');
+            //localStorage.removeItem('assessments');
+            //localStorage.removeItem('userassessments');
+
+
+            if (localStorage.getItem('users') != undefined) {
+                $rootScope.users = JSON.parse(localStorage.getItem('users'));
+                $rootScope.roles = JSON.parse(localStorage.getItem('roles'));
+            }
+            else {
+                var user = {
+                    id: uuid2.newguid(),
+                    email: "jelz2yk@hotmail.com",
+                    password: ""
+                };
+                $rootScope.users.push(user);
+                var role = {
+                    iduser: $rootScope.users[0].id,
+                    role: "Admin"
+                };
+                $rootScope.roles.push(role);
+                user = {
+                    id: uuid2.newguid(),
+                    email: "ricardo@elitesports.com",
+                    password: ""
+                };
+                $rootScope.users.push(user);
+                role = {
+                    iduser: $rootScope.users[1].id,
+                    role: "Admin"
+                };
+                $rootScope.roles.push(role);
+               
+
+                localStorage.setItem('users', JSON.stringify($rootScope.users));
+                localStorage.setItem('roles', JSON.stringify($rootScope.roles));
+
+            }
+            if (localStorage.getItem('company') != null) {
+                $rootScope.company = JSON.parse(localStorage.getItem('company'));
+            }
+            if (localStorage.getItem('providers') != null) {
+                $rootScope.providers = JSON.parse(localStorage.getItem('providers'));
+            }
+            if (localStorage.getItem('rewards') != null) {
+                $rootScope.rewards = JSON.parse(localStorage.getItem('rewards'));
+            }
+            if (localStorage.getItem('assessments') != null) {
+                $rootScope.assessments = JSON.parse(localStorage.getItem('assessments'));
+            }
+            if (localStorage.getItem('companyusers') != null) {
+                $rootScope.companyusers = JSON.parse(localStorage.getItem('companyusers'));
+            }
+            if (localStorage.getItem('subscribers') != null) {
+                $rootScope.subscribers = JSON.parse(localStorage.getItem('subscribers'));
+            }
+            if (localStorage.getItem('userassessments') != null) {
+                $rootScope.userassessments = JSON.parse(localStorage.getItem('userassessments'));
+            }
+        }
+
+        $scope.login = function () {
+            $rootScope.adminRole = true;
+            $rootScope.userRole = true;
+            $rootScope.companyRole = true;
+            $rootScope.providerRole = true;
+            $rootScope.id = "";
+            $rootScope.email = "";
+
+            var authVar = false;
+            for (var x = 0; x < $rootScope.users.length; x++) {
+                if ($rootScope.users[x].email == $scope.loginData.userName) {
+                    $rootScope.id = $rootScope.users[x].id;
+                    $rootScope.email = $rootScope.users[x].email;
+                    authVar = true;
+                    break;
+                }
+            }
+
+            if (authVar == false) {
+                $scope.errorMessage = "Email does not exist";
+                var myEl = $element.find('#errorMessage');
+                myEl.click();
+            }
+            else {
+                $rootScope.userInfo = $scope.loginData.userName;
+
+                for (var x = 0; x < $rootScope.roles.length; x++)
+                {
+                    if ($rootScope.roles[x].iduser == $rootScope.id) {
+                        if ($rootScope.roles[x].role == "Admin") {
+                            $rootScope.adminRole = false;
+                        }
+                        else if ($rootScope.roles[x].role == "User") {
+                            $rootScope.userRole = false;
+                        }
+                        else if ($rootScope.roles[x].role == "Company") {
+                            $rootScope.companyRole = false;
+
+                            for (var y = 0; y < $rootScope.company.length; y++) {
+                                if ($rootScope.company[y].userid == $rootScope.id) {
+                                    $rootScope.userdata = $rootScope.company[y].name + " - " + $rootScope.company[y].idCompany;
+                                    $rootScope.idcompany = $rootScope.company[y].id;
+                                }
+                         
+                            }
+                        }
+                        else if ($rootScope.roles[x].role == "Provider") {
+                            $rootScope.providerRole = false;
+                            for (var y = 0; y < $rootScope.providers.length; y++) {
+                                if ($rootScope.providers[y].userid == $rootScope.id) {
+                                    $rootScope.userdata = $rootScope.providers[y].name + " - " + $rootScope.providers[y].services;
+                                    $rootScope.idcompany = $rootScope.providers[y].id;
+                                }
+                            }
+                        }
+                    }
+
+                    authData.authenticationData.IsAuthenticated = true;
+                    authData.authenticationData.userName = $scope.loginData.userName;
+
+                }
+
+                $location.path('/dashboard');
+            }
+
+            /*
+            loginService.login($scope.loginData.userName, $scope.loginData.password, $element).then(function (response) {
+                if (response != null && response.error != undefined) {
+                    if (response.error_description != undefined) {
+                        $scope.errorMessage = response.error_description;
+                        var myEl = $element.find('#errorMessage');
+                        myEl.click();
+                        
+                    }
+                    else if (response.message != undefined) {
+                        $scope.errorMessage = response.error_description;
+                        var myEl = $element.find('#errorMessage');
+                        myEl.click();
+                    }
+                }
+                else if (authData.authenticationData.IsAuthenticated == true) {
+                    $location.path('/dashboard');
+                }
+
+            });
+            */
+        }
+
+        $scope.registerClick = function () {
+            $rootScope.register = true;
+            $location.path('/register');
+        }
+
+        $scope.back = function () {
+            backtop();
+        }
+
+        var backtop = function () {
+            $rootScope.register = false;
+            $location.path('/login');
+        }
+        
+        $scope.registerData = function () {
+            var id = uuid2.newguid();
+            var roles = "User";
+            if ($scope.optradio == 1) {
+                roles = "Company";
+            }
+            else if ($scope.optradio == 2) {
+                roles = "Provider";
+            }
+            var user = {
+                id: id,
+                email: $scope.email,
+                password: ""
+            };
+            
+            $rootScope.users.push(user);
+            
+            var role = {
+                iduser: id,
+                role: roles
+            };
+            
+            $rootScope.roles.push(role);
+
+            localStorage.setItem('users', JSON.stringify($rootScope.users));
+            localStorage.setItem('roles', JSON.stringify($rootScope.roles));
+            
+            if ($scope.optradio == 1) {
+                var company = {
+                    userid: id,
+                    id : uuid2.newguid(),
+                    idCompany : $scope.companyId,
+                    name: $scope.companyName
+                }
+                $rootScope.company.push(company);
+                localStorage.setItem('company', JSON.stringify($rootScope.company));
+            }
+            else if ($scope.optradio == 2) {
+                var providers = {
+                    userid: id,
+                    id: uuid2.newguid(),
+                    name: $scope.provider,
+                    services: $scope.services
+                }
+                $rootScope.providers.push(providers);
+                localStorage.setItem('providers', JSON.stringify($rootScope.providers));
+            }
+
+           
+            var myEl = $element.find('#idRegisterSuccessfull');
+            myEl.click();
+        }
+
+        $scope.newValue = function (optradio) {
+       
+            if (collapse == 1) {
+                var myEl = $element.find('#idCollapse1');
+                myEl.click();
+            }
+            else if (collapse == 2) {
+                var myEl = $element.find('#idCollapse2');
+                myEl.click();
+            }
+            if (optradio == 1) {
+                collapse = 1;
+                var myEl = $element.find('#idCollapse1');
+                myEl.click();
+            }
+            else if (optradio == 2) {
+                collapse = 2;
+                var myEl = $element.find('#idCollapse2');
+                myEl.click();
+            }
+            else {
+                collapse = 0;
+            }
+        }
+
+        //http://getbootstrap.com/javascript/
+
+        $('#dialogRegisterSuccessfull').on('hidden.bs.modal', function (e) {
+            backtop();
+        })
+
+        $scope.clearClick = function () {
+        
+            localStorage.removeItem('users');
+            localStorage.removeItem('roles');
+            localStorage.removeItem('company');
+            localStorage.removeItem('providers');
+            localStorage.removeItem('rewards');
+            localStorage.removeItem('assessments');
+            localStorage.removeItem('companyusers');
+            localStorage.removeItem('subscribers');
+            localStorage.removeItem('userassessments');
+
+            $location.path('/Login');
+        }
+        
+
+        init();
+
+}]);
+
+
+
+
+app.controller('nextController', ['$scope', 'AuthenticationService', function ($scope, authenticationService) {
+    authenticationService.validateRequest();
+}]);
+
+app.config(['$compileProvider', function ($compileProvider) {
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|ms-appx):/);
+}]);

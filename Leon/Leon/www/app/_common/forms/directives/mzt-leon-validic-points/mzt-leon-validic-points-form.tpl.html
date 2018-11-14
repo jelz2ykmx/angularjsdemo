@@ -1,0 +1,495 @@
+<div style="margin-top:-15px">
+    <section id="idsectionpoints" ng-hide="hidePoints">
+        <div class="pointsDateBox">
+            <i id="idrowleft" class="pointTodayArrows fa-angle-left" aria-hidden="true" ng-click="goGetDate(-1)"></i>
+            <div class="pointsToday">
+                <input id="inputDate" ng-model="TodayText" class="todayBox" />
+            </div>
+            <i id="idrowright" class="pointTodayArrows pointTodayArrowsRight fa-angle-right" aria-hidden="true" ng-click="goGetDate(1)"></i>
+        </div>
+        <div id="idScoreHideDate" class="scoreHideDate" >
+        </div>
+        
+        <!--
+         <div  style="display:flex;justify-content:center;align-items:center;margin-top:-10px">
+            <span class="chart rotate score-chart score-chart-points" data-percent="0">
+            </span>
+        </div>
+
+         <div  class="frontChart">
+            <span class="chart chart-points rotate score-chart-points-without-border" data-percent="0" ng-click="getPointsChart()">
+                <span  class="percent rotateScore score-percent-points" >
+                </span>
+            </span>
+        </div>
+        -->
+
+        <div class="score_div_mixed" >
+            <div id="idProgressPointsback" class="bubbleScore bubbleScoreBack bubblePoints" ng-click="getPointsChart()"></div>
+            <div id="idProgressPoints" class="bubbleScore bubbleScoreFront bubblePoints bubblePointsFront" ng-click="getPointsChart()"></div>
+        </div>
+        <div class="exile_percent" >
+            <span ng-hide="scoreChart" class="percent score_today_avarage scorePoints" ng-click="getPointsChart()"></span>
+        </div>
+       
+        <div class="score_div_mixed">
+            <div id="idProgressCircleFront" class="bubbleScore bubbleScoreCircleFront bubblePoints" ng-click="getPointsChart()"></div>
+        </div>
+   
+        <div id="barOne" class="status-bar-rules-bottom status-bar-rules-bottomOne" ng-click="getChartBar()">
+            <div id="one" hidden="hidden" class="pointsanimationSize">
+                <div class="PointsLeftPanel">
+                    <span id="1" style="display: block;">{{steps}}</span>
+                </div>
+                <div class="PointsRightPanel">
+                    <img id="1" class="imgPoints" src="styles/mztimgs/Shoes.png" />
+                </div>
+            </div>
+        </div>
+        <div id="barTwo" class="status-bar-rules-bottom status-bar-rules-bottomTwo" ng-click="getChartBar(event)">
+            <div id="two" hidden="hidden" class="pointsanimationSize">
+                <div class="PointsLeftPanel">
+                    <span id="2" style="display: block;">{{sleep}}</span>
+                </div>
+                <div class="PointsRightPanel">
+                    <img id="2" class="imgPoints" src="styles/mztimgs/Bed Icon.png" />
+                </div>
+            </div>
+        </div>
+        <div id="barThree" class="status-bar-rules-bottom status-bar-rules-bottomThree" ng-click="getChartBar(event)">
+            <div id="three" hidden="hidden" class="pointsanimationSize">
+                <div class="PointsLeftPanel">
+                    <span id="3" style="display: block;">{{activity}}</span>
+                </div>
+                <div class="PointsRightPanel">
+                    <img id="3" class="imgPoints" src="styles/mztimgs/CyclingLogo.png" />
+                </div>
+            </div>
+        </div>
+        <div id="barFour" class="status-bar-rules-bottom status-bar-rules-bottomFour" ng-click="getChartBar(event)">
+            <div id="four" hidden="hidden" class="pointsanimationSize">
+                <div class="PointsLeftPanel">
+                    <span id="4" style="display: block;">{{nutrition}}</span>
+                </div>
+                <div class="PointsRightPanel">
+                    <img id="4" class="imgPoints" src="styles/mztimgs/nutrition.png" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="mzt_container_points" ng-hide="hideChartBar">
+        <div style="width: 56vh;">
+
+            <div class="cb_flex mzt_row_points_text1">{{chartLabel}}</div>
+            <div class="mzt_row_points mzt_row_points_text2 ">
+                <div class="cb_flex">Avarage last 7 days</div>
+                <div class="cb_flex">Avarage/day</div>
+            </div>
+            <div class="mzt_row_points mzt_row_points_text1 ">
+                <div class="cb_flex">{{last7Days}}</div>
+                <div class="cb_flex">{{avarageDay}}</div>
+            </div>
+            <div class="mzt_row_points mzt_row_points_text2 ">
+                <div class="cb_flex">Avarage/week</div>
+                <div class="cb_flex">Avarage/month</div>
+            </div>
+            <div class="mzt_row_points mzt_row_points_text1 ">
+                <div class="cb_flex">{{avarageWeek}}</div>
+                <div class="cb_flex">{{avarageMonth}}</div>
+            </div>
+            <div class="cb_flex cb_row cb_flex_hcenter">
+                <div class="cb_toggleWrapper cb_tm mzt_points_Month_Week_Toggle ">
+                    <input class="cb_dn" type="checkbox" id="dn" ng-model="monthweek" ng-click="clickToogle()" />
+                    <label class="cb_toggle mzt_point_Toggle " for="dn"><span class="cb_toggle__handler mzt_point_Toggle_handler"></span></label>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div ng-hide="hideChartBar" style="display: flex;justify-content: center;">
+ 
+        <canvas id="bar" class="chart chart-bar pointsBarFitnees" chart-data="data" chart-labels="labels" chart-options="optionsbar" chart-dataset-override="datasetOverride"></canvas>
+    </div>
+
+    <div class="cb_mzt_calendar" ng-hide="hideactivity">
+        <div class="cb_text cb_mzt_calendartext">Fitness</div>
+        <div class="cb_flex cb_row cb_flex_hcenter cb_mzt_div_calendar_toggle">
+            <div class="cb_toggleWrapper cb_tm mzt_points_Month_Week_Toggle ">
+                <input class="cb_dn" type="checkbox" id="dncalendar" ng-model="monthweekcalendar" ng-click="clickToogleCalendar()" />
+                <label class="cb_toggle mzt_point_Toggle maz_calendartoggle" for="dncalendar"><span class="cb_toggle__handler mzt_point_Toggle_handler maz_calendartoggle"></span></label>
+            </div>
+        </div>
+        <div class="cb_calendar_contain cb_flex" ng-hide="hidecalendarmonth">
+            <div class="cb_calendar_control cb_row cb_text_medium">
+                <a class="cb_prev"><</a>
+                <!--<div class="cb_month">Marzo </div>-->
+                <input id="inputMonth" ng-model="MonthText" class="todayBox cb_month todayBoxFitnees" />
+                <a class="cb_next">></a>
+            </div>
+            <table class="cb_calendar">
+                <thead>
+                    <tr class="cb_week">
+                        <td class="cb_day">S</td>
+                        <td class="cb_day">M</td>
+                        <td class="cb_day">T</td>
+                        <td class="cb_day">W</td>
+                        <td class="cb_day">T</td>
+                        <td class="cb_day">F</td>
+                        <td class="cb_day">S</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="cb_week_1">
+                        <td class="cb_day_1">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_2">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_3">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_4">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_5">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_6">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_7">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                    </tr>
+                    <tr class="cb_week_2">
+                        <td class="cb_day_1">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_2">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_3">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_4">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_5">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_6">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_7">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                    </tr>
+                    <tr class="cb_week_3">
+                        <td class="cb_day_1">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_2">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_3">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_4">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_5">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_6">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_7">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                    </tr>
+                    <tr class="cb_week_4">
+                        <td class="cb_day_1">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_2">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_3">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_4">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_5">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_6">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_7">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                    </tr>
+                    <tr class="cb_week_5">
+                        <td class="cb_day_1">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_2">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_3">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_4">
+                            <span class="cb_day_num"></span>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_5">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_6">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_7">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                    </tr>
+                    <tr class="cb_week_6">
+                        <td class="cb_day_1">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_2">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_3">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_4">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_5">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_6">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                        <td class="cb_day_7">
+                            <div class="cb_day_num"></div>
+                            <div class="mzt_pictures_Monthly_Activities"></div>
+                            <div class="mzt_miles_Monthly_Activities"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="cb_flex cb_row" style="justify-content: center;" ng-hide="hidecalendarmonth">
+            <div style="display: flex;width: 50vh;">
+                <div class="cb_column cb_flex ">
+                    <div class="cb_text_small cb_text_s cb_flex cb_text_small_calendar">Total Active Time</div>
+                    <div class="cb_text_medium cb_flex">{{durationActivityMonthly}}</div>
+                </div>
+                <div class="cb_column cb_flex">
+                    <div class="cb_text_small cb_text_s cb_flex cb_text_small_calendar">Total Calorie Burn</div>
+                    <div class="cb_text_medium cb_flex ">{{caloriesActivityMonthly}}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="cb_calendar_contain cb_flex" ng-hide="hidecalendarweek">
+            <div class="cb_calendar_control cb_row cb_text_medium">
+                <a class="cb_prev_week"><</a>
+                <!--<div class="cb_month cb_month_week">Marzo </div>-->
+                <input id="inputWeek" ng-model="WeekText" class="todayBox cb_month cb_month_week todayBoxFitnees" />
+                <a class="cb_next_week">></a>
+            </div>
+            <table class="cb_calendar cb_mzt_calendarweek">
+                <thead>
+                    <tr class="cb_week">
+                        <td class="cb_day"></td>
+                        <td class="cb_day"></td>
+                        <td class="cb_day cellfitnessWeek">Distance(mi)</td>
+                        <td class="cb_day cellfitnessWeek">Time</td>
+                        <td class="cb_day cellfitnessWeek">Calories</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="cb_week_1">
+                        <td class="cb_day_1 ">
+                            <span class="cb_day_num"></span>
+                            <div class="divtotalweekday">Mon</div>
+                        </td>
+                        <td class="cb_day_2 borderright cellfitnessWeek"></td>
+                        <td class="cb_day_3 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_4 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_5 borderleft cellfitnessWeek"></td>
+                    </tr>
+                    <tr class="cb_week_2">
+                        <td class="cb_day_1 ">
+                            <span class="cb_day_num"></span>
+                            <div class="divtotalweekday">Thue</div>
+                        </td>
+                        <td class="cb_day_2 borderright cellfitnessWeek"></td>
+                        <td class="cb_day_3 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_4 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_5 borderleft cellfitnessWeek"></td>
+                    </tr>
+                    <tr class="cb_week_3">
+                        <td class="cb_day_1 ">
+                            <span class="cb_day_num"></span>
+                            <div class="divtotalweekday">Wed</div>
+                        </td>
+                        <td class="cb_day_2 borderright cellfitnessWeek"></td>
+                        <td class="cb_day_3 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_4 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_5 borderleft cellfitnessWeek"></td>
+                    </tr>
+                    <tr class="cb_week_4">
+                        <td class="cb_day_1 ">
+                            <span class="cb_day_num"></span>
+                            <div class="divtotalweekday">Thu</div>
+                        </td>
+                        <td class="cb_day_2 borderright cellfitnessWeek"></td>
+                        <td class="cb_day_3 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_4 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_5 borderleft cellfitnessWeek"></td>
+                    </tr>
+                    <tr class="cb_week_5">
+                        <td class="cb_day_1 ">
+                            <span class="cb_day_num"></span>
+                            <div class="divtotalweekday">Fri</div>
+                        </td>
+                        <td class="cb_day_2 borderright cellfitnessWeek"></td>
+                        <td class="cb_day_3 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_4 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_5 borderleft cellfitnessWeek"></td>
+                    </tr>
+                    <tr class="cb_week_6">
+                        <td class="cb_day_1 ">
+                            <span class="cb_day_num"></span>
+                            <div class="divtotalweekday">Sat</div>
+                        </td>
+                        <td class="cb_day_2 borderright cellfitnessWeek"></td>
+                        <td class="cb_day_3 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_4 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_5 borderleft cellfitnessWeek"></td>
+                    </tr>
+                    <tr class="cb_week_7">
+                        <td class="cb_day_1 ">
+                            <span class="cb_day_num"></span>
+                            <div class="divtotalweekday">Sun</div>
+                        </td>
+                        <td class="cb_day_2 borderright cellfitnessWeek"></td>
+                        <td class="cb_day_3 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_4 borderrightleft cellfitnessWeek"></td>
+                        <td class="cb_day_5 borderleft cellfitnessWeek"></td>
+                    </tr>
+                    <tr class="cb_week_8 lastroweek">
+                        <td class="cb_day_1 borderrightleft borderbottom cellfitnessWeek">Total</td>
+                        <td class="cb_day_2 borderrightleft borderbottom cellfitnessWeek"></td>
+                        <td class="cb_day_3 borderrightleft borderbottom cellfitnessWeek">{{milesWeek}}</td>
+                        <td class="cb_day_4 borderrightleft borderbottom cellfitnessWeek">{{durationWeek}}</td>
+                        <td class="cb_day_5 borderrightleft borderbottom cellfitnessWeek">{{caloriesWeek}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+    <section ng-hide="hideToolBar">
+        <div class="status-bar-bottom">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-angle-left status-bar-bottom-fonts" aria-hidden="true" ng-click="back()"></i>
+            </span>
+        </div>
+    </section>
+</div>

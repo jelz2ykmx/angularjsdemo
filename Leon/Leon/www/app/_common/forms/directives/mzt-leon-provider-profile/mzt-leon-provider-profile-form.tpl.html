@@ -1,0 +1,358 @@
+
+<form name="myFormAgencia">
+    <fieldset ng-hide="ocultaCampos">
+        <div class="form-horizontal">
+
+            <div class="form-group" ng-hide="hideTypeEmail">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label">Email</label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-lg-offset-1 ">
+                    <input type="email" name="email" class="form-control" data-ng-model="email" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">First name</label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-lg-offset-1 ">
+                    <input type="text" name="firstName" ng-model="firstName" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">Last name</label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-lg-offset-1 ">
+                    <input type="text" name="lastName" ng-model="lastName" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">Phone</label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-lg-offset-1 ">
+                    <input type="text" name="phone" ng-model="phone" class="form-control">
+                </div>
+            </div>
+
+            <!--<div class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">       </label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-lg-offset-1 ">
+                    <button ng-click="showAddLocation()" class="btn" style="background-color: rgba(255, 162, 2, 1);color:white; margin-bottom: 5px;">Locations</button>
+                    <table id="tableLocations" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th data-hide="phone"><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>Name</th>
+                                <th data-hide="phone"><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>State</th>
+                                <th data-hide="phone"><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>Country</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(index, location) in locationList" ng-click="showRemoveLocation(location, index)" ng-if="location.status" >
+                                <td>{{location.name}}</td>
+                                <td>{{location.shortState}}</td>
+                                <td>{{location.shortCountry}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>-->
+            <!--<div ng-hide="hideButtonChangePassword" class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">         </label>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-lg-offset-1 ">
+                    <button ng-click="changePassword()" class="btn" style="background-color: rgba(255, 162, 2, 1);color:white;">Change password</button>
+                </div>
+            </div>-->
+            <!--<div ng-hide="hidePasswordFields" class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">Password</label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-lg-offset-1 ">
+                    <input type="password" name="password" ng-model="password" class="form-control">
+                </div>
+            </div>
+
+            <div ng-hide="hidePasswordFields" class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">Retype</label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-lg-offset-1 ">
+                    <input type="password" name="passwordConfirm" ng-model="passwordConfirm" class="form-control" placeholder="Confirm password">
+                </div>
+            </div>-->
+
+        </div>
+
+
+    </fieldset>
+    <fieldset ng-hide="hidePasswordFields">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">Password</label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-lg-offset-1 ">
+                    <input type="password" name="password" ng-model="password" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">Retype</label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-lg-offset-1 ">
+                    <input type="password" name="passwordConfirm" ng-model="passwordConfirm" class="form-control">
+                </div>
+            </div>
+
+            <div ng-hide="hideButtonBackPassword" class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">      </label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-lg-offset-1 ">
+                    <button ng-click="doChangePassword()" class="btn" style="background-color: rgba(255, 162, 2, 1);color:white;">Save</button>
+                    <button class="btn" ng-click="backChangePassword()" style="background-color: rgba(255,  162,  2,  1);color:white;">Back</button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset ng-hide="ocultaCampos">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">       </label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-lg-offset-1 ">
+                    <button ng-click="showAddLocation()" class="btn" style="background-color: rgba(255, 162, 2, 1);color:white; margin-bottom: 5px;">Locations</button>
+                    <table id="tableLocations" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th data-hide="phone"><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>Name</th>
+                                <th data-hide="phone"><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>Zip Code</th>
+                                <th data-hide="phone"><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>State</th>
+                                <th data-hide="phone"><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>Country</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(index, location) in locationList" ng-click="showRemoveLocation(location, index)" ng-if="location.status">
+                                <td>{{location.name}}</td>
+                                <td>{{location.zipCode}}</td>
+                                <td>{{location.shortState}}</td>
+                                <td>{{location.shortCountry}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <fieldset ng-hide="ocultaCampos">
+        <hr />
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">         </label>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-lg-offset-1 ">
+                    <button class="btn" ng-click="save()" ng-disabled="status" style="background-color: rgba(255,  162,  2,  1);color:white;">Save</button>
+                    <button ng-hide="hideButtonChangePassword" ng-click="changePassword()" class="btn" style="background-color: rgba(255, 162, 2, 1);color:white;">Change password</button>
+                    <!--<button class="btn" ng-click="back()" style="background-color: rgba(255,  162,  2,  1);color:white;">Back</button>-->
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset ng-hide="ocultaCampos">
+        <div class="form-group">
+            <div class="col-md-9 col-md-offset-3">
+                <div id="messages"></div>
+            </div>
+        </div>
+    </fieldset>
+
+    <div>
+        <a id="openQuestion" href="#" data-toggle="modal" data-target="#dialogTipoAgenciaUpdate" style="visibility:hidden; width:0px; height:0px"></a>
+    </div>
+    <div class="modal fade" id="dialogTipoAgenciaUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <!--<h4 class="modal-title text-info" id="myModalLabel">Warning!</h4>-->
+                </div>
+                <div class="modal-body">
+                    <label>{{messageQuestion}}</label>
+                </div>
+                <div class="modal-footer">
+                    <div data-dialog-buttons>
+                        <button class="btn" ng-click="savedata()" data-dismiss="modal" style="background-color: rgba(255,  162,  2,  1);color:white;">Yes</button>
+                        <button class="btn" data-dismiss="modal" style="background-color: rgba(255,  162,  2,  1);color:white;">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a id="idErrorMessage" href="#" data-toggle="modal" data-target="#dialogErrorMensaje" style="visibility:hidden; width:0px; height:0px"></a>
+    </div>
+    <div class="modal fade" id="dialogErrorMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <button id="botonCerrarCliente" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class='widget-header'><h4><i class='fa fa-warning'></i> Error</h4></div>
+                    </div>
+                    <p>
+                        <h4>{{errorMessage}}</h4>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <fieldset ng-hide="ocultaLocationCampos">
+        <div class="form-horizontal">
+            <!--<div class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">State</label>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-lg-offset-1 ">
+                    <input ng-disabled="true" type="text" name="state" ng-model="state" class="form-control">
+                </div>
+                <button style="background-color: rgba(255,  162,  2,  1);color:white;" class="col-xs-2 col-sm-2 col-md-2 col-lg-1 btn" ng-click="queryStates()">State</button>
+            </div>-->
+
+            <div class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">City</label>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-lg-offset-1 ">
+                    <input ng-disabled="true" type="text" name="city" ng-model="city" class="form-control">
+                </div>
+                <button style="background-color: rgba(255,  162,  2,  1);color:white;" class="col-xs-2 col-sm-2 col-md-2 col-lg-1 btn" ng-click="queryCities()">City</button>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">State</label>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-lg-offset-1 ">
+                    <input ng-disabled="true" type="text" name="shortState" ng-model="shortState" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 control-label control-label">Country</label>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-lg-offset-1 ">
+                    <input ng-disabled="true" type="text" name="shortCountry" ng-model="shortCountry" class="form-control">
+                </div>
+            </div>
+        </div>
+        <button class="btn" ng-click="addLocation()" style="background-color: rgba(255,  162,  2,  1);color:white;">Add</button>
+        <button class="btn" ng-click="backAddLocation()" style="background-color: rgba(255,  162,  2,  1);color:white;">Back</button>
+        <button class="btn" ng-click="removeLocation()" style="background-color: rgba(255,  162,  2,  1);color:white;">Remove</button>
+    </fieldset>
+
+
+    <fieldset ng-hide="ocultaQueryState">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="input-group input-group-md">
+                        <div class="icon-addon addon-md">
+                            <input name="textSearchState" type="text" class="form-control" ng-model="textSearchState">
+                        </div>
+                        <span class="input-group-btn">
+                            <button class="btn" style="background-color: rgba(255,  162,  2,  1);color:white;" ng-click="clickSearchState()">Search</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="form-group" ng-hide="ocultaQueryState">
+        <div class="table-responsive">
+            <table id="tablaAgencia" datatable="ng" dt-options="datatables.standardOptions" dt-columns="datatables.standardColumns" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                    <tr>
+                        <th><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="state in stateList" ng-click="goState(state)">
+                        <td>{{state.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="btn" style="background-color: rgba(255,  162,  2,  1);color:white;" type="button" ng-click="backQueryState()">Back</button>
+    </div>
+
+    <fieldset ng-hide="ocultaQueryCity">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon">Locations</span>
+                        <div class="icon-addon addon-md">
+                            <input name="textSearchCity" type="text" class="form-control" ng-model="textSearchCity">
+                        </div>
+                        <span class="input-group-btn">
+                            <button class="btn" style="background-color: rgba(255,  162,  2,  1);color:white;" ng-click="clickSearchCity()">Search</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="form-group" ng-hide="ocultaQueryCity">
+        <div class="table-responsive">
+            <table id="tablaAgencia" datatable="ng" dt-options="datatables.standardOptions" dt-columns="datatables.standardColumns" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                    <tr>
+                        <th><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>Name</th>
+                        <th><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>Zip Code</th>
+                        <th><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>State</th>
+                        <th><i class="fa fa-fw fa-file-text-o txt-color-blue text-muted hidden-md hidden-sm hidden-xs"></i>Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="city in cityList" ng-click="goCity(city)">
+                        <td>{{city.name}}</td>
+                        <td>{{city.zipCode}}</td>
+                        <td>{{city.shortState}}</td>
+                        <td>{{city.shortCountry}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="btn" style="background-color: rgba(255,  162,  2,  1);color:white;" type="button" ng-click="backQueryCity()">Back</button>
+    </div>
+
+
+    <div class="modal fade" id="removeLocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-info" id="myModalLabel">Warning!</h4>
+                </div>
+                <div class="modal-body">
+                    <label>Are you sure you want to delete this location?</label>
+                </div>
+                <div class="modal-footer">
+                    <div data-dialog-buttons>
+                        <button class="btn" ng-click="removeLocation()" data-dismiss="modal" style="background-color: rgba(255,  162,  2,  1);color:white;">Yes</button>
+                        <button class="btn" data-dismiss="modal" style="background-color: rgba(255,  162,  2,  1);color:white;">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a id="modalUpdated" href="#" data-toggle="modal" data-target="#dialogModalUpdated" style="visibility:hidden; width:0px; height:0px"></a>
+    </div>
+    <div class="modal fade" id="dialogModalUpdated" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <label>Profile updated</label>
+                </div>
+                <div class="modal-footer">
+                    <div data-dialog-buttons>
+                        <button class="btn" data-dismiss="modal" style="background-color: rgba(255,  162,  2,  1);color:white;">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
